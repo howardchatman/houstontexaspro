@@ -132,43 +132,61 @@ export default function HomePage() {
           </div>
 
           {/* Split CTA - Two Paths */}
-          <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-4 mb-12">
+          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6 mb-12">
             {/* Homeowner Path */}
-            <Card className="bg-white/10 border-white/20 backdrop-blur hover:bg-white/15 transition-colors">
-              <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Home className="h-6 w-6 text-white" />
-                </div>
-                <h2 className="text-xl font-semibold mb-2 text-white">I Need a Contractor</h2>
-                <p className="text-slate-300 text-sm mb-4">
-                  Emergency or scheduled. Residential or commercial.
-                </p>
-                <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700" asChild>
-                  <Link href="/contractors">
-                    Find a Contractor Now
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </CardContent>
+            <Card className="overflow-hidden border-0 shadow-2xl group">
+              <div className="relative">
+                {/* Background Image */}
+                <div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: "url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80')" }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-slate-900/40" />
+
+                <CardContent className="relative p-8 text-center min-h-[280px] flex flex-col justify-end">
+                  <div className="w-14 h-14 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <Home className="h-7 w-7 text-white" />
+                  </div>
+                  <h2 className="text-2xl font-bold mb-2 text-white">I Need a Contractor</h2>
+                  <p className="text-slate-300 text-sm mb-5">
+                    Emergency or scheduled. Residential or commercial.
+                  </p>
+                  <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700 shadow-lg" asChild>
+                    <Link href="/contractors">
+                      Find a Contractor Now
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </div>
             </Card>
 
             {/* Contractor Path */}
-            <Card className="bg-white/10 border-white/20 backdrop-blur hover:bg-white/15 transition-colors">
-              <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Building2 className="h-6 w-6 text-white" />
-                </div>
-                <h2 className="text-xl font-semibold mb-2 text-white">I Am a Contractor</h2>
-                <p className="text-slate-300 text-sm mb-4">
-                  Get more calls. Never miss a lead.
-                </p>
-                <Button size="lg" variant="outline" className="w-full border-white/30 text-white hover:bg-white/10" asChild>
-                  <Link href="/register/contractor">
-                    Get More Calls & Bookings
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </CardContent>
+            <Card className="overflow-hidden border-0 shadow-2xl group">
+              <div className="relative">
+                {/* Background Image */}
+                <div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: "url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80')" }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-slate-900/40" />
+
+                <CardContent className="relative p-8 text-center min-h-[280px] flex flex-col justify-end">
+                  <div className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <Building2 className="h-7 w-7 text-white" />
+                  </div>
+                  <h2 className="text-2xl font-bold mb-2 text-white">I Am a Contractor</h2>
+                  <p className="text-slate-300 text-sm mb-5">
+                    Get more calls. Never miss a lead.
+                  </p>
+                  <Button size="lg" className="w-full bg-green-600 hover:bg-green-700 shadow-lg" asChild>
+                    <Link href="/register/contractor">
+                      Get More Calls & Bookings
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </div>
             </Card>
           </div>
 
