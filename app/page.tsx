@@ -17,6 +17,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { CategoryGrid } from '@/components/contractors/CategoryGrid'
+import { RequestRoutingAnimation } from '@/components/home/RequestRoutingAnimation'
 
 // Mock featured contractors (replace with Supabase query)
 const featuredContractors = [
@@ -212,60 +213,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Problem / Solution Section */}
-      <section className="py-16 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-              {/* The Problem */}
-              <div className="bg-white p-8 rounded-xl shadow-sm border border-red-100">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
-                    <AlertTriangle className="h-5 w-5 text-red-600" />
-                  </div>
-                  <h2 className="text-xl font-bold text-slate-900">The Problem</h2>
-                </div>
-                <p className="text-slate-600 leading-relaxed">
-                  You call three contractors. One answers. Two never call back.
-                  The one who answered shows up late—if at all.
-                </p>
-                <p className="text-slate-600 leading-relaxed mt-3">
-                  Meanwhile, you&apos;ve got water in your ceiling, an AC that quit in July,
-                  or a project deadline that won&apos;t wait.
-                </p>
-              </div>
-
-              {/* The Fix */}
-              <div className="bg-white p-8 rounded-xl shadow-sm border border-green-100">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
-                  </div>
-                  <h2 className="text-xl font-bold text-slate-900">The Fix</h2>
-                </div>
-                <p className="text-slate-600 leading-relaxed">
-                  HoustonTexasPro routes your request to contractors who are
-                  <span className="font-semibold text-slate-900"> actually available</span>.
-                </p>
-                <p className="text-slate-600 leading-relaxed mt-3">
-                  If they don&apos;t respond fast, we route to the next pro.
-                  <span className="font-semibold text-slate-900"> No dead ends. No runaround.</span>
-                </p>
-              </div>
-            </div>
-
-            {/* Simple CTA */}
-            <div className="text-center mt-10">
-              <Button size="lg" asChild>
-                <Link href="/contractors">
-                  Find a Contractor Now
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Animated Request Routing Section */}
+      <RequestRoutingAnimation />
 
       {/* Categories Section */}
       <section className="py-16 bg-white">
