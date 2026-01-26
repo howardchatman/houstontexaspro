@@ -3,17 +3,22 @@ import {
   CheckCircle,
   Shield,
   Clock,
-  ThumbsUp,
+  MapPin,
   ArrowRight,
   Star,
+  Phone,
+  AlertTriangle,
+  Zap,
+  Building2,
+  Home,
+  PhoneCall,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { SearchBar } from '@/components/contractors/SearchBar'
 import { CategoryGrid } from '@/components/contractors/CategoryGrid'
 
-// Mock featured contractors for demo (replace with Supabase query)
+// Mock featured contractors (replace with Supabase query)
 const featuredContractors = [
   {
     id: '1',
@@ -24,7 +29,8 @@ const featuredContractors = [
     review_count: 127,
     categories: ['Electrical'],
     is_verified: true,
-    description: 'Licensed electricians serving Houston for over 20 years.',
+    response_time: '< 2 hours',
+    description: 'Licensed master electricians. 20+ years serving Houston.',
   },
   {
     id: '2',
@@ -35,7 +41,8 @@ const featuredContractors = [
     review_count: 89,
     categories: ['Plumbing'],
     is_verified: true,
-    description: '24/7 emergency plumbing services for residential and commercial.',
+    response_time: '< 1 hour',
+    description: '24/7 emergency plumbing. Residential and commercial.',
   },
   {
     id: '3',
@@ -46,299 +53,472 @@ const featuredContractors = [
     review_count: 156,
     categories: ['Roofing'],
     is_verified: true,
-    description: 'Expert roofing installation, repair, and inspection services.',
+    response_time: 'Same day',
+    description: 'Storm damage experts. Free inspections.',
   },
 ]
 
-// Mock recent reviews
-const recentReviews = [
+// Recent requests (shows activity without fake testimonials)
+const recentRequests = [
   {
     id: '1',
-    contractor_name: 'Houston Premier Electric',
-    contractor_slug: 'houston-premier-electric',
-    author: 'Sarah M.',
-    rating: 5,
-    content: 'Excellent work! They rewired our entire house and were professional throughout.',
-    date: '2 days ago',
+    service: 'Emergency plumber',
+    area: 'Montrose',
+    status: 'Connected in 12 min',
+    urgent: true,
   },
   {
     id: '2',
-    contractor_name: 'Lone Star Plumbing',
-    contractor_slug: 'lone-star-plumbing',
-    author: 'John D.',
-    rating: 5,
-    content: 'Fast response to our emergency. Fixed the leak in no time. Highly recommend!',
-    date: '3 days ago',
+    service: 'AC repair',
+    area: 'Katy',
+    status: '3 pros responded',
+    urgent: true,
   },
   {
     id: '3',
-    contractor_name: 'Texas Roof Masters',
-    contractor_slug: 'texas-roof-masters',
-    author: 'Mike R.',
-    rating: 4,
-    content: 'Great job on our roof replacement. Clean work and fair pricing.',
-    date: '1 week ago',
+    service: 'Roof inspection',
+    area: 'Sugar Land',
+    status: 'Scheduled for Tuesday',
+    urgent: false,
+  },
+  {
+    id: '4',
+    service: 'Electrical panel upgrade',
+    area: 'The Woodlands',
+    status: '2 quotes received',
+    urgent: false,
+  },
+  {
+    id: '5',
+    service: 'Water heater replacement',
+    area: 'Pearland',
+    status: 'Connected in 8 min',
+    urgent: true,
   },
 ]
 
 export default function HomePage() {
   return (
     <div>
+      {/* Emergency Banner - Persistent */}
+      <div className="bg-red-600 text-white py-2 px-4">
+        <div className="container mx-auto flex items-center justify-center gap-3 text-sm">
+          <AlertTriangle className="h-4 w-4 flex-shrink-0" />
+          <span className="font-medium">Emergency?</span>
+          <span className="hidden sm:inline">Skip the form.</span>
+          <Link
+            href="/contractors?emergency=true"
+            className="underline font-semibold hover:no-underline"
+          >
+            Get routed to an available pro now →
+          </Link>
+        </div>
+      </div>
+
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white">
-        <div className="absolute inset-0 bg-[url('/images/hero-pattern.svg')] opacity-10" />
+      <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
         <div className="container mx-auto px-4 py-16 md:py-24 relative">
-          <div className="max-w-3xl mx-auto text-center mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Find Trusted Contractors in Houston
+          {/* Main Headline */}
+          <div className="max-w-4xl mx-auto text-center mb-10">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              Houston Contractors Who Answer.
+              <br />
+              <span className="text-blue-400">When It Actually Matters.</span>
             </h1>
-            <p className="text-xl text-blue-100">
-              Connect with verified professionals for all your home improvement
-              and commercial construction needs
+            <p className="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto">
+              Burst pipe at 2 AM. Kitchen remodel next month.
+              Either way—reach a contractor who actually answers.
             </p>
           </div>
 
-          {/* Search Bar */}
-          <div className="max-w-4xl mx-auto">
-            <SearchBar variant="hero" />
+          {/* Split CTA - Two Paths */}
+          <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-4 mb-12">
+            {/* Homeowner Path */}
+            <Card className="bg-white/10 border-white/20 backdrop-blur hover:bg-white/15 transition-colors">
+              <CardContent className="p-6 text-center">
+                <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Home className="h-6 w-6 text-white" />
+                </div>
+                <h2 className="text-xl font-semibold mb-2 text-white">I Need a Contractor</h2>
+                <p className="text-slate-300 text-sm mb-4">
+                  Emergency or scheduled. Residential or commercial.
+                </p>
+                <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700" asChild>
+                  <Link href="/contractors">
+                    Find a Contractor Now
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Contractor Path */}
+            <Card className="bg-white/10 border-white/20 backdrop-blur hover:bg-white/15 transition-colors">
+              <CardContent className="p-6 text-center">
+                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Building2 className="h-6 w-6 text-white" />
+                </div>
+                <h2 className="text-xl font-semibold mb-2 text-white">I Am a Contractor</h2>
+                <p className="text-slate-300 text-sm mb-4">
+                  Get more calls. Never miss a lead.
+                </p>
+                <Button size="lg" variant="outline" className="w-full border-white/30 text-white hover:bg-white/10" asChild>
+                  <Link href="/register/contractor">
+                    Get More Calls & Bookings
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
           </div>
 
-          {/* Quick Stats */}
-          <div className="flex flex-wrap justify-center gap-8 mt-12 text-sm">
+          {/* Trust Strip - Houston Specific */}
+          <div className="flex flex-wrap justify-center gap-6 md:gap-10 text-sm text-slate-300">
             <div className="flex items-center gap-2">
-              <CheckCircle className="h-5 w-5 text-green-400" />
-              <span>500+ Verified Contractors</span>
+              <MapPin className="h-5 w-5 text-blue-400" />
+              <span>Covering 47 Houston ZIP Codes</span>
             </div>
             <div className="flex items-center gap-2">
-              <Star className="h-5 w-5 text-yellow-400" />
-              <span>10,000+ Reviews</span>
+              <Clock className="h-5 w-5 text-green-400" />
+              <span>15-Min Average Response</span>
             </div>
             <div className="flex items-center gap-2">
-              <Shield className="h-5 w-5 text-blue-300" />
-              <span>Licensed & Insured</span>
+              <Shield className="h-5 w-5 text-yellow-400" />
+              <span>Every Pro Verified</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Zap className="h-5 w-5 text-red-400" />
+              <span>24/7 Emergency Routing</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Problem / Solution Section */}
+      <section className="py-16 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+              {/* The Problem */}
+              <div className="bg-white p-8 rounded-xl shadow-sm border border-red-100">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+                    <AlertTriangle className="h-5 w-5 text-red-600" />
+                  </div>
+                  <h2 className="text-xl font-bold text-slate-900">The Problem</h2>
+                </div>
+                <p className="text-slate-600 leading-relaxed">
+                  You call three contractors. One answers. Two never call back.
+                  The one who answered shows up late—if at all.
+                </p>
+                <p className="text-slate-600 leading-relaxed mt-3">
+                  Meanwhile, you&apos;ve got water in your ceiling, an AC that quit in July,
+                  or a project deadline that won&apos;t wait.
+                </p>
+              </div>
+
+              {/* The Fix */}
+              <div className="bg-white p-8 rounded-xl shadow-sm border border-green-100">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                    <CheckCircle className="h-5 w-5 text-green-600" />
+                  </div>
+                  <h2 className="text-xl font-bold text-slate-900">The Fix</h2>
+                </div>
+                <p className="text-slate-600 leading-relaxed">
+                  HoustonTexasPro routes your request to contractors who are
+                  <span className="font-semibold text-slate-900"> actually available</span>.
+                </p>
+                <p className="text-slate-600 leading-relaxed mt-3">
+                  If they don&apos;t respond fast, we route to the next pro.
+                  <span className="font-semibold text-slate-900"> No dead ends. No runaround.</span>
+                </p>
+              </div>
+            </div>
+
+            {/* Simple CTA */}
+            <div className="text-center mt-10">
+              <Button size="lg" asChild>
+                <Link href="/contractors">
+                  Find a Contractor Now
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
       </section>
 
       {/* Categories Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-gray-900">
-              Browse by Category
+            <h2 className="text-3xl font-bold text-slate-900">
+              What Do You Need Done?
             </h2>
-            <p className="text-gray-600 mt-2">
-              Find the right contractor for your project
+            <p className="text-slate-600 mt-2">
+              Residential. Commercial. Emergency or scheduled.
             </p>
           </div>
-          <CategoryGrid limit={9} />
+          <CategoryGrid limit={12} />
+          <div className="text-center mt-8">
+            <Button variant="outline" asChild>
+              <Link href="/categories">
+                Browse All Categories
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Recent Requests - Social Proof Without Fake Testimonials */}
+      <section className="py-16 bg-slate-900 text-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold">
+              Happening Now in Houston
+            </h2>
+            <p className="text-slate-400 mt-2">
+              Real requests. Real connections. Real follow-through.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="grid gap-3">
+              {recentRequests.map((request) => (
+                <div
+                  key={request.id}
+                  className="flex items-center justify-between bg-slate-800/50 rounded-lg px-5 py-4"
+                >
+                  <div className="flex items-center gap-4">
+                    {request.urgent && (
+                      <Badge className="bg-red-500/20 text-red-400 border-red-500/30">
+                        Urgent
+                      </Badge>
+                    )}
+                    <span className="font-medium">{request.service}</span>
+                    <span className="text-slate-400">in {request.area}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-green-400">
+                    <CheckCircle className="h-4 w-4" />
+                    <span className="text-sm">{request.status}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="text-center mt-10">
+            <p className="text-slate-400 mb-4">Your request could be next.</p>
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700" asChild>
+              <Link href="/contractors">
+                Submit Your Request
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
 
       {/* Featured Contractors */}
-      <section className="py-16">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center mb-10">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900">
-                Featured Contractors
+              <h2 className="text-3xl font-bold text-slate-900">
+                Contractors Ready to Respond
               </h2>
-              <p className="text-gray-600 mt-2">
-                Top-rated professionals in Houston
+              <p className="text-slate-600 mt-2">
+                Verified. Fast. Houston-based.
               </p>
             </div>
             <Button variant="outline" asChild>
               <Link href="/contractors">
-                View All <ArrowRight className="ml-2 h-4 w-4" />
+                View All Contractors
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredContractors.map((contractor) => (
-              <Card key={contractor.id} className="hover:shadow-lg transition-shadow">
+              <Card key={contractor.id} className="hover:shadow-lg transition-shadow border-slate-200">
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div>
                       <Link href={`/contractors/${contractor.slug}`}>
-                        <h3 className="font-semibold text-lg hover:text-blue-900">
+                        <h3 className="font-semibold text-lg hover:text-blue-600 transition-colors">
                           {contractor.business_name}
                         </h3>
                       </Link>
-                      <p className="text-sm text-gray-500">{contractor.city}, TX</p>
+                      <p className="text-sm text-slate-500">{contractor.city}, TX</p>
                     </div>
                     {contractor.is_verified && (
-                      <Badge className="bg-green-500">
+                      <Badge className="bg-green-100 text-green-700 border-green-200">
                         <CheckCircle className="h-3 w-3 mr-1" />
                         Verified
                       </Badge>
                     )}
                   </div>
 
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="flex">
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <Star
-                          key={star}
-                          className={`h-4 w-4 ${
-                            star <= Math.round(contractor.avg_rating)
-                              ? 'text-yellow-400 fill-yellow-400'
-                              : 'text-gray-300'
-                          }`}
-                        />
-                      ))}
+                  <div className="flex items-center gap-4 mb-3">
+                    <div className="flex items-center gap-1">
+                      <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
+                      <span className="font-medium">{contractor.avg_rating}</span>
+                      <span className="text-slate-400 text-sm">({contractor.review_count})</span>
                     </div>
-                    <span className="text-sm text-gray-600">
-                      {contractor.avg_rating} ({contractor.review_count} reviews)
-                    </span>
+                    <div className="flex items-center gap-1 text-green-600 text-sm">
+                      <Clock className="h-3 w-3" />
+                      <span>{contractor.response_time}</span>
+                    </div>
                   </div>
 
                   <div className="flex flex-wrap gap-1 mb-3">
                     {contractor.categories.map((cat) => (
-                      <Badge key={cat} variant="secondary">
+                      <Badge key={cat} variant="secondary" className="bg-slate-100">
                         {cat}
                       </Badge>
                     ))}
                   </div>
 
-                  <p className="text-sm text-gray-600 mb-4">
+                  <p className="text-sm text-slate-600 mb-4">
                     {contractor.description}
                   </p>
 
-                  <Button asChild className="w-full">
-                    <Link href={`/contractors/${contractor.slug}`}>
-                      View Profile
+                  <div className="flex gap-2">
+                    <Button asChild className="flex-1">
+                      <Link href={`/contractors/${contractor.slug}`}>
+                        Request Service
+                      </Link>
+                    </Button>
+                    <Button variant="outline" size="icon" asChild>
+                      <Link href={`tel:555-0100`}>
+                        <Phone className="h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* For Contractors Section */}
+      <section className="py-16 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <Badge className="bg-green-100 text-green-700 border-green-200 mb-4">
+                  For Contractors
+                </Badge>
+                <h2 className="text-3xl font-bold text-slate-900 mb-4">
+                  Every Missed Call Is Money Walking to Your Competitor
+                </h2>
+                <p className="text-slate-600 mb-6">
+                  You&apos;re on a job. Phone rings. You can&apos;t answer.
+                  That&apos;s a $2,000 kitchen remodel walking straight to the next guy in Google.
+                </p>
+                <p className="text-slate-600 mb-6">
+                  HoustonTexasPro answers for you, qualifies the lead, and sends you the details.
+                  You call back when you&apos;re ready. The customer gets a response. You get the job.
+                </p>
+
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-slate-700">Your own mini-website that ranks in Google</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-slate-700">Leads delivered to you—not sold to 5 competitors</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-slate-700">Call coverage when you&apos;re busy on a job</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-slate-700">Featured placement in your service area</span>
+                  </li>
+                </ul>
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button size="lg" asChild>
+                    <Link href="/register/contractor">
+                      Get Listed
+                      <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
-                </CardContent>
-              </Card>
-            ))}
+                  <Button size="lg" variant="outline" asChild>
+                    <Link href="/for-contractors">
+                      See How It Works
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+
+              {/* Stats Card */}
+              <div className="bg-white p-8 rounded-xl shadow-lg border">
+                <h3 className="font-semibold text-slate-900 mb-6">What Houston Contractors Get</h3>
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <PhoneCall className="h-6 w-6 text-blue-600" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-slate-900">More Calls</p>
+                      <p className="text-sm text-slate-500">Homeowners find you through our directory</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                      <Clock className="h-6 w-6 text-green-600" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-slate-900">No Missed Leads</p>
+                      <p className="text-sm text-slate-500">Call coverage when you&apos;re on a job</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                      <Star className="h-6 w-6 text-yellow-600" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-slate-900">Build Your Reputation</p>
+                      <p className="text-sm text-slate-500">Verified reviews that bring more work</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-8 pt-6 border-t">
+                  <p className="text-sm text-slate-500 mb-2">Starter listing is free. Always.</p>
+                  <p className="text-xs text-slate-400">Pro and Elite tiers available for more features.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us */}
+      {/* Final CTA */}
       <section className="py-16 bg-blue-900 text-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold">Why Choose Houston Texas Pro?</h2>
-            <p className="text-blue-200 mt-2">
-              We make finding the right contractor easy and safe
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="h-8 w-8" />
-              </div>
-              <h3 className="font-semibold text-lg mb-2">Verified Pros</h3>
-              <p className="text-blue-200 text-sm">
-                All contractors are licensed, insured, and background-checked
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Star className="h-8 w-8" />
-              </div>
-              <h3 className="font-semibold text-lg mb-2">Real Reviews</h3>
-              <p className="text-blue-200 text-sm">
-                Read honest reviews from verified customers
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="h-8 w-8" />
-              </div>
-              <h3 className="font-semibold text-lg mb-2">Quick Response</h3>
-              <p className="text-blue-200 text-sm">
-                Get quotes fast with our AI-powered lead system
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <ThumbsUp className="h-8 w-8" />
-              </div>
-              <h3 className="font-semibold text-lg mb-2">Free to Use</h3>
-              <p className="text-blue-200 text-sm">
-                No cost to search and contact contractors
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Recent Reviews */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-gray-900">
-              Recent Reviews
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-4">
+              Stop Chasing Voicemails
             </h2>
-            <p className="text-gray-600 mt-2">
-              See what Houston homeowners are saying
+            <p className="text-blue-200 mb-8 text-lg">
+              Submit your request. We&apos;ll route it to contractors who are ready to respond.
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {recentReviews.map((review) => (
-              <Card key={review.id}>
-                <CardContent className="p-6">
-                  <div className="flex mb-3">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star
-                        key={star}
-                        className={`h-4 w-4 ${
-                          star <= review.rating
-                            ? 'text-yellow-400 fill-yellow-400'
-                            : 'text-gray-300'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                  <p className="text-gray-600 mb-4">&quot;{review.content}&quot;</p>
-                  <div className="border-t pt-4">
-                    <p className="font-medium">{review.author}</p>
-                    <Link
-                      href={`/contractors/${review.contractor_slug}`}
-                      className="text-sm text-blue-600 hover:underline"
-                    >
-                      {review.contractor_name}
-                    </Link>
-                    <p className="text-xs text-gray-400 mt-1">{review.date}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Are You a Contractor?
-            </h2>
-            <p className="text-gray-600 mb-8">
-              Join Houston Texas Pro and connect with thousands of potential
-              customers looking for your services. Get your free listing today.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild>
-                <Link href="/register/contractor">
-                  List Your Business - It&apos;s Free
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <Link href="/about">Learn More</Link>
-              </Button>
-            </div>
+            <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-50" asChild>
+              <Link href="/contractors">
+                Find a Contractor Now
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
