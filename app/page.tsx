@@ -13,7 +13,7 @@ export default function HomePage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1609722891908-b5b39a30b41d?w=1920&q=80')",
+              "url('/htp_hero_image.png')",
           }}
         />
         {/* Dark Overlay */}
