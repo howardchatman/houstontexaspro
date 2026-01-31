@@ -205,9 +205,16 @@ export const CONTRACTOR_CATEGORIES = [
   { name: 'Drywall', slug: 'drywall', icon: 'Square' },
   { name: 'Insulation', slug: 'insulation', icon: 'ThermometerSnowflake' },
   { name: 'Siding', slug: 'siding', icon: 'PanelLeft' },
-  { name: 'Gutters', slug: 'gutters', icon: 'ArrowDownToLine' },
+  { name: 'Moving Services', slug: 'moving-services', icon: 'Truck' },
+  { name: 'Appliance Repair', slug: 'appliance-repair', icon: 'Refrigerator' },
+  { name: 'Locksmith Services', slug: 'locksmith-services', icon: 'KeyRound' },
+  { name: 'Pressure Washing', slug: 'pressure-washing', icon: 'Droplets' },
+  { name: 'Tree Services', slug: 'tree-services', icon: 'TreePine' },
   { name: 'Demolition', slug: 'demolition', icon: 'Trash2' },
   { name: 'Handyman Services', slug: 'handyman-services', icon: 'Wrench' },
+  { name: 'Cleaning Services', slug: 'cleaning-services', icon: 'Sparkles' },
+  { name: 'Real Estate Services', slug: 'real-estate-services', icon: 'HomeIcon' },
+  { name: 'Insurance Services', slug: 'insurance-services', icon: 'ShieldCheck' },
 ] as const
 
 export const HOUSTON_AREAS = [
@@ -257,9 +264,16 @@ export const TRADE_THEME_DEFAULTS: Record<string, { primary: string; secondary: 
   'drywall': { primary: '#78716c', secondary: '#57534e', accent: '#d6d3d1', name: 'Drywall Pro' },
   'insulation': { primary: '#ec4899', secondary: '#db2777', accent: '#f9a8d4', name: 'Insulation Pro' },
   'siding': { primary: '#059669', secondary: '#047857', accent: '#6ee7b7', name: 'Siding Pro' },
-  'gutters': { primary: '#4338ca', secondary: '#3730a3', accent: '#818cf8', name: 'Gutter Pro' },
+  'moving-services': { primary: '#c2410c', secondary: '#9a3412', accent: '#fb923c', name: 'Moving Pro' },
+  'appliance-repair': { primary: '#475569', secondary: '#334155', accent: '#94a3b8', name: 'Appliance Pro' },
+  'locksmith-services': { primary: '#b45309', secondary: '#92400e', accent: '#fbbf24', name: 'Locksmith Pro' },
+  'pressure-washing': { primary: '#0284c7', secondary: '#0369a1', accent: '#38bdf8', name: 'Pressure Wash Pro' },
+  'tree-services': { primary: '#166534', secondary: '#14532d', accent: '#4ade80', name: 'Tree Pro' },
   'demolition': { primary: '#ef4444', secondary: '#dc2626', accent: '#fca5a5', name: 'Demo Pro' },
   'handyman-services': { primary: '#d97706', secondary: '#b45309', accent: '#fcd34d', name: 'Handyman Pro' },
+  'cleaning-services': { primary: '#06b6d4', secondary: '#0891b2', accent: '#67e8f9', name: 'Cleaning Pro' },
+  'real-estate-services': { primary: '#7c3aed', secondary: '#6d28d9', accent: '#a78bfa', name: 'Real Estate Pro' },
+  'insurance-services': { primary: '#0f766e', secondary: '#115e59', accent: '#5eead4', name: 'Insurance Pro' },
 } as const
 
 // Template style options for UI
