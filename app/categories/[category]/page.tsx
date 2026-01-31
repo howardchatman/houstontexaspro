@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { CONTRACTOR_CATEGORIES } from '@/types'
+import { categoryImages } from '@/components/contractors/CategoryGrid'
 import {
   AlertTriangle,
   Clock,
@@ -148,51 +149,62 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
 
   return (
     <div className="min-h-screen bg-slate-50">
-      {/* Header */}
-      <div className={`${isEmergency ? 'bg-red-900' : 'bg-slate-900'} text-white py-12`}>
-        <div className="container mx-auto px-4">
-          {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-slate-400 text-sm mb-4">
-            <Link href="/categories" className="hover:text-white transition-colors">
-              Services
-            </Link>
-            <span>/</span>
-            <span className="text-slate-300">{category.name}</span>
-          </div>
+      {/* Hero Header with Background Image */}
+      <div className="relative min-h-[40vh] flex items-end overflow-hidden">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url('${categoryImages[categorySlug] || ''}')` }}
+        />
+        {/* Dark Overlay - stronger for emergency */}
+        <div className={`absolute inset-0 ${isEmergency ? 'bg-red-900/70' : 'bg-black/60'}`} />
 
-          {isEmergency && (
-            <div className="flex items-center gap-2 mb-4">
-              <AlertTriangle className="h-5 w-5 text-red-400" />
-              <Badge className="bg-red-500/20 text-red-300 border-red-500/30">
-                Emergency Mode
-              </Badge>
+        {/* Content */}
+        <div className="relative z-10 w-full py-12">
+          <div className="container mx-auto px-4">
+            {/* Breadcrumb */}
+            <div className="flex items-center gap-2 text-white/60 text-sm mb-4">
+              <Link href="/categories" className="hover:text-white transition-colors">
+                Services
+              </Link>
+              <span>/</span>
+              <span className="text-white/80">{category.name}</span>
             </div>
-          )}
 
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
-            {isEmergency ? `Emergency ${category.name} in Houston` : tradeCopy.headline}
-          </h1>
-          <p className="text-slate-300 mb-8 max-w-2xl">
-            {isEmergency && tradeCopy.emergency
-              ? tradeCopy.emergency
-              : tradeCopy.intro}
-          </p>
+            {isEmergency && (
+              <div className="flex items-center gap-2 mb-4">
+                <AlertTriangle className="h-5 w-5 text-red-400" />
+                <Badge className="bg-red-500/20 text-red-300 border-red-500/30">
+                  Emergency Mode
+                </Badge>
+              </div>
+            )}
 
-          <SearchBar variant="hero" initialCategory={categorySlug} />
+            <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              {isEmergency ? `Emergency ${category.name} in Houston` : tradeCopy.headline}
+            </h1>
+            <p className="text-white/70 mb-8 max-w-2xl text-lg">
+              {isEmergency && tradeCopy.emergency
+                ? tradeCopy.emergency
+                : tradeCopy.intro}
+            </p>
 
-          {/* Quick stats */}
-          <div className="flex flex-wrap gap-6 mt-8 text-sm text-slate-400">
-            <div className="flex items-center gap-2">
-              <CheckCircle className="h-4 w-4 text-green-400" />
-              <span>{contractorsWithCategories.length} {category.name.toLowerCase()} pros available</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock className="h-4 w-4 text-blue-400" />
-              <span>Fast response times</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Shield className="h-4 w-4 text-yellow-400" />
-              <span>Licensed & insured</span>
+            <SearchBar variant="hero" initialCategory={categorySlug} />
+
+            {/* Quick stats */}
+            <div className="flex flex-wrap gap-6 mt-8 text-sm text-white/60">
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-4 w-4 text-green-400" />
+                <span>{contractorsWithCategories.length} {category.name.toLowerCase()} pros available</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="h-4 w-4 text-blue-400" />
+                <span>Fast response times</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Shield className="h-4 w-4 text-yellow-400" />
+                <span>Licensed & insured</span>
+              </div>
             </div>
           </div>
         </div>
