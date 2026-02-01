@@ -8,8 +8,6 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { createClient } from '@/lib/supabase/client'
-
 interface LeadFormProps {
   contractorId: string
   contractorName: string
@@ -30,26 +28,27 @@ export function LeadForm({ contractorId, contractorName, responseTime }: LeadFor
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState('')
 
-  const supabase = createClient()
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
     setError('')
 
     try {
-      const { error: submitError } = await supabase.from('leads').insert({
-        contractor_id: contractorId,
-        name,
-        email: email || null,
-        phone: phone || null,
-        message: `[${urgency?.toUpperCase()}] ${jobDescription}`,
-        source: 'form',
+      const res = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contractor_id: contractorId,
+          name,
+          email: email || null,
+          phone: phone || null,
+          message: `[${urgency?.toUpperCase()}] ${jobDescription}`,
+          source: 'form',
+        }),
       })
 
-      if (submitError) {
+      if (!res.ok) {
         setError('Something went wrong. Please try again.')
-        console.error(submitError)
       } else {
         setSuccess(true)
       }

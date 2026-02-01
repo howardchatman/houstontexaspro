@@ -173,6 +173,13 @@ export default function ContractorRegisterPage() {
         }
       }
 
+      // Send welcome email (non-blocking)
+      fetch('/api/auth/welcome', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, businessName }),
+      }).catch(() => {})
+
       setSuccess(true)
     } catch (err) {
       setError('An unexpected error occurred')
