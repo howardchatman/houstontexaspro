@@ -42,15 +42,15 @@ export function RequestRoutingAnimation() {
   }, [])
 
   return (
-    <section className="py-16 bg-slate-50 overflow-hidden">
+    <section className="py-16 bg-[#F5F5F5] overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-3">
+            <h2 className="text-3xl font-bold text-[#0B0B0B] mb-3">
               How Requests Get Routed
             </h2>
-            <p className="text-slate-600">
+            <p className="text-[#374151]">
               No dead ends. No voicemail purgatory. Just connections that work.
             </p>
           </div>
@@ -65,24 +65,24 @@ export function RequestRoutingAnimation() {
                   className={`
                     w-20 h-20 rounded-full flex items-center justify-center transition-all duration-500
                     ${phase === 'request'
-                      ? 'bg-blue-600 scale-110 shadow-lg shadow-blue-200 animate-pulse'
+                      ? 'bg-[#1F3C58] scale-110 shadow-lg shadow-blue-200 animate-pulse'
                       : 'bg-blue-100'
                     }
                   `}
                 >
                   <Phone
                     className={`h-9 w-9 transition-colors duration-500 ${
-                      phase === 'request' ? 'text-white' : 'text-blue-600'
+                      phase === 'request' ? 'text-white' : 'text-[#1F3C58]'
                     }`}
                   />
                 </div>
                 <p className={`mt-3 font-medium transition-colors duration-300 ${
-                  phase === 'request' ? 'text-blue-600' : 'text-slate-700'
+                  phase === 'request' ? 'text-[#1F3C58]' : 'text-[#374151]'
                 }`}>
                   Your Request
                 </p>
                 <p className={`text-sm transition-opacity duration-300 ${
-                  phase === 'request' ? 'text-blue-500 opacity-100' : 'text-slate-400 opacity-70'
+                  phase === 'request' ? 'text-blue-500 opacity-100' : 'text-[#9CA3AF] opacity-70'
                 }`}>
                   {phase === 'request' ? 'Submitting...' : 'Received'}
                 </p>
@@ -94,7 +94,7 @@ export function RequestRoutingAnimation() {
                   className={`h-6 w-6 transition-all duration-500 ${
                     phase === 'routing' || phase === 'checking' || phase === 'unavailable' || phase === 'connected' || phase === 'complete'
                       ? 'text-blue-500 translate-x-1'
-                      : 'text-slate-300'
+                      : 'text-gray-300'
                   }`}
                 />
               </div>
@@ -109,15 +109,15 @@ export function RequestRoutingAnimation() {
                       ${phase === 'unavailable' || phase === 'connected' || phase === 'complete'
                         ? 'bg-slate-200 scale-90 opacity-50'
                         : phase === 'routing' || phase === 'checking'
-                          ? 'bg-slate-100 animate-pulse shadow-md'
-                          : 'bg-slate-100'
+                          ? 'bg-gray-100 animate-pulse shadow-md'
+                          : 'bg-gray-100'
                       }
                     `}
                   >
                     <User className={`h-6 w-6 ${
                       phase === 'unavailable' || phase === 'connected' || phase === 'complete'
-                        ? 'text-slate-400'
-                        : 'text-slate-600'
+                        ? 'text-[#9CA3AF]'
+                        : 'text-[#374151]'
                     }`} />
                     {(phase === 'unavailable' || phase === 'connected' || phase === 'complete') && (
                       <div className="absolute -top-1 -right-1 w-5 h-5 bg-slate-400 rounded-full flex items-center justify-center animate-in fade-in zoom-in duration-300">
@@ -133,13 +133,13 @@ export function RequestRoutingAnimation() {
                       ${phase === 'connected' || phase === 'complete'
                         ? 'bg-green-500 scale-110 shadow-lg shadow-green-200'
                         : phase === 'routing' || phase === 'checking' || phase === 'unavailable'
-                          ? 'bg-slate-100 animate-pulse shadow-md'
-                          : 'bg-slate-100'
+                          ? 'bg-gray-100 animate-pulse shadow-md'
+                          : 'bg-gray-100'
                       }
                     `}
                   >
                     <User className={`h-6 w-6 ${
-                      phase === 'connected' || phase === 'complete' ? 'text-white' : 'text-slate-600'
+                      phase === 'connected' || phase === 'complete' ? 'text-white' : 'text-[#374151]'
                     }`} />
                     {(phase === 'connected' || phase === 'complete') && (
                       <div className="absolute -top-1 -right-1 w-5 h-5 bg-green-600 rounded-full flex items-center justify-center animate-in fade-in zoom-in duration-300">
@@ -153,21 +153,21 @@ export function RequestRoutingAnimation() {
                     className={`
                       w-14 h-14 rounded-full flex items-center justify-center transition-all duration-500
                       ${phase === 'routing' || phase === 'checking'
-                        ? 'bg-slate-100 animate-pulse shadow-md'
+                        ? 'bg-gray-100 animate-pulse shadow-md'
                         : phase === 'connected' || phase === 'complete'
-                          ? 'bg-slate-100 opacity-60 scale-90'
-                          : 'bg-slate-100'
+                          ? 'bg-gray-100 opacity-60 scale-90'
+                          : 'bg-gray-100'
                       }
                     `}
                   >
-                    <User className="h-6 w-6 text-slate-600" />
+                    <User className="h-6 w-6 text-[#374151]" />
                   </div>
                 </div>
                 <p className={`mt-3 font-medium transition-colors duration-300 ${
-                  phase === 'routing' || phase === 'checking' ? 'text-blue-600' :
-                  phase === 'unavailable' ? 'text-slate-600' :
+                  phase === 'routing' || phase === 'checking' ? 'text-[#1F3C58]' :
+                  phase === 'unavailable' ? 'text-[#374151]' :
                   phase === 'connected' || phase === 'complete' ? 'text-green-600' :
-                  'text-slate-700'
+                  'text-[#374151]'
                 }`}>
                   {phase === 'routing' ? 'Finding pros...' :
                    phase === 'checking' ? 'Checking availability...' :
@@ -175,7 +175,7 @@ export function RequestRoutingAnimation() {
                    phase === 'connected' || phase === 'complete' ? 'Pro Available!' :
                    'Houston Contractors'}
                 </p>
-                <p className="text-sm text-slate-400">
+                <p className="text-sm text-[#9CA3AF]">
                   Verified & ready
                 </p>
               </div>
@@ -186,7 +186,7 @@ export function RequestRoutingAnimation() {
                   className={`h-6 w-6 transition-all duration-500 ${
                     phase === 'connected' || phase === 'complete'
                       ? 'text-green-500 translate-x-1'
-                      : 'text-slate-300'
+                      : 'text-gray-300'
                   }`}
                 />
               </div>
@@ -200,7 +200,7 @@ export function RequestRoutingAnimation() {
                       ? 'bg-green-500 scale-110 shadow-lg shadow-green-200'
                       : phase === 'connected'
                         ? 'bg-green-100 animate-pulse'
-                        : 'bg-slate-100'
+                        : 'bg-gray-100'
                     }
                   `}
                 >
@@ -208,19 +208,19 @@ export function RequestRoutingAnimation() {
                     className={`h-9 w-9 transition-colors duration-500 ${
                       phase === 'complete' ? 'text-white' :
                       phase === 'connected' ? 'text-green-600' :
-                      'text-slate-400'
+                      'text-[#9CA3AF]'
                     }`}
                   />
                 </div>
                 <p className={`mt-3 font-medium transition-colors duration-300 ${
-                  phase === 'connected' || phase === 'complete' ? 'text-green-600' : 'text-slate-700'
+                  phase === 'connected' || phase === 'complete' ? 'text-green-600' : 'text-[#374151]'
                 }`}>
                   {phase === 'complete' ? 'Connected!' : 'You\'re Connected'}
                 </p>
                 <p className={`text-sm transition-all duration-300 ${
                   phase === 'complete'
                     ? 'text-green-500 font-medium'
-                    : 'text-slate-400'
+                    : 'text-[#9CA3AF]'
                 }`}>
                   {phase === 'complete' ? (
                     <span className="flex items-center gap-1">
@@ -239,14 +239,14 @@ export function RequestRoutingAnimation() {
                   phase === 'complete' ? 'opacity-100' : 'opacity-50'
                 }`}>
                   <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                  <span className="text-slate-600">If they don&apos;t respond fast, we route to the next pro</span>
+                  <span className="text-[#374151]">If they don&apos;t respond fast, we route to the next pro</span>
                 </div>
-                <span className="hidden md:inline text-slate-300">•</span>
+                <span className="hidden md:inline text-gray-300">•</span>
                 <div className={`flex items-center gap-2 transition-opacity duration-300 ${
                   phase === 'complete' ? 'opacity-100' : 'opacity-50'
                 }`}>
-                  <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-                  <span className="text-slate-600">No dead ends. No runaround.</span>
+                  <div className="w-2 h-2 rounded-full bg-[#1F3C58]"></div>
+                  <span className="text-[#374151]">No dead ends. No runaround.</span>
                 </div>
               </div>
             </div>
@@ -255,16 +255,16 @@ export function RequestRoutingAnimation() {
           {/* Stats below animation */}
           <div className="grid grid-cols-3 gap-4 mt-8">
             <div className="text-center">
-              <p className="text-3xl font-bold text-slate-900">15</p>
-              <p className="text-sm text-slate-500">min avg response</p>
+              <p className="text-3xl font-bold text-[#0B0B0B]">15</p>
+              <p className="text-sm text-[#6B7280]">min avg response</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-slate-900">3+</p>
-              <p className="text-sm text-slate-500">pros per request</p>
+              <p className="text-3xl font-bold text-[#0B0B0B]">3+</p>
+              <p className="text-sm text-[#6B7280]">pros per request</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-slate-900">0</p>
-              <p className="text-sm text-slate-500">dead ends</p>
+              <p className="text-3xl font-bold text-[#0B0B0B]">0</p>
+              <p className="text-sm text-[#6B7280]">dead ends</p>
             </div>
           </div>
         </div>

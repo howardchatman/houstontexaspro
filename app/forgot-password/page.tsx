@@ -35,14 +35,14 @@ export default function ForgotPasswordPage() {
 
   if (sent) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-[#F5F5F5] flex items-center justify-center px-4">
         <Card className="w-full max-w-md">
           <CardContent className="p-8 text-center">
             <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <CheckCircle className="h-6 w-6 text-green-600" />
             </div>
-            <h2 className="text-xl font-bold text-slate-900 mb-2">Check Your Email</h2>
-            <p className="text-slate-600 mb-6">
+            <h2 className="text-xl font-bold text-[#0B0B0B] mb-2">Check Your Email</h2>
+            <p className="text-[#374151] mb-6">
               We sent a password reset link to <strong>{email}</strong>. Check your inbox and follow the link to reset your password.
             </p>
             <Button variant="outline" asChild>
@@ -57,7 +57,7 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-[#F5F5F5] flex items-center justify-center px-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">Reset Password</CardTitle>
@@ -76,7 +76,7 @@ export default function ForgotPasswordPage() {
             <div className="space-y-2">
               <Label htmlFor="email">Email Address</Label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#9CA3AF]" />
                 <Input
                   id="email"
                   type="email"
@@ -94,7 +94,7 @@ export default function ForgotPasswordPage() {
             </Button>
 
             <div className="text-center">
-              <Link href="/login" className="text-sm text-slate-600 hover:text-slate-900">
+              <Link href="/login" className="text-sm text-[#374151] hover:text-[#0B0B0B]">
                 <ArrowLeft className="inline h-3 w-3 mr-1" /> Back to Login
               </Link>
             </div>

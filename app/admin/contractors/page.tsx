@@ -14,8 +14,8 @@ export default async function AdminContractorsPage() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Contractors</h1>
-        <p className="text-gray-500 mt-1">
+        <h1 className="text-2xl font-bold text-[#0B0B0B]">Contractors</h1>
+        <p className="text-[#6B7280] mt-1">
           Manage all registered contractors. {contractors?.length ?? 0} total.
         </p>
       </div>
@@ -25,33 +25,33 @@ export default async function AdminContractorsPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b bg-gray-50">
-                  <th className="text-left p-4 font-medium text-gray-500">Business</th>
-                  <th className="text-left p-4 font-medium text-gray-500">Email</th>
-                  <th className="text-left p-4 font-medium text-gray-500">City</th>
-                  <th className="text-left p-4 font-medium text-gray-500">Rating</th>
-                  <th className="text-left p-4 font-medium text-gray-500">Status</th>
-                  <th className="text-left p-4 font-medium text-gray-500">Joined</th>
-                  <th className="text-left p-4 font-medium text-gray-500">Actions</th>
+                <tr className="border-b bg-[#F5F5F5]">
+                  <th className="text-left p-4 font-medium text-[#6B7280]">Business</th>
+                  <th className="text-left p-4 font-medium text-[#6B7280]">Email</th>
+                  <th className="text-left p-4 font-medium text-[#6B7280]">City</th>
+                  <th className="text-left p-4 font-medium text-[#6B7280]">Rating</th>
+                  <th className="text-left p-4 font-medium text-[#6B7280]">Status</th>
+                  <th className="text-left p-4 font-medium text-[#6B7280]">Joined</th>
+                  <th className="text-left p-4 font-medium text-[#6B7280]">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {contractors && contractors.length > 0 ? (
                   contractors.map((contractor: any) => (
-                    <tr key={contractor.id} className="border-b last:border-0 hover:bg-gray-50">
+                    <tr key={contractor.id} className="border-b last:border-0 hover:bg-[#F5F5F5]">
                       <td className="p-4">
-                        <p className="font-medium text-gray-900">{contractor.business_name}</p>
+                        <p className="font-medium text-[#0B0B0B]">{contractor.business_name}</p>
                         {contractor.slug && (
-                          <p className="text-xs text-gray-400">/{contractor.slug}</p>
+                          <p className="text-xs text-[#9CA3AF]">/{contractor.slug}</p>
                         )}
                       </td>
-                      <td className="p-4 text-gray-600">{contractor.profiles?.email || '—'}</td>
-                      <td className="p-4 text-gray-600">{contractor.city || '—'}</td>
+                      <td className="p-4 text-[#374151]">{contractor.profiles?.email || '—'}</td>
+                      <td className="p-4 text-[#374151]">{contractor.city || '—'}</td>
                       <td className="p-4">
                         {contractor.average_rating ? (
-                          <span className="text-gray-900">{contractor.average_rating.toFixed(1)}</span>
+                          <span className="text-[#0B0B0B]">{contractor.average_rating.toFixed(1)}</span>
                         ) : (
-                          <span className="text-gray-400">—</span>
+                          <span className="text-[#9CA3AF]">—</span>
                         )}
                       </td>
                       <td className="p-4">
@@ -63,11 +63,11 @@ export default async function AdminContractorsPage() {
                             <Badge variant="secondary" className="text-xs bg-yellow-100 text-yellow-700">Featured</Badge>
                           )}
                           {!contractor.is_verified && !contractor.is_featured && (
-                            <span className="text-gray-400 text-xs">Standard</span>
+                            <span className="text-[#9CA3AF] text-xs">Standard</span>
                           )}
                         </div>
                       </td>
-                      <td className="p-4 text-gray-500 text-xs">
+                      <td className="p-4 text-[#6B7280] text-xs">
                         {new Date(contractor.created_at).toLocaleDateString()}
                       </td>
                       <td className="p-4">
@@ -81,7 +81,7 @@ export default async function AdminContractorsPage() {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={7} className="p-8 text-center text-gray-500">
+                    <td colSpan={7} className="p-8 text-center text-[#6B7280]">
                       No contractors registered yet.
                     </td>
                   </tr>

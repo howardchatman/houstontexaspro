@@ -98,7 +98,7 @@ export default function ReviewsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-900" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0B0B0B]" />
       </div>
     )
   }
@@ -106,8 +106,8 @@ export default function ReviewsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Reviews</h1>
-        <p className="text-gray-500">Manage customer reviews and respond to feedback</p>
+        <h1 className="text-2xl font-bold text-[#0B0B0B]">Reviews</h1>
+        <p className="text-[#6B7280]">Manage customer reviews and respond to feedback</p>
       </div>
 
       {/* Rating Summary */}
@@ -115,11 +115,11 @@ export default function ReviewsPage() {
         <CardContent className="py-6">
           <div className="flex items-center gap-8">
             <div className="text-center">
-              <div className="text-5xl font-bold text-gray-900">
+              <div className="text-5xl font-bold text-[#0B0B0B]">
                 {avgRating > 0 ? avgRating.toFixed(1) : '-'}
               </div>
               <StarRating rating={avgRating} readonly size="lg" />
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-sm text-[#6B7280] mt-1">
                 {reviews.length} review{reviews.length !== 1 ? 's' : ''}
               </p>
             </div>
@@ -137,7 +137,7 @@ export default function ReviewsPage() {
                       }}
                     />
                   </div>
-                  <span className="text-sm text-gray-500 w-8">{count}</span>
+                  <span className="text-sm text-[#6B7280] w-8">{count}</span>
                 </div>
               ))}
             </div>
@@ -163,7 +163,7 @@ export default function ReviewsPage() {
                     </div>
                     <div className="flex items-center gap-2">
                       <StarRating rating={review.rating} readonly size="sm" />
-                      <span className="text-sm text-gray-500">
+                      <span className="text-sm text-[#6B7280]">
                         {new Date(review.created_at).toLocaleDateString()}
                       </span>
                     </div>
@@ -183,21 +183,21 @@ export default function ReviewsPage() {
                 {review.title && (
                   <h4 className="font-medium mb-2">{review.title}</h4>
                 )}
-                <p className="text-gray-600">{review.content}</p>
+                <p className="text-[#374151]">{review.content}</p>
 
                 {/* Contractor Response */}
                 {review.contractor_response && (
-                  <div className="mt-4 pl-4 border-l-2 border-blue-200 bg-blue-50 p-3 rounded-r">
+                  <div className="mt-4 pl-4 border-l-2 border-blue-200 bg-[#F5F5F5] p-3 rounded-r">
                     <div className="flex items-center justify-between mb-1">
-                      <p className="text-sm font-medium text-blue-900">
+                      <p className="text-sm font-medium text-[#0B0B0B]">
                         Your Response
                       </p>
-                      <span className="text-xs text-gray-500">
+                      <span className="text-xs text-[#6B7280]">
                         {review.response_date &&
                           new Date(review.response_date).toLocaleDateString()}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-sm text-[#374151]">
                       {review.contractor_response}
                     </p>
                   </div>
@@ -205,7 +205,7 @@ export default function ReviewsPage() {
 
                 {/* Response Form */}
                 {respondingTo === review.id && (
-                  <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+                  <div className="mt-4 p-4 bg-[#F5F5F5] rounded-lg">
                     <Textarea
                       placeholder="Write your response..."
                       value={responseText}
@@ -243,10 +243,10 @@ export default function ReviewsPage() {
         <Card>
           <CardContent className="py-12 text-center">
             <Star className="h-12 w-12 mx-auto mb-4 text-gray-300" />
-            <h3 className="text-lg font-medium text-gray-700 mb-2">
+            <h3 className="text-lg font-medium text-[#374151] mb-2">
               No Reviews Yet
             </h3>
-            <p className="text-gray-500">
+            <p className="text-[#6B7280]">
               Reviews from your customers will appear here
             </p>
           </CardContent>

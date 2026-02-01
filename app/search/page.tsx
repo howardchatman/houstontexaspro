@@ -92,9 +92,9 @@ export default async function SearchPage({ searchParams }: PageProps) {
     : null
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#F5F5F5]">
       {/* Header */}
-      <div className="bg-blue-900 text-white py-12">
+      <div className="bg-[#0B0B0B] text-white py-12">
         <div className="container mx-auto px-4">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
             {query
@@ -128,8 +128,8 @@ export default async function SearchPage({ searchParams }: PageProps) {
                   href={`/search?q=${query}${area ? `&area=${area}` : ''}`}
                   className={`block text-sm px-2 py-1 rounded ${
                     !categorySlug || categorySlug === 'all'
-                      ? 'bg-blue-100 text-blue-900 font-medium'
-                      : 'text-gray-600 hover:text-blue-900 hover:bg-gray-50'
+                      ? 'bg-gray-100 text-[#0B0B0B] font-medium'
+                      : 'text-[#374151] hover:text-[#0B0B0B] hover:bg-[#F5F5F5]'
                   }`}
                 >
                   All Categories
@@ -140,8 +140,8 @@ export default async function SearchPage({ searchParams }: PageProps) {
                     href={`/search?q=${query}&category=${cat.slug}${area ? `&area=${area}` : ''}`}
                     className={`block text-sm px-2 py-1 rounded ${
                       categorySlug === cat.slug
-                        ? 'bg-blue-100 text-blue-900 font-medium'
-                        : 'text-gray-600 hover:text-blue-900 hover:bg-gray-50'
+                        ? 'bg-gray-100 text-[#0B0B0B] font-medium'
+                        : 'text-[#374151] hover:text-[#0B0B0B] hover:bg-[#F5F5F5]'
                     }`}
                   >
                     {cat.name}
@@ -158,8 +158,8 @@ export default async function SearchPage({ searchParams }: PageProps) {
                       href={`/search?q=${query}${categorySlug ? `&category=${categorySlug}` : ''}${area ? `&area=${area}` : ''}${rating > 0 ? `&rating=${rating}` : ''}`}
                       className={`block text-sm px-2 py-1 rounded ${
                         minRating === rating
-                          ? 'bg-blue-100 text-blue-900 font-medium'
-                          : 'text-gray-600 hover:text-blue-900 hover:bg-gray-50'
+                          ? 'bg-gray-100 text-[#0B0B0B] font-medium'
+                          : 'text-[#374151] hover:text-[#0B0B0B] hover:bg-[#F5F5F5]'
                       }`}
                     >
                       {rating === 0 ? 'Any Rating' : `${rating}+ Stars`}
@@ -178,7 +178,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
                   {contractorsWithCategories.length} Contractor
                   {contractorsWithCategories.length !== 1 ? 's' : ''} Found
                 </h2>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-[#6B7280]">
                   Sorted by rating and featured status
                 </p>
               </div>
@@ -192,10 +192,10 @@ export default async function SearchPage({ searchParams }: PageProps) {
               </div>
             ) : (
               <div className="text-center py-12 bg-white rounded-lg shadow">
-                <h3 className="text-xl font-semibold text-gray-700 mb-2">
+                <h3 className="text-xl font-semibold text-[#374151] mb-2">
                   No Contractors Found
                 </h3>
-                <p className="text-gray-500 mb-4">
+                <p className="text-[#6B7280] mb-4">
                   Try adjusting your search or browse all contractors.
                 </p>
                 <div className="flex gap-4 justify-center">

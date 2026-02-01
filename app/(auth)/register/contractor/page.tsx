@@ -191,7 +191,7 @@ export default function ContractorRegisterPage() {
 
   if (success) {
     return (
-      <div className="min-h-[80vh] flex items-center justify-center px-4 py-12 bg-gray-50">
+      <div className="min-h-[80vh] flex items-center justify-center px-4 py-12 bg-[#F5F5F5]">
         <Card className="w-full max-w-md">
           <CardHeader>
             <div className="flex justify-center mb-4">
@@ -204,14 +204,14 @@ export default function ContractorRegisterPage() {
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-gray-600 mb-4">
+            <p className="text-[#374151] mb-4">
               We&apos;ve sent a confirmation link to <strong>{email}</strong>
             </p>
-            <p className="text-sm text-gray-500 mb-4">
+            <p className="text-sm text-[#6B7280] mb-4">
               Click the link in the email to activate your account. Once verified,
               you can sign in and complete your profile.
             </p>
-            <div className="bg-blue-50 p-4 rounded-lg text-sm text-blue-800">
+            <div className="bg-[#F5F5F5] p-4 rounded-lg text-sm text-[#1F3C58]">
               <strong>Next steps:</strong>
               <ul className="list-disc list-inside mt-2 text-left">
                 <li>Verify your email</li>
@@ -232,7 +232,7 @@ export default function ContractorRegisterPage() {
   }
 
   return (
-    <div className="min-h-screen py-12 bg-gray-50">
+    <div className="min-h-screen py-12 bg-[#F5F5F5]">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto">
           {/* Progress Steps */}
@@ -241,7 +241,7 @@ export default function ContractorRegisterPage() {
               <div
                 className={`w-10 h-10 rounded-full flex items-center justify-center ${
                   step === 'account'
-                    ? 'bg-blue-900 text-white'
+                    ? 'bg-[#0B0B0B] text-white'
                     : 'bg-green-500 text-white'
                 }`}
               >
@@ -255,10 +255,10 @@ export default function ContractorRegisterPage() {
               <div
                 className={`w-10 h-10 rounded-full flex items-center justify-center ${
                   step === 'business'
-                    ? 'bg-blue-900 text-white'
+                    ? 'bg-[#0B0B0B] text-white'
                     : step === 'categories'
                     ? 'bg-green-500 text-white'
-                    : 'bg-gray-300 text-gray-600'
+                    : 'bg-gray-300 text-[#374151]'
                 }`}
               >
                 {step === 'categories' ? <CheckCircle className="h-5 w-5" /> : '2'}
@@ -271,8 +271,8 @@ export default function ContractorRegisterPage() {
               <div
                 className={`w-10 h-10 rounded-full flex items-center justify-center ${
                   step === 'categories'
-                    ? 'bg-blue-900 text-white'
-                    : 'bg-gray-300 text-gray-600'
+                    ? 'bg-[#0B0B0B] text-white'
+                    : 'bg-gray-300 text-[#374151]'
                 }`}
               >
                 3
@@ -307,7 +307,7 @@ export default function ContractorRegisterPage() {
                   <div className="space-y-2">
                     <Label htmlFor="fullName">Your Name</Label>
                     <div className="relative">
-                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#9CA3AF]" />
                       <Input
                         id="fullName"
                         placeholder="John Doe"
@@ -322,7 +322,7 @@ export default function ContractorRegisterPage() {
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
                     <div className="relative">
-                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#9CA3AF]" />
                       <Input
                         id="email"
                         type="email"
@@ -338,7 +338,7 @@ export default function ContractorRegisterPage() {
                   <div className="space-y-2">
                     <Label htmlFor="password">Password</Label>
                     <div className="relative">
-                      <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                      <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#9CA3AF]" />
                       <Input
                         id="password"
                         type={showPassword ? 'text' : 'password'}
@@ -351,12 +351,12 @@ export default function ContractorRegisterPage() {
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#9CA3AF]"
                       >
                         {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                       </button>
                     </div>
-                    <p className="text-xs text-gray-500">Minimum 6 characters</p>
+                    <p className="text-xs text-[#6B7280]">Minimum 6 characters</p>
                   </div>
                 </CardContent>
 
@@ -364,9 +364,9 @@ export default function ContractorRegisterPage() {
                   <Button type="submit" className="w-full">
                     Continue
                   </Button>
-                  <p className="text-sm text-gray-600 text-center">
+                  <p className="text-sm text-[#374151] text-center">
                     Already have an account?{' '}
-                    <Link href="/login" className="text-blue-600 hover:underline">
+                    <Link href="/login" className="text-[#1F3C58] hover:underline">
                       Sign in
                     </Link>
                   </p>
@@ -387,7 +387,7 @@ export default function ContractorRegisterPage() {
                   <div className="space-y-2">
                     <Label htmlFor="businessName">Business Name *</Label>
                     <div className="relative">
-                      <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                      <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#9CA3AF]" />
                       <Input
                         id="businessName"
                         placeholder="Your Business Name"
@@ -403,7 +403,7 @@ export default function ContractorRegisterPage() {
                     <div className="space-y-2">
                       <Label htmlFor="businessPhone">Phone *</Label>
                       <div className="relative">
-                        <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                        <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#9CA3AF]" />
                         <Input
                           id="businessPhone"
                           placeholder="(713) 555-0123"
@@ -442,7 +442,7 @@ export default function ContractorRegisterPage() {
                     <div className="space-y-2">
                       <Label htmlFor="city">City</Label>
                       <div className="relative">
-                        <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                        <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#9CA3AF]" />
                         <Input
                           id="city"
                           placeholder="Houston"
@@ -530,7 +530,7 @@ export default function ContractorRegisterPage() {
                     </div>
                   )}
 
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-[#374151]">
                     Select all categories that apply to your business. This helps
                     customers find you when searching.
                   </p>
@@ -542,7 +542,7 @@ export default function ContractorRegisterPage() {
                         onClick={() => toggleCategory(category.slug)}
                         className={`p-3 border rounded-lg cursor-pointer transition-all ${
                           selectedCategories.includes(category.slug)
-                            ? 'border-blue-500 bg-blue-50'
+                            ? 'border-[#1F3C58] bg-[#F5F5F5]'
                             : 'border-gray-200 hover:border-gray-300'
                         }`}
                       >
@@ -550,7 +550,7 @@ export default function ContractorRegisterPage() {
                           <div
                             className={`w-5 h-5 rounded border flex items-center justify-center ${
                               selectedCategories.includes(category.slug)
-                                ? 'bg-blue-500 border-blue-500'
+                                ? 'bg-[#1F3C58] border-[#1F3C58]'
                                 : 'border-gray-300'
                             }`}
                           >
@@ -567,7 +567,7 @@ export default function ContractorRegisterPage() {
                   </div>
 
                   {selectedCategories.length > 0 && (
-                    <div className="bg-gray-50 p-3 rounded">
+                    <div className="bg-[#F5F5F5] p-3 rounded">
                       <p className="text-sm font-medium mb-2">
                         Selected ({selectedCategories.length}):
                       </p>

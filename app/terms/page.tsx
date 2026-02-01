@@ -8,14 +8,14 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <div className="min-h-screen bg-white">
-      <div className="bg-slate-900 text-white py-16">
+      <div className="bg-[#0B0B0B] text-white py-16">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold">Terms of Service</h1>
-          <p className="text-slate-400 mt-2">Last updated: January 2026</p>
+          <p className="text-[#9CA3AF] mt-2">Last updated: January 2026</p>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-16 max-w-3xl prose prose-slate">
+      <div className="container mx-auto px-4 py-16 max-w-3xl prose prose-gray">
         <h2>1. Acceptance of Terms</h2>
         <p>
           By accessing and using Houston Texas Pro (&quot;the Platform&quot;), you agree to be bound by these Terms of Service.
@@ -63,7 +63,7 @@ export default function TermsPage() {
 
         <h2>8. Privacy</h2>
         <p>
-          Your use of the Platform is also governed by our <a href="/privacy" className="text-blue-600 hover:underline">Privacy Policy</a>.
+          Your use of the Platform is also governed by our <a href="/privacy" className="text-[#1F3C58] hover:underline">Privacy Policy</a>.
         </p>
 
         <h2>9. Modifications</h2>
@@ -74,7 +74,7 @@ export default function TermsPage() {
 
         <h2>10. Contact</h2>
         <p>
-          Questions about these terms? Contact us at <a href="mailto:support@houstontexaspro.com" className="text-blue-600 hover:underline">support@houstontexaspro.com</a>.
+          Questions about these terms? Contact us at <a href="mailto:support@houstontexaspro.com" className="text-[#1F3C58] hover:underline">support@houstontexaspro.com</a>.
         </p>
       </div>
     </div>

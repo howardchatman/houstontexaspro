@@ -41,14 +41,14 @@ export default async function TemplateSettingsPage() {
   return (
     <div className="max-w-4xl">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">Website Template</h1>
-        <p className="text-gray-600 mt-2">
+        <h1 className="text-3xl font-bold text-[#0B0B0B]">Website Template</h1>
+        <p className="text-[#374151] mt-2">
           Customize how your contractor profile looks to customers
         </p>
       </div>
 
       {contractor.tier === 'free' ? (
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white mb-8">
+        <div className="bg-gradient-to-r from-[#1F3C58] to-purple-600 rounded-2xl p-8 text-white mb-8">
           <h2 className="text-2xl font-bold mb-4">Upgrade to Premium</h2>
           <p className="text-white/90 mb-6 max-w-2xl">
             Get full customization of your mini-website with custom colors, multiple hero layouts,
@@ -80,7 +80,7 @@ export default async function TemplateSettingsPage() {
               <p className="text-sm text-white/80">Show/hide sections</p>
             </div>
           </div>
-          <button className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors">
+          <button className="bg-white text-[#1F3C58] font-semibold px-6 py-3 rounded-lg hover:bg-[#F5F5F5] transition-colors">
             Upgrade Now - $29/month
           </button>
         </div>

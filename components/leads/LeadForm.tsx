@@ -83,13 +83,13 @@ export function LeadForm({ contractorId, contractorName, responseTime }: LeadFor
           <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <CheckCircle className="h-8 w-8 text-green-600" />
           </div>
-          <h3 className="text-xl font-semibold text-slate-900 mb-2">
+          <h3 className="text-xl font-semibold text-[#0B0B0B] mb-2">
             Request Sent
           </h3>
-          <p className="text-slate-600 mb-4">
+          <p className="text-[#374151] mb-4">
             {contractorName} will reach out{urgency === 'emergency' ? ' as soon as possible' : ' shortly'}.
           </p>
-          <div className="flex items-center justify-center gap-2 text-sm text-slate-500">
+          <div className="flex items-center justify-center gap-2 text-sm text-[#6B7280]">
             <Clock className="h-4 w-4" />
             <span>{responseTime || 'Usually responds within a few hours'}</span>
           </div>
@@ -110,9 +110,9 @@ export function LeadForm({ contractorId, contractorName, responseTime }: LeadFor
           </div>
           {/* Progress indicator */}
           <div className="flex gap-1">
-            <div className={`w-2 h-2 rounded-full ${step === 'urgency' ? 'bg-blue-600' : 'bg-slate-200'}`} />
-            <div className={`w-2 h-2 rounded-full ${step === 'details' ? 'bg-blue-600' : 'bg-slate-200'}`} />
-            <div className={`w-2 h-2 rounded-full ${step === 'contact' ? 'bg-blue-600' : 'bg-slate-200'}`} />
+            <div className={`w-2 h-2 rounded-full ${step === 'urgency' ? 'bg-[#1F3C58]' : 'bg-slate-200'}`} />
+            <div className={`w-2 h-2 rounded-full ${step === 'details' ? 'bg-[#1F3C58]' : 'bg-slate-200'}`} />
+            <div className={`w-2 h-2 rounded-full ${step === 'contact' ? 'bg-[#1F3C58]' : 'bg-slate-200'}`} />
           </div>
         </div>
       </CardHeader>
@@ -128,7 +128,7 @@ export function LeadForm({ contractorId, contractorName, responseTime }: LeadFor
         {/* Step 1: Urgency */}
         {step === 'urgency' && (
           <div className="space-y-4">
-            <p className="text-slate-700 font-medium">When do you need help?</p>
+            <p className="text-[#374151] font-medium">When do you need help?</p>
             <div className="grid grid-cols-2 gap-3">
               <button
                 type="button"
@@ -137,36 +137,36 @@ export function LeadForm({ contractorId, contractorName, responseTime }: LeadFor
               >
                 <div className="flex items-center gap-2 mb-1">
                   <AlertTriangle className="h-4 w-4 text-red-600" />
-                  <span className="font-semibold text-slate-900">Emergency</span>
+                  <span className="font-semibold text-[#0B0B0B]">Emergency</span>
                 </div>
-                <span className="text-sm text-slate-500">I need help now</span>
+                <span className="text-sm text-[#6B7280]">I need help now</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => handleUrgencySelect('today')}
-                className="p-4 border-2 rounded-lg text-left hover:border-blue-500 hover:bg-blue-50 transition-colors"
+                className="p-4 border-2 rounded-lg text-left hover:border-[#1F3C58] hover:bg-[#F5F5F5] transition-colors"
               >
-                <span className="font-semibold text-slate-900 block mb-1">Today</span>
-                <span className="text-sm text-slate-500">As soon as possible</span>
+                <span className="font-semibold text-[#0B0B0B] block mb-1">Today</span>
+                <span className="text-sm text-[#6B7280]">As soon as possible</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => handleUrgencySelect('this-week')}
-                className="p-4 border-2 rounded-lg text-left hover:border-blue-500 hover:bg-blue-50 transition-colors"
+                className="p-4 border-2 rounded-lg text-left hover:border-[#1F3C58] hover:bg-[#F5F5F5] transition-colors"
               >
-                <span className="font-semibold text-slate-900 block mb-1">This Week</span>
-                <span className="text-sm text-slate-500">Within a few days</span>
+                <span className="font-semibold text-[#0B0B0B] block mb-1">This Week</span>
+                <span className="text-sm text-[#6B7280]">Within a few days</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => handleUrgencySelect('flexible')}
-                className="p-4 border-2 rounded-lg text-left hover:border-blue-500 hover:bg-blue-50 transition-colors"
+                className="p-4 border-2 rounded-lg text-left hover:border-[#1F3C58] hover:bg-[#F5F5F5] transition-colors"
               >
-                <span className="font-semibold text-slate-900 block mb-1">Flexible</span>
-                <span className="text-sm text-slate-500">I can schedule</span>
+                <span className="font-semibold text-[#0B0B0B] block mb-1">Flexible</span>
+                <span className="text-sm text-[#6B7280]">I can schedule</span>
               </button>
             </div>
           </div>
@@ -179,11 +179,11 @@ export function LeadForm({ contractorId, contractorName, responseTime }: LeadFor
               <button
                 type="button"
                 onClick={goBack}
-                className="p-1 hover:bg-slate-100 rounded"
+                className="p-1 hover:bg-gray-100 rounded"
               >
-                <ArrowLeft className="h-4 w-4 text-slate-500" />
+                <ArrowLeft className="h-4 w-4 text-[#6B7280]" />
               </button>
-              <p className="text-slate-700 font-medium">What do you need done?</p>
+              <p className="text-[#374151] font-medium">What do you need done?</p>
             </div>
 
             {urgency && (
@@ -201,7 +201,7 @@ export function LeadForm({ contractorId, contractorName, responseTime }: LeadFor
                 onChange={(e) => setJobDescription(e.target.value)}
                 className="resize-none"
               />
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-[#6B7280]">
                 Example: &quot;Leaking pipe under kitchen sink. Water is dripping slowly.&quot;
               </p>
             </div>
@@ -225,11 +225,11 @@ export function LeadForm({ contractorId, contractorName, responseTime }: LeadFor
               <button
                 type="button"
                 onClick={goBack}
-                className="p-1 hover:bg-slate-100 rounded"
+                className="p-1 hover:bg-gray-100 rounded"
               >
-                <ArrowLeft className="h-4 w-4 text-slate-500" />
+                <ArrowLeft className="h-4 w-4 text-[#6B7280]" />
               </button>
-              <p className="text-slate-700 font-medium">How should they reach you?</p>
+              <p className="text-[#374151] font-medium">How should they reach you?</p>
             </div>
 
             <div className="space-y-3">
@@ -254,7 +254,7 @@ export function LeadForm({ contractorId, contractorName, responseTime }: LeadFor
                   onChange={(e) => setPhone(e.target.value)}
                   required
                 />
-                <p className="text-xs text-slate-500">Best way to reach you quickly</p>
+                <p className="text-xs text-[#6B7280]">Best way to reach you quickly</p>
               </div>
 
               <div className="space-y-1">
@@ -280,7 +280,7 @@ export function LeadForm({ contractorId, contractorName, responseTime }: LeadFor
               )}
             </Button>
 
-            <div className="flex items-center justify-center gap-2 text-xs text-slate-500">
+            <div className="flex items-center justify-center gap-2 text-xs text-[#6B7280]">
               <Shield className="h-3 w-3" />
               <span>Your info goes only to {contractorName}</span>
             </div>

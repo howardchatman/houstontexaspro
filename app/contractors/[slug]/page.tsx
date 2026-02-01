@@ -121,7 +121,7 @@ export default async function ContractorPage({ params }: PageProps) {
 
   return (
     <TemplateWrapper tier={tier} template={template} tradeCategory={primaryCategory}>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-[#F5F5F5]">
         {/* Dynamic Hero based on template settings */}
         {renderHero()}
 
@@ -141,7 +141,7 @@ export default async function ContractorPage({ params }: PageProps) {
                           {contractor.avg_rating.toFixed(1)}
                         </span>
                       </div>
-                      <p className="text-sm text-gray-500">
+                      <p className="text-sm text-[#6B7280]">
                         {contractor.review_count} reviews
                       </p>
                     </div>
@@ -179,7 +179,7 @@ export default async function ContractorPage({ params }: PageProps) {
                 <CardTitle>About {contractor.business_name}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600 whitespace-pre-wrap">
+                <p className="text-[#374151] whitespace-pre-wrap">
                   {contractor.description || 'No description provided.'}
                 </p>
 
@@ -288,21 +288,21 @@ export default async function ContractorPage({ params }: PageProps) {
                               )}
                             </div>
                           </div>
-                          <span className="text-sm text-gray-500">
+                          <span className="text-sm text-[#6B7280]">
                             {new Date(review.created_at).toLocaleDateString()}
                           </span>
                         </div>
                         {review.title && (
                           <h4 className="font-medium mb-1">{review.title}</h4>
                         )}
-                        <p className="text-gray-600">{review.content}</p>
+                        <p className="text-[#374151]">{review.content}</p>
 
                         {review.contractor_response && (
                           <div className="mt-3 pl-4 border-l-2 border-[var(--template-primary)]/30 bg-[var(--template-primary)]/5 p-3 rounded-r">
                             <p className="text-sm font-medium text-[var(--template-primary)] mb-1">
                               Response from {contractor.business_name}
                             </p>
-                            <p className="text-sm text-gray-600">
+                            <p className="text-sm text-[#374151]">
                               {review.contractor_response}
                             </p>
                           </div>
@@ -317,7 +317,7 @@ export default async function ContractorPage({ params }: PageProps) {
                     )}
                   </div>
                 ) : (
-                  <div className="text-center py-8 text-gray-500">
+                  <div className="text-center py-8 text-[#6B7280]">
                     <Star className="h-12 w-12 mx-auto mb-3 text-gray-300" />
                     <p>No reviews yet. Be the first to review!</p>
                   </div>
@@ -349,7 +349,7 @@ export default async function ContractorPage({ params }: PageProps) {
                   {contractor.phone && (
                     <a
                       href={`tel:${contractor.phone}`}
-                      className="flex items-center gap-3 text-gray-600 hover:text-blue-900"
+                      className="flex items-center gap-3 text-[#374151] hover:text-[#0B0B0B]"
                     >
                       <Phone className="h-5 w-5" />
                       <span>{contractor.phone}</span>
@@ -358,7 +358,7 @@ export default async function ContractorPage({ params }: PageProps) {
                   {contractor.email && (
                     <a
                       href={`mailto:${contractor.email}`}
-                      className="flex items-center gap-3 text-gray-600 hover:text-blue-900"
+                      className="flex items-center gap-3 text-[#374151] hover:text-[#0B0B0B]"
                     >
                       <Mail className="h-5 w-5" />
                       <span>{contractor.email}</span>
@@ -369,14 +369,14 @@ export default async function ContractorPage({ params }: PageProps) {
                       href={contractor.website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-3 text-gray-600 hover:text-blue-900"
+                      className="flex items-center gap-3 text-[#374151] hover:text-[#0B0B0B]"
                     >
                       <Globe className="h-5 w-5" />
                       <span>Visit Website</span>
                     </a>
                   )}
                   {contractor.address && (
-                    <div className="flex items-start gap-3 text-gray-600">
+                    <div className="flex items-start gap-3 text-[#374151]">
                       <MapPin className="h-5 w-5 mt-0.5" />
                       <span>
                         {contractor.address}
@@ -387,7 +387,7 @@ export default async function ContractorPage({ params }: PageProps) {
                   )}
                 </div>
 
-                <div className="flex items-center gap-2 text-sm text-gray-500 pt-2">
+                <div className="flex items-center gap-2 text-sm text-[#6B7280] pt-2">
                   <Clock className="h-4 w-4" />
                   <span>Usually responds within 24 hours</span>
                 </div>

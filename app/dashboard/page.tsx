@@ -101,10 +101,10 @@ export default async function DashboardPage() {
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">
+        <h1 className="text-2xl font-bold text-[#0B0B0B]">
           Welcome back, {contractor.business_name}!
         </h1>
-        <p className="text-gray-500">
+        <p className="text-[#6B7280]">
           Here&apos;s what&apos;s happening with your business
         </p>
       </div>
@@ -139,11 +139,11 @@ export default async function DashboardPage() {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-500">Total Leads</p>
+                <p className="text-sm font-medium text-[#6B7280]">Total Leads</p>
                 <p className="text-3xl font-bold">{totalLeads || 0}</p>
               </div>
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                <MessageSquare className="h-6 w-6 text-blue-600" />
+              <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                <MessageSquare className="h-6 w-6 text-[#1F3C58]" />
               </div>
             </div>
           </CardContent>
@@ -153,7 +153,7 @@ export default async function DashboardPage() {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-500">New Leads</p>
+                <p className="text-sm font-medium text-[#6B7280]">New Leads</p>
                 <p className="text-3xl font-bold">{newLeads || 0}</p>
               </div>
               <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
@@ -170,7 +170,7 @@ export default async function DashboardPage() {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-500">Reviews</p>
+                <p className="text-sm font-medium text-[#6B7280]">Reviews</p>
                 <p className="text-3xl font-bold">{contractor.review_count}</p>
               </div>
               <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
@@ -184,7 +184,7 @@ export default async function DashboardPage() {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-500">Rating</p>
+                <p className="text-sm font-medium text-[#6B7280]">Rating</p>
                 <p className="text-3xl font-bold">
                   {contractor.avg_rating > 0
                     ? contractor.avg_rating.toFixed(1)
@@ -219,11 +219,11 @@ export default async function DashboardPage() {
                 {recentLeads.map((lead) => (
                   <div
                     key={lead.id}
-                    className="flex items-start justify-between p-3 bg-gray-50 rounded-lg"
+                    className="flex items-start justify-between p-3 bg-[#F5F5F5] rounded-lg"
                   >
                     <div>
                       <p className="font-medium">{lead.name}</p>
-                      <div className="flex items-center gap-3 text-sm text-gray-500 mt-1">
+                      <div className="flex items-center gap-3 text-sm text-[#6B7280] mt-1">
                         {lead.phone && (
                           <span className="flex items-center gap-1">
                             <Phone className="h-3 w-3" />
@@ -238,7 +238,7 @@ export default async function DashboardPage() {
                         )}
                       </div>
                       {lead.message && (
-                        <p className="text-sm text-gray-600 mt-2 line-clamp-2">
+                        <p className="text-sm text-[#374151] mt-2 line-clamp-2">
                           {lead.message}
                         </p>
                       )}
@@ -252,7 +252,7 @@ export default async function DashboardPage() {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-8 text-gray-500">
+              <div className="text-center py-8 text-[#6B7280]">
                 <MessageSquare className="h-12 w-12 mx-auto mb-3 text-gray-300" />
                 <p>No leads yet</p>
                 <p className="text-sm">
@@ -280,7 +280,7 @@ export default async function DashboardPage() {
             {recentReviews && recentReviews.length > 0 ? (
               <div className="space-y-4">
                 {recentReviews.map((review) => (
-                  <div key={review.id} className="p-3 bg-gray-50 rounded-lg">
+                  <div key={review.id} className="p-3 bg-[#F5F5F5] rounded-lg">
                     <div className="flex items-center justify-between mb-2">
                       <p className="font-medium">
                         {review.profiles?.full_name || 'Anonymous'}
@@ -298,7 +298,7 @@ export default async function DashboardPage() {
                         ))}
                       </div>
                     </div>
-                    <p className="text-sm text-gray-600 line-clamp-2">
+                    <p className="text-sm text-[#374151] line-clamp-2">
                       {review.content}
                     </p>
                     {!review.contractor_response && (
@@ -315,7 +315,7 @@ export default async function DashboardPage() {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-8 text-gray-500">
+              <div className="text-center py-8 text-[#6B7280]">
                 <Star className="h-12 w-12 mx-auto mb-3 text-gray-300" />
                 <p>No reviews yet</p>
                 <p className="text-sm">

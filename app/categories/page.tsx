@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 
 export default function CategoriesPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#F5F5F5]">
       {/* Header */}
-      <div className="bg-blue-900 text-white py-12">
+      <div className="bg-[#0B0B0B] text-white py-12">
         <div className="container mx-auto px-4">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
             All Contractor Categories

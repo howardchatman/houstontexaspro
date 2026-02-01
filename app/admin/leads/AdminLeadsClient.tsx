@@ -36,7 +36,7 @@ export default function AdminLeadsClient({ leads }: { leads: Lead[] }) {
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 activeTab === tab
                   ? 'bg-gray-900 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  : 'bg-gray-100 text-[#374151] hover:bg-gray-200'
               }`}
             >
               {tab.charAt(0).toUpperCase() + tab.slice(1)} ({count})
@@ -50,23 +50,23 @@ export default function AdminLeadsClient({ leads }: { leads: Lead[] }) {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b bg-gray-50">
-                  <th className="text-left p-4 font-medium text-gray-500">Name</th>
-                  <th className="text-left p-4 font-medium text-gray-500">Email</th>
-                  <th className="text-left p-4 font-medium text-gray-500">Phone</th>
-                  <th className="text-left p-4 font-medium text-gray-500">Contractor</th>
-                  <th className="text-left p-4 font-medium text-gray-500">Status</th>
-                  <th className="text-left p-4 font-medium text-gray-500">Date</th>
+                <tr className="border-b bg-[#F5F5F5]">
+                  <th className="text-left p-4 font-medium text-[#6B7280]">Name</th>
+                  <th className="text-left p-4 font-medium text-[#6B7280]">Email</th>
+                  <th className="text-left p-4 font-medium text-[#6B7280]">Phone</th>
+                  <th className="text-left p-4 font-medium text-[#6B7280]">Contractor</th>
+                  <th className="text-left p-4 font-medium text-[#6B7280]">Status</th>
+                  <th className="text-left p-4 font-medium text-[#6B7280]">Date</th>
                 </tr>
               </thead>
               <tbody>
                 {filtered.length > 0 ? (
                   filtered.map((lead) => (
-                    <tr key={lead.id} className="border-b last:border-0 hover:bg-gray-50">
-                      <td className="p-4 font-medium text-gray-900">{lead.name}</td>
-                      <td className="p-4 text-gray-600">{lead.email}</td>
-                      <td className="p-4 text-gray-600">{lead.phone || '—'}</td>
-                      <td className="p-4 text-gray-600">
+                    <tr key={lead.id} className="border-b last:border-0 hover:bg-[#F5F5F5]">
+                      <td className="p-4 font-medium text-[#0B0B0B]">{lead.name}</td>
+                      <td className="p-4 text-[#374151]">{lead.email}</td>
+                      <td className="p-4 text-[#374151]">{lead.phone || '—'}</td>
+                      <td className="p-4 text-[#374151]">
                         {lead.contractors?.business_name || '—'}
                       </td>
                       <td className="p-4">
@@ -77,14 +77,14 @@ export default function AdminLeadsClient({ leads }: { leads: Lead[] }) {
                           {lead.status}
                         </Badge>
                       </td>
-                      <td className="p-4 text-gray-500 text-xs">
+                      <td className="p-4 text-[#6B7280] text-xs">
                         {new Date(lead.created_at).toLocaleDateString()}
                       </td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={6} className="p-8 text-center text-gray-500">
+                    <td colSpan={6} className="p-8 text-center text-[#6B7280]">
                       No leads found.
                     </td>
                   </tr>

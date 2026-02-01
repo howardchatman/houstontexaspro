@@ -8,14 +8,14 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <div className="min-h-screen bg-white">
-      <div className="bg-slate-900 text-white py-16">
+      <div className="bg-[#0B0B0B] text-white py-16">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold">Privacy Policy</h1>
-          <p className="text-slate-400 mt-2">Last updated: January 2026</p>
+          <p className="text-[#9CA3AF] mt-2">Last updated: January 2026</p>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-16 max-w-3xl prose prose-slate">
+      <div className="container mx-auto px-4 py-16 max-w-3xl prose prose-gray">
         <h2>Information We Collect</h2>
         <p>
           We collect information you provide directly, including your name, email address, phone number,
@@ -66,7 +66,7 @@ export default function PrivacyPage() {
         <h2>Your Rights</h2>
         <p>
           You may request access to, correction of, or deletion of your personal data at any time
-          by contacting us at <a href="mailto:support@houstontexaspro.com" className="text-blue-600 hover:underline">support@houstontexaspro.com</a>.
+          by contacting us at <a href="mailto:support@houstontexaspro.com" className="text-[#1F3C58] hover:underline">support@houstontexaspro.com</a>.
         </p>
 
         <h2>Changes to This Policy</h2>
@@ -77,7 +77,7 @@ export default function PrivacyPage() {
 
         <h2>Contact</h2>
         <p>
-          Questions about this policy? Contact us at <a href="mailto:support@houstontexaspro.com" className="text-blue-600 hover:underline">support@houstontexaspro.com</a>.
+          Questions about this policy? Contact us at <a href="mailto:support@houstontexaspro.com" className="text-[#1F3C58] hover:underline">support@houstontexaspro.com</a>.
         </p>
       </div>
     </div>

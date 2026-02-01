@@ -51,7 +51,7 @@ function LoginForm() {
     <Card className="w-full max-w-md">
       <CardHeader className="space-y-1">
         <div className="flex justify-center mb-4">
-          <div className="bg-blue-900 text-white font-bold px-4 py-2 rounded text-xl">
+          <div className="bg-[#0B0B0B] text-white font-bold px-4 py-2 rounded text-xl">
             HTP
           </div>
         </div>
@@ -71,7 +71,7 @@ function LoginForm() {
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#9CA3AF]" />
               <Input
                 id="email"
                 type="email"
@@ -89,13 +89,13 @@ function LoginForm() {
               <Label htmlFor="password">Password</Label>
               <Link
                 href="/forgot-password"
-                className="text-sm text-blue-600 hover:underline"
+                className="text-sm text-[#1F3C58] hover:underline"
               >
                 Forgot password?
               </Link>
             </div>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#9CA3AF]" />
               <Input
                 id="password"
                 type={showPassword ? 'text' : 'password'}
@@ -108,7 +108,7 @@ function LoginForm() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#9CA3AF] hover:text-[#374151]"
               >
                 {showPassword ? (
                   <EyeOff className="h-4 w-4" />
@@ -125,9 +125,9 @@ function LoginForm() {
             {loading ? 'Signing in...' : 'Sign In'}
           </Button>
 
-          <div className="text-center text-sm text-gray-600">
+          <div className="text-center text-sm text-[#374151]">
             Don&apos;t have an account?{' '}
-            <Link href="/register" className="text-blue-600 hover:underline">
+            <Link href="/register" className="text-[#1F3C58] hover:underline">
               Sign up
             </Link>
           </div>
@@ -137,7 +137,7 @@ function LoginForm() {
               <span className="w-full border-t" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white px-2 text-gray-500">
+              <span className="bg-white px-2 text-[#6B7280]">
                 Are you a contractor?
               </span>
             </div>
@@ -159,7 +159,7 @@ function LoginFormFallback() {
     <Card className="w-full max-w-md">
       <CardHeader className="space-y-1">
         <div className="flex justify-center mb-4">
-          <div className="bg-blue-900 text-white font-bold px-4 py-2 rounded text-xl">
+          <div className="bg-[#0B0B0B] text-white font-bold px-4 py-2 rounded text-xl">
             HTP
           </div>
         </div>
@@ -181,7 +181,7 @@ function LoginFormFallback() {
 
 export default function LoginPage() {
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4 py-12 bg-gray-50">
+    <div className="min-h-[80vh] flex items-center justify-center px-4 py-12 bg-[#F5F5F5]">
       <Suspense fallback={<LoginFormFallback />}>
         <LoginForm />
       </Suspense>

@@ -154,7 +154,7 @@ export default function GalleryPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-900" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0B0B0B]" />
       </div>
     )
   }
@@ -163,8 +163,8 @@ export default function GalleryPage() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Photo Gallery</h1>
-          <p className="text-gray-500">Showcase your work to potential customers</p>
+          <h1 className="text-2xl font-bold text-[#0B0B0B]">Photo Gallery</h1>
+          <p className="text-[#6B7280]">Showcase your work to potential customers</p>
         </div>
         <Button onClick={() => fileInputRef.current?.click()}>
           <Upload className="h-4 w-4 mr-2" />
@@ -203,10 +203,10 @@ export default function GalleryPage() {
               {(image.caption || image.project_type) && (
                 <CardContent className="p-3">
                   {image.caption && (
-                    <p className="text-sm text-gray-600 truncate">{image.caption}</p>
+                    <p className="text-sm text-[#374151] truncate">{image.caption}</p>
                   )}
                   {image.project_type && (
-                    <p className="text-xs text-gray-400">{image.project_type}</p>
+                    <p className="text-xs text-[#9CA3AF]">{image.project_type}</p>
                   )}
                 </CardContent>
               )}
@@ -217,10 +217,10 @@ export default function GalleryPage() {
         <Card>
           <CardContent className="py-12 text-center">
             <ImageIcon className="h-12 w-12 mx-auto mb-4 text-gray-300" />
-            <h3 className="text-lg font-medium text-gray-700 mb-2">
+            <h3 className="text-lg font-medium text-[#374151] mb-2">
               No Photos Yet
             </h3>
-            <p className="text-gray-500 mb-4">
+            <p className="text-[#6B7280] mb-4">
               Upload photos of your completed projects to showcase your work
             </p>
             <Button onClick={() => fileInputRef.current?.click()}>

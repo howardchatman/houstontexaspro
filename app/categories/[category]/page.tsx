@@ -148,7 +148,7 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-[#F5F5F5]">
       {/* Hero Header with Background Image */}
       <div className="relative min-h-[40vh] flex items-end overflow-hidden">
         {/* Background Image */}
@@ -239,7 +239,7 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
             {isEmergency && (
               <Card className="border-slate-200">
                 <CardContent className="p-4">
-                  <p className="text-sm text-slate-600 mb-3">
+                  <p className="text-sm text-[#374151] mb-3">
                     Looking for scheduled service?
                   </p>
                   <Button variant="outline" size="sm" asChild>
@@ -253,7 +253,7 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
 
             {/* Related categories */}
             <div className="bg-white rounded-lg shadow-sm border p-4 sticky top-24">
-              <h2 className="font-semibold text-slate-900 mb-4">Other Services</h2>
+              <h2 className="font-semibold text-[#0B0B0B] mb-4">Other Services</h2>
               <div className="space-y-1">
                 {CONTRACTOR_CATEGORIES.filter((c) => c.slug !== categorySlug)
                   .slice(0, 10)
@@ -261,14 +261,14 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
                     <Link
                       key={cat.slug}
                       href={`/categories/${cat.slug}`}
-                      className="block text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-50 px-3 py-2 rounded transition-colors"
+                      className="block text-sm text-[#374151] hover:text-[#0B0B0B] hover:bg-[#F5F5F5] px-3 py-2 rounded transition-colors"
                     >
                       {cat.name}
                     </Link>
                   ))}
                 <Link
                   href="/categories"
-                  className="block text-sm font-medium text-blue-600 hover:text-blue-700 px-3 py-2"
+                  className="block text-sm font-medium text-[#1F3C58] hover:text-blue-700 px-3 py-2"
                 >
                   View All Services →
                 </Link>
@@ -276,10 +276,10 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
             </div>
 
             {/* Can't find help */}
-            <Card className="border-blue-200 bg-blue-50">
+            <Card className="border-blue-200 bg-[#F5F5F5]">
               <CardContent className="p-4">
-                <h3 className="font-semibold text-slate-900 mb-2">Can&apos;t find the right {category.name.toLowerCase()}?</h3>
-                <p className="text-sm text-slate-600 mb-4">
+                <h3 className="font-semibold text-[#0B0B0B] mb-2">Can&apos;t find the right {category.name.toLowerCase()}?</h3>
+                <p className="text-sm text-[#374151] mb-4">
                   Tell us what you need. We&apos;ll route your request to available contractors.
                 </p>
                 <Button size="sm" variant="outline" className="w-full" asChild>
@@ -296,12 +296,12 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
           <main className="flex-1">
             <div className="flex justify-between items-center mb-6">
               <div>
-                <h2 className="text-xl font-semibold text-slate-900">
+                <h2 className="text-xl font-semibold text-[#0B0B0B]">
                   {contractorsWithCategories.length > 0
                     ? `${contractorsWithCategories.length} ${category.name} Contractors Ready`
                     : `No ${category.name} Contractors Yet`}
                 </h2>
-                <p className="text-sm text-slate-500">
+                <p className="text-sm text-[#6B7280]">
                   Sorted by response time and rating
                 </p>
               </div>
@@ -317,13 +317,13 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
               /* Empty State */
               <Card className="border-slate-200">
                 <CardContent className="p-12 text-center">
-                  <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <MapPin className="h-8 w-8 text-slate-400" />
+                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <MapPin className="h-8 w-8 text-[#9CA3AF]" />
                   </div>
-                  <h3 className="text-xl font-semibold text-slate-900 mb-2">
+                  <h3 className="text-xl font-semibold text-[#0B0B0B] mb-2">
                     No {category.name.toLowerCase()} contractors listed yet
                   </h3>
-                  <p className="text-slate-600 mb-6 max-w-md mx-auto">
+                  <p className="text-[#374151] mb-6 max-w-md mx-auto">
                     We&apos;re growing our {category.name.toLowerCase()} network in Houston. Submit your request—we&apos;ll reach out when a qualified pro joins.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3 justify-center">

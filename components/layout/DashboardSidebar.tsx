@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import NextImage from 'next/image'
 import { usePathname } from 'next/navigation'
 import {
   LayoutDashboard,
@@ -68,10 +69,14 @@ export function DashboardSidebar({ contractorSlug }: DashboardSidebarProps) {
       {/* Logo */}
       <div className="p-4 border-b">
         <Link href="/" className="flex items-center gap-2">
-          <div className="bg-blue-900 text-white font-bold px-2 py-1 rounded text-sm">
-            HTP
-          </div>
-          <span className="font-semibold text-gray-900">Dashboard</span>
+          <NextImage
+            src="/htp_logos/htp_logo_white_background.png"
+            alt="Houston Texas Pro"
+            width={120}
+            height={36}
+            className="h-8 w-auto"
+          />
+          <span className="font-semibold text-[#0B0B0B]">Dashboard</span>
         </Link>
       </div>
 
@@ -86,8 +91,8 @@ export function DashboardSidebar({ contractorSlug }: DashboardSidebarProps) {
               className={cn(
                 'flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors',
                 isActive
-                  ? 'bg-blue-50 text-blue-900'
-                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                  ? 'bg-[#F5F5F5] text-[#0B0B0B]'
+                  : 'text-[#374151] hover:bg-[#F5F5F5] hover:text-[#0B0B0B]'
               )}
             >
               <item.icon className="h-5 w-5" />
@@ -103,7 +108,7 @@ export function DashboardSidebar({ contractorSlug }: DashboardSidebarProps) {
           <Link
             href={`/contractors/${contractorSlug}`}
             target="_blank"
-            className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 hover:text-blue-900 rounded-lg hover:bg-gray-50"
+            className="flex items-center gap-2 px-3 py-2 text-sm text-[#374151] hover:text-[#0B0B0B] rounded-lg hover:bg-[#F5F5F5]"
           >
             <ExternalLink className="h-4 w-4" />
             View Public Profile
@@ -111,7 +116,7 @@ export function DashboardSidebar({ contractorSlug }: DashboardSidebarProps) {
         )}
         <Button
           variant="ghost"
-          className="w-full justify-start text-gray-600 hover:text-gray-900"
+          className="w-full justify-start text-[#374151] hover:text-[#0B0B0B]"
           onClick={handleSignOut}
         >
           <LogOut className="h-4 w-4 mr-2" />

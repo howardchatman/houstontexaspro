@@ -35,7 +35,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-white text-slate-900 hover:bg-white/90 text-base px-8 py-6 rounded-full"
+              className="bg-white text-[#0B0B0B] hover:bg-white/90 text-base px-8 py-6 rounded-full"
               asChild
             >
               <Link href="/contractors">
@@ -46,7 +46,7 @@ export default function HomePage() {
             <Button
               size="lg"
               variant="outline"
-              className="bg-blue-600 text-white hover:bg-blue-700 border-blue-600 text-base px-8 py-6 rounded-full"
+              className="bg-[#1F3C58] text-white hover:bg-blue-700 border-[#1F3C58] text-base px-8 py-6 rounded-full"
               asChild
             >
               <Link href="/register/contractor">Get Listed</Link>
@@ -59,12 +59,12 @@ export default function HomePage() {
       <section className="py-24 md:py-32">
         <div className="container mx-auto px-6">
           <div className="max-w-2xl mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#0B0B0B] tracking-tight mb-4">
               What do you
               <br />
               need done?
             </h2>
-            <p className="text-lg text-slate-500">
+            <p className="text-lg text-[#6B7280]">
               Residential. Commercial. Emergency or scheduled.
             </p>
           </div>
@@ -87,7 +87,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-slate-950 text-white py-24 md:py-32">
+      <section className="bg-[#0B0B0B] text-white py-24 md:py-32">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 leading-tight">
@@ -101,7 +101,7 @@ export default function HomePage() {
             </p>
             <Button
               size="lg"
-              className="bg-white text-slate-900 hover:bg-white/90 text-base px-8 py-6 rounded-full"
+              className="bg-white text-[#0B0B0B] hover:bg-white/90 text-base px-8 py-6 rounded-full"
               asChild
             >
               <Link href="/contractors">

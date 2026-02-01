@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react'
 import { CONTRACTOR_CATEGORIES, HOUSTON_AREAS } from '@/types'
 import { Button } from '@/components/ui/button'
@@ -8,14 +9,14 @@ export function Footer() {
   const topAreas = HOUSTON_AREAS.slice(0, 6)
 
   return (
-    <footer className="bg-slate-900 text-slate-400">
+    <footer className="bg-[#0B0B0B] text-[#9CA3AF]">
       {/* CTA Strip */}
-      <div className="border-b border-slate-800">
+      <div className="border-b border-gray-800">
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
               <h3 className="text-white font-semibold text-lg">Need a contractor?</h3>
-              <p className="text-slate-400 text-sm">Submit a request. We&apos;ll route it to pros who respond.</p>
+              <p className="text-[#9CA3AF] text-sm">Submit a request. We&apos;ll route it to pros who respond.</p>
             </div>
             <div className="flex gap-3">
               <Button asChild>
@@ -24,7 +25,7 @@ export function Footer() {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button variant="outline" className="border-slate-700 text-slate-300 hover:bg-slate-800" asChild>
+              <Button variant="outline" className="border-gray-700 text-gray-300 hover:bg-gray-800" asChild>
                 <Link href="/register/contractor">
                   Get Listed
                 </Link>
@@ -39,11 +40,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="bg-white text-slate-900 font-bold px-3 py-1.5 rounded">
-                HTP
-              </div>
-              <div className="text-white font-bold text-lg">Houston Texas Pro</div>
+            <div className="mb-4">
+              <Image
+                src="/htp_logos/htp_logo_white.png"
+                alt="Houston Texas Pro"
+                width={160}
+                height={48}
+                className="h-10 w-auto"
+              />
             </div>
             <p className="text-sm mb-2 text-white font-medium">
               Houston&apos;s Contractor Command Center
@@ -177,12 +181,12 @@ export function Footer() {
             </ul>
 
             {/* Trust indicators */}
-            <div className="mt-6 p-4 bg-slate-800/50 rounded-lg">
-              <p className="text-xs text-slate-500 mb-2">Every contractor is:</p>
+            <div className="mt-6 p-4 bg-gray-800/50 rounded-lg">
+              <p className="text-xs text-[#6B7280] mb-2">Every contractor is:</p>
               <ul className="text-xs space-y-1">
-                <li className="text-slate-400">✓ Licensed & verified</li>
-                <li className="text-slate-400">✓ Insurance confirmed</li>
-                <li className="text-slate-400">✓ Background checked</li>
+                <li className="text-[#9CA3AF]">✓ Licensed & verified</li>
+                <li className="text-[#9CA3AF]">✓ Insurance confirmed</li>
+                <li className="text-[#9CA3AF]">✓ Background checked</li>
               </ul>
             </div>
           </div>
@@ -190,11 +194,11 @@ export function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-slate-800">
+      <div className="border-t border-gray-800">
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm">
             <p>© {new Date().getFullYear()} HoustonTexasPro. All rights reserved.</p>
-            <p className="mt-2 md:mt-0 text-slate-500">
+            <p className="mt-2 md:mt-0 text-[#6B7280]">
               Houston-owned. Contractor-focused. No runaround.
             </p>
           </div>

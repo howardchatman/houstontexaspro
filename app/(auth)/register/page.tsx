@@ -66,7 +66,7 @@ export default function RegisterPage() {
 
   if (success) {
     return (
-      <div className="min-h-[80vh] flex items-center justify-center px-4 py-12 bg-gray-50">
+      <div className="min-h-[80vh] flex items-center justify-center px-4 py-12 bg-[#F5F5F5]">
         <Card className="w-full max-w-md">
           <CardHeader>
             <CardTitle className="text-2xl text-center text-green-600">
@@ -74,10 +74,10 @@ export default function RegisterPage() {
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-gray-600 mb-4">
+            <p className="text-[#374151] mb-4">
               We&apos;ve sent a confirmation link to <strong>{email}</strong>
             </p>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-[#6B7280]">
               Click the link in the email to activate your account, then you can sign in.
             </p>
           </CardContent>
@@ -92,11 +92,11 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4 py-12 bg-gray-50">
+    <div className="min-h-[80vh] flex items-center justify-center px-4 py-12 bg-[#F5F5F5]">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
           <div className="flex justify-center mb-4">
-            <div className="bg-blue-900 text-white font-bold px-4 py-2 rounded text-xl">
+            <div className="bg-[#0B0B0B] text-white font-bold px-4 py-2 rounded text-xl">
               HTP
             </div>
           </div>
@@ -116,7 +116,7 @@ export default function RegisterPage() {
             <div className="space-y-2">
               <Label htmlFor="fullName">Full Name</Label>
               <div className="relative">
-                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#9CA3AF]" />
                 <Input
                   id="fullName"
                   type="text"
@@ -132,7 +132,7 @@ export default function RegisterPage() {
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#9CA3AF]" />
                 <Input
                   id="email"
                   type="email"
@@ -148,7 +148,7 @@ export default function RegisterPage() {
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#9CA3AF]" />
                 <Input
                   id="password"
                   type={showPassword ? 'text' : 'password'}
@@ -161,7 +161,7 @@ export default function RegisterPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#9CA3AF] hover:text-[#374151]"
                 >
                   {showPassword ? (
                     <EyeOff className="h-4 w-4" />
@@ -170,7 +170,7 @@ export default function RegisterPage() {
                   )}
                 </button>
               </div>
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-[#6B7280]">
                 Must be at least 6 characters
               </p>
             </div>
@@ -178,7 +178,7 @@ export default function RegisterPage() {
             <div className="space-y-2">
               <Label htmlFor="confirmPassword">Confirm Password</Label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#9CA3AF]" />
                 <Input
                   id="confirmPassword"
                   type={showPassword ? 'text' : 'password'}
@@ -197,20 +197,20 @@ export default function RegisterPage() {
               {loading ? 'Creating account...' : 'Create Account'}
             </Button>
 
-            <p className="text-xs text-gray-500 text-center">
+            <p className="text-xs text-[#6B7280] text-center">
               By signing up, you agree to our{' '}
-              <Link href="/terms" className="text-blue-600 hover:underline">
+              <Link href="/terms" className="text-[#1F3C58] hover:underline">
                 Terms of Service
               </Link>{' '}
               and{' '}
-              <Link href="/privacy" className="text-blue-600 hover:underline">
+              <Link href="/privacy" className="text-[#1F3C58] hover:underline">
                 Privacy Policy
               </Link>
             </p>
 
-            <div className="text-center text-sm text-gray-600">
+            <div className="text-center text-sm text-[#374151]">
               Already have an account?{' '}
-              <Link href="/login" className="text-blue-600 hover:underline">
+              <Link href="/login" className="text-[#1F3C58] hover:underline">
                 Sign in
               </Link>
             </div>
@@ -220,7 +220,7 @@ export default function RegisterPage() {
                 <span className="w-full border-t" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-white px-2 text-gray-500">
+                <span className="bg-white px-2 text-[#6B7280]">
                   Are you a contractor?
                 </span>
               </div>

@@ -180,10 +180,10 @@ export function TemplateSettingsForm({
             </CardHeader>
             <CardContent className="space-y-6">
               {tradeDefaults && (
-                <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-[#F5F5F5] rounded-lg">
                   <div>
                     <p className="font-medium">Apply Trade Defaults</p>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-[#6B7280]">
                       Use recommended colors for {tradeDefaults.name}
                     </p>
                   </div>
@@ -212,7 +212,7 @@ export function TemplateSettingsForm({
                       className="flex-1"
                     />
                   </div>
-                  <p className="text-xs text-gray-500">Used for headers and buttons</p>
+                  <p className="text-xs text-[#6B7280]">Used for headers and buttons</p>
                 </div>
 
                 <div className="space-y-2">
@@ -233,7 +233,7 @@ export function TemplateSettingsForm({
                       className="flex-1"
                     />
                   </div>
-                  <p className="text-xs text-gray-500">Used for gradients and hover states</p>
+                  <p className="text-xs text-[#6B7280]">Used for gradients and hover states</p>
                 </div>
 
                 <div className="space-y-2">
@@ -254,7 +254,7 @@ export function TemplateSettingsForm({
                       className="flex-1"
                     />
                   </div>
-                  <p className="text-xs text-gray-500">Used for highlights and badges</p>
+                  <p className="text-xs text-[#6B7280]">Used for highlights and badges</p>
                 </div>
               </div>
 
@@ -295,12 +295,12 @@ export function TemplateSettingsForm({
                     disabled={!isPremium}
                     className={`relative p-4 rounded-xl border-2 text-left transition-all ${
                       settings.hero_layout === layout.value
-                        ? 'border-blue-500 bg-blue-50'
+                        ? 'border-[#1F3C58] bg-[#F5F5F5]'
                         : 'border-gray-200 hover:border-gray-300'
                     } ${!isPremium ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
                   >
                     {settings.hero_layout === layout.value && (
-                      <div className="absolute top-2 right-2 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                      <div className="absolute top-2 right-2 w-6 h-6 bg-[#F5F5F5]0 rounded-full flex items-center justify-center">
                         <Check className="w-4 h-4 text-white" />
                       </div>
                     )}
@@ -332,8 +332,8 @@ export function TemplateSettingsForm({
                       )}
                     </div>
 
-                    <h4 className="font-semibold text-gray-900">{layout.label}</h4>
-                    <p className="text-sm text-gray-500">{layout.description}</p>
+                    <h4 className="font-semibold text-[#0B0B0B]">{layout.label}</h4>
+                    <p className="text-sm text-[#6B7280]">{layout.description}</p>
                   </button>
                 ))}
               </div>
@@ -348,7 +348,7 @@ export function TemplateSettingsForm({
                       disabled={!isPremium}
                       className={`p-3 rounded-lg border-2 text-center transition-all ${
                         settings.template_style === style.value
-                          ? 'border-blue-500 bg-blue-50'
+                          ? 'border-[#1F3C58] bg-[#F5F5F5]'
                           : 'border-gray-200 hover:border-gray-300'
                       } ${!isPremium ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
                     >
@@ -381,13 +381,13 @@ export function TemplateSettingsForm({
                       disabled={!isPremium}
                       className={`p-4 rounded-lg border-2 text-left transition-all ${
                         settings.font_family === font.value
-                          ? 'border-blue-500 bg-blue-50'
+                          ? 'border-[#1F3C58] bg-[#F5F5F5]'
                           : 'border-gray-200 hover:border-gray-300'
                       } ${!isPremium ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
                       style={{ fontFamily: font.value }}
                     >
                       <span className="text-lg font-semibold">{font.label}</span>
-                      <p className="text-sm text-gray-500 mt-1" style={{ fontFamily: font.value }}>
+                      <p className="text-sm text-[#6B7280] mt-1" style={{ fontFamily: font.value }}>
                         The quick brown fox jumps over the lazy dog
                       </p>
                     </button>
@@ -405,7 +405,7 @@ export function TemplateSettingsForm({
                     onChange={(e) => updateSetting('custom_tagline', e.target.value)}
                     disabled={!isPremium}
                   />
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-[#6B7280]">
                     Displays below your business name on the profile
                   </p>
                 </div>
@@ -419,7 +419,7 @@ export function TemplateSettingsForm({
                     onChange={(e) => updateSetting('custom_cta_text', e.target.value)}
                     disabled={!isPremium}
                   />
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-[#6B7280]">
                     Text shown on your main contact button
                   </p>
                 </div>
@@ -438,12 +438,12 @@ export function TemplateSettingsForm({
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+              <div className="flex items-center justify-between p-4 bg-[#F5F5F5] rounded-lg">
                 <div>
                   <Label htmlFor="show_testimonials" className="font-medium">
                     Show Reviews/Testimonials
                   </Label>
-                  <p className="text-sm text-gray-500">Display customer reviews on your profile</p>
+                  <p className="text-sm text-[#6B7280]">Display customer reviews on your profile</p>
                 </div>
                 <Switch
                   id="show_testimonials"
@@ -453,12 +453,12 @@ export function TemplateSettingsForm({
                 />
               </div>
 
-              <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+              <div className="flex items-center justify-between p-4 bg-[#F5F5F5] rounded-lg">
                 <div>
                   <Label htmlFor="show_service_areas" className="font-medium">
                     Show Service Areas
                   </Label>
-                  <p className="text-sm text-gray-500">Display the areas you serve</p>
+                  <p className="text-sm text-[#6B7280]">Display the areas you serve</p>
                 </div>
                 <Switch
                   id="show_service_areas"
@@ -468,12 +468,12 @@ export function TemplateSettingsForm({
                 />
               </div>
 
-              <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+              <div className="flex items-center justify-between p-4 bg-[#F5F5F5] rounded-lg">
                 <div>
                   <Label htmlFor="show_credentials" className="font-medium">
                     Show Credentials
                   </Label>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-[#6B7280]">
                     Display license number, insurance status, years in business
                   </p>
                 </div>

@@ -53,11 +53,11 @@ const faqs = [
 
 export default function FAQPage() {
   return (
-    <div className="min-h-screen bg-slate-50">
-      <div className="bg-slate-900 text-white py-16">
+    <div className="min-h-screen bg-[#F5F5F5]">
+      <div className="bg-[#0B0B0B] text-white py-16">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h1>
-          <p className="text-slate-300 text-lg">Everything you need to know about Houston Texas Pro.</p>
+          <p className="text-gray-300 text-lg">Everything you need to know about Houston Texas Pro.</p>
         </div>
       </div>
 
@@ -65,14 +65,14 @@ export default function FAQPage() {
         <div className="space-y-6">
           {faqs.map((faq, index) => (
             <div key={index} className="bg-white rounded-lg border p-6">
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">{faq.question}</h3>
-              <p className="text-slate-600 leading-relaxed">{faq.answer}</p>
+              <h3 className="text-lg font-semibold text-[#0B0B0B] mb-2">{faq.question}</h3>
+              <p className="text-[#374151] leading-relaxed">{faq.answer}</p>
             </div>
           ))}
         </div>
 
         <div className="mt-16 text-center">
-          <p className="text-slate-600 mb-4">Still have questions?</p>
+          <p className="text-[#374151] mb-4">Still have questions?</p>
           <Button asChild>
             <Link href="/contact">
               Contact Us <ArrowRight className="ml-2 h-4 w-4" />

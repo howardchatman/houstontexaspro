@@ -55,7 +55,7 @@ export function ContractorCard({ contractor }: ContractorCardProps) {
                 className="w-full h-full object-cover"
               />
             ) : (
-              <span className="text-2xl font-bold text-blue-900">
+              <span className="text-2xl font-bold text-[#0B0B0B]">
                 {contractor.business_name.charAt(0)}
               </span>
             )}
@@ -79,7 +79,7 @@ export function ContractorCard({ contractor }: ContractorCardProps) {
       <CardContent className="pt-10 pb-4">
         {/* Business Name */}
         <Link href={`/contractors/${contractor.slug}`}>
-          <h3 className="font-semibold text-lg text-gray-900 hover:text-blue-900 transition-colors">
+          <h3 className="font-semibold text-lg text-[#0B0B0B] hover:text-[#0B0B0B] transition-colors">
             {contractor.business_name}
           </h3>
         </Link>
@@ -87,13 +87,13 @@ export function ContractorCard({ contractor }: ContractorCardProps) {
         {/* Rating */}
         <div className="flex items-center gap-2 mt-1">
           {renderStars(contractor.avg_rating)}
-          <span className="text-sm text-gray-600">
+          <span className="text-sm text-[#374151]">
             {contractor.avg_rating.toFixed(1)} ({contractor.review_count} reviews)
           </span>
         </div>
 
         {/* Location */}
-        <div className="flex items-center gap-1 mt-2 text-sm text-gray-500">
+        <div className="flex items-center gap-1 mt-2 text-sm text-[#6B7280]">
           <MapPin className="h-4 w-4" />
           <span>{contractor.city}, TX</span>
         </div>
@@ -116,7 +116,7 @@ export function ContractorCard({ contractor }: ContractorCardProps) {
 
         {/* Description Preview */}
         {contractor.description && (
-          <p className="mt-3 text-sm text-gray-600 line-clamp-2">
+          <p className="mt-3 text-sm text-[#374151] line-clamp-2">
             {contractor.description}
           </p>
         )}

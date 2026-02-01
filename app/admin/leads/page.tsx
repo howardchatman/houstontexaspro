@@ -12,8 +12,8 @@ export default async function AdminLeadsPage() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Leads</h1>
-        <p className="text-gray-500 mt-1">
+        <h1 className="text-2xl font-bold text-[#0B0B0B]">Leads</h1>
+        <p className="text-[#6B7280] mt-1">
           All lead submissions across the platform. {leads?.length ?? 0} total.
         </p>
       </div>

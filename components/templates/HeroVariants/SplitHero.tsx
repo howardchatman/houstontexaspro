@@ -13,7 +13,7 @@ interface SplitHeroProps {
 
 export function SplitHero({ contractor, customTagline, ctaText = 'Get a Free Quote', onCtaClick }: SplitHeroProps) {
   return (
-    <div className="bg-gray-50">
+    <div className="bg-[#F5F5F5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left: Business Info */}
@@ -32,17 +32,17 @@ export function SplitHero({ contractor, customTagline, ctaText = 'Get a Free Quo
               )}
             </div>
 
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0B0B0B] mb-4">
               {contractor.business_name}
             </h1>
 
             {customTagline && (
-              <p className="text-lg md:text-xl text-gray-600 mb-6">
+              <p className="text-lg md:text-xl text-[#374151] mb-6">
                 {customTagline}
               </p>
             )}
 
-            <div className="flex flex-wrap items-center gap-4 text-gray-600 mb-6">
+            <div className="flex flex-wrap items-center gap-4 text-[#374151] mb-6">
               <div className="flex items-center gap-1">
                 <MapPin className="w-5 h-5 text-[var(--template-primary)]" />
                 <span>{contractor.city}, TX</span>
@@ -51,7 +51,7 @@ export function SplitHero({ contractor, customTagline, ctaText = 'Get a Free Quo
               {contractor.review_count > 0 && (
                 <div className="flex items-center gap-1">
                   <Star className="w-5 h-5 fill-[var(--template-accent)] text-[var(--template-accent)]" />
-                  <span className="font-semibold text-gray-900">{contractor.avg_rating.toFixed(1)}</span>
+                  <span className="font-semibold text-[#0B0B0B]">{contractor.avg_rating.toFixed(1)}</span>
                   <span>({contractor.review_count} reviews)</span>
                 </div>
               )}

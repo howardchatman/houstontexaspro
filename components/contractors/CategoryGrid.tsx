@@ -147,13 +147,13 @@ export function CategoryGrid({ limit, showAll = false }: CategoryGridProps) {
 
       {!showAll && limit && CONTRACTOR_CATEGORIES.length > limit && (
         <Link href="/categories">
-          <div className="relative overflow-hidden rounded-2xl group cursor-pointer aspect-4/3 bg-slate-100">
+          <div className="relative overflow-hidden rounded-2xl group cursor-pointer aspect-4/3 bg-gray-100">
             <div className="absolute inset-0 flex flex-col items-center justify-center p-6 group-hover:bg-slate-200 transition-colors">
-              <LayoutGrid className="h-8 w-8 text-slate-400 mb-3" />
-              <h3 className="text-lg font-semibold text-slate-600">
+              <LayoutGrid className="h-8 w-8 text-[#9CA3AF] mb-3" />
+              <h3 className="text-lg font-semibold text-[#374151]">
                 View All
               </h3>
-              <p className="text-sm text-slate-400 mt-1">
+              <p className="text-sm text-[#9CA3AF] mt-1">
                 {CONTRACTOR_CATEGORIES.length - limit}+ more services
               </p>
             </div>

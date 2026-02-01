@@ -18,10 +18,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import type { Lead, LeadStatus } from '@/types'
 
 const statusColors: Record<LeadStatus, string> = {
-  new: 'bg-blue-500',
+  new: 'bg-[#F5F5F5]0',
   contacted: 'bg-yellow-500',
   converted: 'bg-green-500',
-  closed: 'bg-gray-500',
+  closed: 'bg-[#F5F5F5]0',
 }
 
 const statusIcons: Record<LeadStatus, typeof Clock> = {
@@ -91,7 +91,7 @@ export default function LeadsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-900" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0B0B0B]" />
       </div>
     )
   }
@@ -99,8 +99,8 @@ export default function LeadsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Leads</h1>
-        <p className="text-gray-500">Manage your customer inquiries</p>
+        <h1 className="text-2xl font-bold text-[#0B0B0B]">Leads</h1>
+        <p className="text-[#6B7280]">Manage your customer inquiries</p>
       </div>
 
       <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as LeadStatus | 'all')}>
@@ -143,11 +143,11 @@ export default function LeadsPage() {
                             )}
                           </div>
 
-                          <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-3">
+                          <div className="flex flex-wrap gap-4 text-sm text-[#6B7280] mb-3">
                             {lead.phone && (
                               <a
                                 href={`tel:${lead.phone}`}
-                                className="flex items-center gap-1 hover:text-blue-600"
+                                className="flex items-center gap-1 hover:text-[#1F3C58]"
                               >
                                 <Phone className="h-4 w-4" />
                                 {lead.phone}
@@ -156,7 +156,7 @@ export default function LeadsPage() {
                             {lead.email && (
                               <a
                                 href={`mailto:${lead.email}`}
-                                className="flex items-center gap-1 hover:text-blue-600"
+                                className="flex items-center gap-1 hover:text-[#1F3C58]"
                               >
                                 <Mail className="h-4 w-4" />
                                 {lead.email}
@@ -169,17 +169,17 @@ export default function LeadsPage() {
                           </div>
 
                           {lead.message && (
-                            <div className="bg-gray-50 p-3 rounded-lg mb-3">
-                              <p className="text-sm text-gray-700">{lead.message}</p>
+                            <div className="bg-[#F5F5F5] p-3 rounded-lg mb-3">
+                              <p className="text-sm text-[#374151]">{lead.message}</p>
                             </div>
                           )}
 
                           {lead.call_transcript && (
-                            <div className="bg-blue-50 p-3 rounded-lg mb-3">
-                              <p className="text-xs font-medium text-blue-800 mb-1">
+                            <div className="bg-[#F5F5F5] p-3 rounded-lg mb-3">
+                              <p className="text-xs font-medium text-[#1F3C58] mb-1">
                                 Call Transcript
                               </p>
-                              <p className="text-sm text-blue-700">
+                              <p className="text-sm text-[#1F3C58]">
                                 {lead.call_transcript}
                               </p>
                             </div>
@@ -242,10 +242,10 @@ export default function LeadsPage() {
             <Card>
               <CardContent className="py-12 text-center">
                 <MessageSquare className="h-12 w-12 mx-auto mb-4 text-gray-300" />
-                <h3 className="text-lg font-medium text-gray-700 mb-2">
+                <h3 className="text-lg font-medium text-[#374151] mb-2">
                   No {activeTab !== 'all' ? activeTab : ''} leads
                 </h3>
-                <p className="text-gray-500">
+                <p className="text-[#6B7280]">
                   {activeTab === 'all'
                     ? 'Leads will appear here when customers contact you'
                     : `No leads with "${activeTab}" status`}

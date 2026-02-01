@@ -160,7 +160,7 @@ export default function ProfilePage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-900" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0B0B0B]" />
       </div>
     )
   }
@@ -168,8 +168,8 @@ export default function ProfilePage() {
   return (
     <div className="max-w-4xl space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Profile Settings</h1>
-        <p className="text-gray-500">Manage your business information</p>
+        <h1 className="text-2xl font-bold text-[#0B0B0B]">Profile Settings</h1>
+        <p className="text-[#6B7280]">Manage your business information</p>
       </div>
 
       {success && (
@@ -352,7 +352,7 @@ export default function ProfilePage() {
                   onClick={() => toggleCategory(category.slug)}
                   className={`p-3 border rounded-lg cursor-pointer transition-all ${
                     selectedCategories.includes(category.slug)
-                      ? 'border-blue-500 bg-blue-50'
+                      ? 'border-[#1F3C58] bg-[#F5F5F5]'
                       : 'border-gray-200 hover:border-gray-300'
                   }`}
                 >

@@ -41,17 +41,17 @@ export function MinimalHero({ contractor, customTagline }: MinimalHeroProps) {
               )}
             </div>
 
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#0B0B0B] mb-2">
               {contractor.business_name}
             </h1>
 
             {customTagline && (
-              <p className="text-gray-600 mb-3 max-w-2xl">
+              <p className="text-[#374151] mb-3 max-w-2xl">
                 {customTagline}
               </p>
             )}
 
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-gray-500">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-[#6B7280]">
               <div className="flex items-center gap-1">
                 <MapPin className="w-4 h-4 text-[var(--template-primary)]" />
                 <span>{contractor.city}, TX</span>
@@ -60,14 +60,14 @@ export function MinimalHero({ contractor, customTagline }: MinimalHeroProps) {
               {contractor.review_count > 0 && (
                 <div className="flex items-center gap-1">
                   <Star className="w-4 h-4 fill-[var(--template-accent)] text-[var(--template-accent)]" />
-                  <span className="font-semibold text-gray-900">{contractor.avg_rating.toFixed(1)}</span>
+                  <span className="font-semibold text-[#0B0B0B]">{contractor.avg_rating.toFixed(1)}</span>
                   <span>({contractor.review_count} reviews)</span>
                 </div>
               )}
 
               {contractor.years_in_business && (
                 <div className="flex items-center gap-1">
-                  <Calendar className="w-4 h-4 text-gray-400" />
+                  <Calendar className="w-4 h-4 text-[#9CA3AF]" />
                   <span>{contractor.years_in_business}+ years in business</span>
                 </div>
               )}

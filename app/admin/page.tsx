@@ -38,25 +38,25 @@ export default async function AdminOverviewPage() {
       label: 'Total Contractors',
       value: totalContractors ?? 0,
       icon: Building,
-      color: 'bg-blue-100 text-blue-700',
+      color: 'bg-gray-100 text-[#374151]',
     },
     {
       label: 'Total Leads',
       value: totalLeads ?? 0,
       icon: MessageSquare,
-      color: 'bg-green-100 text-green-700',
+      color: 'bg-gray-100 text-[#374151]',
     },
     {
       label: 'Total Users',
       value: totalUsers ?? 0,
       icon: Users,
-      color: 'bg-purple-100 text-purple-700',
+      color: 'bg-gray-100 text-[#374151]',
     },
     {
       label: 'Revenue',
       value: '$--',
       icon: DollarSign,
-      color: 'bg-orange-100 text-orange-700',
+      color: 'bg-gray-100 text-[#374151]',
       badge: 'Coming Soon',
     },
   ]
@@ -64,8 +64,8 @@ export default async function AdminOverviewPage() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
-        <p className="text-gray-500 mt-1">
+        <h1 className="text-2xl font-bold text-[#0B0B0B]">Admin Dashboard</h1>
+        <p className="text-[#6B7280] mt-1">
           Overview of Houston Texas Pro platform.
           {newLeads ? ` ${newLeads} new leads this week.` : ''}
         </p>
@@ -78,8 +78,8 @@ export default async function AdminOverviewPage() {
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-500">{stat.label}</p>
-                  <p className="text-3xl font-bold text-gray-900 mt-1">{stat.value}</p>
+                  <p className="text-sm text-[#6B7280]">{stat.label}</p>
+                  <p className="text-3xl font-bold text-[#0B0B0B] mt-1">{stat.value}</p>
                 </div>
                 <div className={`p-3 rounded-lg ${stat.color}`}>
                   <stat.icon className="h-6 w-6" />
@@ -99,14 +99,14 @@ export default async function AdminOverviewPage() {
         {/* Recent Leads */}
         <Card>
           <CardContent className="p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Recent Leads</h2>
+            <h2 className="text-lg font-semibold text-[#0B0B0B] mb-4">Recent Leads</h2>
             {recentLeads && recentLeads.length > 0 ? (
               <div className="space-y-3">
                 {recentLeads.map((lead: any) => (
                   <div key={lead.id} className="flex items-center justify-between py-2 border-b last:border-0">
                     <div>
-                      <p className="font-medium text-gray-900 text-sm">{lead.name}</p>
-                      <p className="text-xs text-gray-500">
+                      <p className="font-medium text-[#0B0B0B] text-sm">{lead.name}</p>
+                      <p className="text-xs text-[#6B7280]">
                         → {lead.contractors?.business_name || 'Unknown'}
                       </p>
                     </div>
@@ -117,7 +117,7 @@ export default async function AdminOverviewPage() {
                       >
                         {lead.status}
                       </Badge>
-                      <p className="text-xs text-gray-400 mt-1">
+                      <p className="text-xs text-[#9CA3AF] mt-1">
                         {new Date(lead.created_at).toLocaleDateString()}
                       </p>
                     </div>
@@ -125,7 +125,7 @@ export default async function AdminOverviewPage() {
                 ))}
               </div>
             ) : (
-              <p className="text-gray-500 text-sm">No leads yet.</p>
+              <p className="text-[#6B7280] text-sm">No leads yet.</p>
             )}
           </CardContent>
         </Card>
@@ -133,14 +133,14 @@ export default async function AdminOverviewPage() {
         {/* Recent Contractors */}
         <Card>
           <CardContent className="p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Recent Contractors</h2>
+            <h2 className="text-lg font-semibold text-[#0B0B0B] mb-4">Recent Contractors</h2>
             {recentContractors && recentContractors.length > 0 ? (
               <div className="space-y-3">
                 {recentContractors.map((contractor: any) => (
                   <div key={contractor.id} className="flex items-center justify-between py-2 border-b last:border-0">
                     <div>
-                      <p className="font-medium text-gray-900 text-sm">{contractor.business_name}</p>
-                      <p className="text-xs text-gray-500">{contractor.profiles?.email}</p>
+                      <p className="font-medium text-[#0B0B0B] text-sm">{contractor.business_name}</p>
+                      <p className="text-xs text-[#6B7280]">{contractor.profiles?.email}</p>
                     </div>
                     <div className="flex gap-1">
                       {contractor.is_verified && (
@@ -154,7 +154,7 @@ export default async function AdminOverviewPage() {
                 ))}
               </div>
             ) : (
-              <p className="text-gray-500 text-sm">No contractors yet.</p>
+              <p className="text-[#6B7280] text-sm">No contractors yet.</p>
             )}
           </CardContent>
         </Card>

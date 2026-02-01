@@ -74,10 +74,10 @@ export function CallButton({ phone, contractorName, aivaEnabled = false }: CallB
                 variant="outline"
               >
                 <div className="flex items-center gap-2 mb-1">
-                  <PhoneCall className="h-5 w-5 text-blue-600" />
+                  <PhoneCall className="h-5 w-5 text-[#1F3C58]" />
                   <span className="font-semibold">AI-Assisted Call</span>
                 </div>
-                <span className="text-sm text-gray-500 text-left">
+                <span className="text-sm text-[#6B7280] text-left">
                   Our AI assistant will help capture your project details
                   and connect you with {contractorName}
                 </span>
@@ -93,7 +93,7 @@ export function CallButton({ phone, contractorName, aivaEnabled = false }: CallB
                 <Phone className="h-5 w-5 text-green-600" />
                 <span className="font-semibold">Call Directly</span>
               </div>
-              <span className="text-sm text-gray-500 text-left">
+              <span className="text-sm text-[#6B7280] text-left">
                 Call {phone} directly from your phone
               </span>
             </Button>

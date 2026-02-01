@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { LayoutDashboard, Building, MessageSquare, Users, LogOut } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
@@ -27,8 +28,14 @@ export function AdminSidebar() {
     <div className="flex flex-col h-full w-64 bg-white border-r">
       <div className="p-4 border-b">
         <Link href="/admin" className="flex items-center gap-2">
-          <div className="bg-red-900 text-white font-bold px-2 py-1 rounded text-sm">HTP</div>
-          <span className="font-semibold text-gray-900">Admin</span>
+          <Image
+            src="/htp_logos/htp_logo_white_background.png"
+            alt="Houston Texas Pro"
+            width={120}
+            height={36}
+            className="h-8 w-auto"
+          />
+          <span className="font-semibold text-[#0B0B0B]">Admin</span>
         </Link>
       </div>
 
@@ -42,8 +49,8 @@ export function AdminSidebar() {
               className={cn(
                 'flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors',
                 isActive
-                  ? 'bg-red-50 text-red-900'
-                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                  ? 'bg-[#F5F5F5] text-[#0B0B0B]'
+                  : 'text-[#374151] hover:bg-[#F5F5F5] hover:text-[#0B0B0B]'
               )}
             >
               <item.icon className="h-5 w-5" />
@@ -56,14 +63,14 @@ export function AdminSidebar() {
       <div className="p-4 border-t space-y-2">
         <Link
           href="/dashboard"
-          className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+          className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-[#374151] hover:bg-[#F5F5F5] hover:text-[#0B0B0B]"
         >
           <Building className="h-4 w-4" />
           Contractor Dashboard
         </Link>
         <Button
           variant="ghost"
-          className="w-full justify-start text-gray-600 hover:text-gray-900"
+          className="w-full justify-start text-[#374151] hover:text-[#0B0B0B]"
           onClick={handleSignOut}
         >
           <LogOut className="h-4 w-4 mr-2" />
