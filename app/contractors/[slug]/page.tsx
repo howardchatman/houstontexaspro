@@ -83,7 +83,7 @@ export default async function ContractorPage({ params }: PageProps) {
 
   // Template settings
   const template = contractor.contractor_templates
-  const tier: ContractorTier = contractor.tier || 'free'
+  const tier: ContractorTier = contractor.tier || 'starter'
   const heroLayout: HeroLayout = template?.hero_layout || 'full-width'
   const primaryCategory = categories[0]?.slug
   const showServiceAreas = template?.show_service_areas ?? true

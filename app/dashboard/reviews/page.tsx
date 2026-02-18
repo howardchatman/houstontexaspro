@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from 'react'
 import { Star, MessageSquare, Send } from 'lucide-react'
+import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
 import { StarRating } from '@/components/reviews/StarRating'
+import { canRespondToReviews } from '@/lib/tier'
 
 interface Review {
   id: string
@@ -27,6 +29,7 @@ export default function ReviewsPage() {
   const [respondingTo, setRespondingTo] = useState<string | null>(null)
   const [responseText, setResponseText] = useState('')
   const [submitting, setSubmitting] = useState(false)
+  const [tier, setTier] = useState<import('@/types').ContractorTier>('starter')
   const supabase = createClient()
 
   useEffect(() => {
@@ -39,11 +42,13 @@ export default function ReviewsPage() {
 
     const { data: contractor } = await supabase
       .from('contractors')
-      .select('id')
+      .select('id, tier')
       .eq('user_id', user.id)
       .single()
 
     if (!contractor) return
+
+    setTier(contractor.tier || 'starter')
 
     const { data } = await supabase
       .from('reviews')
@@ -206,33 +211,48 @@ export default function ReviewsPage() {
                 {/* Response Form */}
                 {respondingTo === review.id && (
                   <div className="mt-4 p-4 bg-[#F5F5F5] rounded-lg">
-                    <Textarea
-                      placeholder="Write your response..."
-                      value={responseText}
-                      onChange={(e) => setResponseText(e.target.value)}
-                      rows={3}
-                      className="mb-3"
-                    />
-                    <div className="flex gap-2 justify-end">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => {
-                          setRespondingTo(null)
-                          setResponseText('')
-                        }}
-                      >
-                        Cancel
-                      </Button>
-                      <Button
-                        size="sm"
-                        onClick={() => handleRespond(review.id)}
-                        disabled={submitting || !responseText.trim()}
-                      >
-                        <Send className="h-4 w-4 mr-1" />
-                        {submitting ? 'Sending...' : 'Send Response'}
-                      </Button>
-                    </div>
+                    {canRespondToReviews(tier) ? (
+                      <>
+                        <Textarea
+                          placeholder="Write your response..."
+                          value={responseText}
+                          onChange={(e) => setResponseText(e.target.value)}
+                          rows={3}
+                          className="mb-3"
+                        />
+                        <div className="flex gap-2 justify-end">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => {
+                              setRespondingTo(null)
+                              setResponseText('')
+                            }}
+                          >
+                            Cancel
+                          </Button>
+                          <Button
+                            size="sm"
+                            onClick={() => handleRespond(review.id)}
+                            disabled={submitting || !responseText.trim()}
+                          >
+                            <Send className="h-4 w-4 mr-1" />
+                            {submitting ? 'Sending...' : 'Send Response'}
+                          </Button>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="text-center py-4">
+                        <p className="text-[#374151] mb-3">
+                          Upgrade to Responding Pro to reply to customer reviews.
+                        </p>
+                        <Link href="/dashboard/billing">
+                          <Button size="sm">
+                            Upgrade Plan
+                          </Button>
+                        </Link>
+                      </div>
+                    )}
                   </div>
                 )}
               </CardContent>

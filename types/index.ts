@@ -5,8 +5,24 @@ export type LeadSource = 'form' | 'call' | 'aiva'
 export type LeadStatus = 'new' | 'contacted' | 'converted' | 'closed'
 export type ServiceType = 'residential' | 'commercial' | 'both'
 
+// Subscription types
+export type ContractorTier = 'starter' | 'responding_pro' | 'priority_pro'
+export type SubscriptionStatus = 'none' | 'active' | 'past_due' | 'canceled' | 'trialing'
+
+// Pricing constants
+export const PRICING_TIERS = {
+  starter: { name: 'Starter', displayName: 'Starter', price: 0, priceId: null },
+  responding_pro: { name: 'Responding Pro', displayName: 'Responding Pro', price: 149, priceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_RESPONDING_PRO || null },
+  priority_pro: { name: 'Priority Pro', displayName: 'Priority Pro', price: 299, priceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_PRIORITY_PRO || null },
+} as const
+
+export const TIER_LIMITS = {
+  starter: { gallery: 5, leadsPerMonth: 0, canRespondReviews: false, templateCustomization: false, canReceiveLeads: false },
+  responding_pro: { gallery: 25, leadsPerMonth: Infinity, canRespondReviews: true, templateCustomization: true, canReceiveLeads: true },
+  priority_pro: { gallery: Infinity, leadsPerMonth: Infinity, canRespondReviews: true, templateCustomization: true, canReceiveLeads: true },
+} as const
+
 // Premium template types
-export type ContractorTier = 'free' | 'premium'
 export type TemplateStyle = 'modern' | 'classic' | 'bold' | 'minimal'
 export type HeroLayout = 'full-width' | 'split' | 'minimal'
 export type FontFamily = 'Inter' | 'Roboto' | 'Poppins' | 'Playfair Display' | 'Montserrat'
@@ -54,6 +70,13 @@ export interface Contractor {
   avg_rating: number
   review_count: number
   tier: ContractorTier
+  stripe_customer_id: string | null
+  stripe_subscription_id: string | null
+  subscription_status: SubscriptionStatus
+  subscription_period_end: string | null
+  monthly_lead_count: number
+  lead_count_reset_at: string
+  onboarding_completed: boolean
   created_at: string
   updated_at: string
   // Joined data

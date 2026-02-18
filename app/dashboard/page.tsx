@@ -14,6 +14,7 @@ import { createClient } from '@/lib/supabase/server'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { getTierDisplayName, isPaidTier } from '@/lib/tier'
 
 export const metadata = {
   title: 'Dashboard',
@@ -101,13 +102,42 @@ export default async function DashboardPage() {
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-[#0B0B0B]">
-          Welcome back, {contractor.business_name}!
-        </h1>
+        <div className="flex items-center gap-3 mb-2">
+          <h1 className="text-2xl font-bold text-[#0B0B0B]">
+            Welcome back, {contractor.business_name}!
+          </h1>
+          <Badge variant="secondary" className="text-sm">
+            {getTierDisplayName(contractor.tier)}
+          </Badge>
+        </div>
         <p className="text-[#6B7280]">
           Here&apos;s what&apos;s happening with your business
         </p>
       </div>
+
+      {/* Starter tier upgrade banner */}
+      {!isPaidTier(contractor.tier) && (
+        <Card className="border-blue-200 bg-blue-50">
+          <CardContent className="py-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <AlertCircle className="h-5 w-5 text-blue-600" />
+                <div>
+                  <p className="font-medium text-blue-800">
+                    You&apos;re on the Starter plan
+                  </p>
+                  <p className="text-sm text-blue-700">
+                    Upgrade to start receiving routed requests.
+                  </p>
+                </div>
+              </div>
+              <Button size="sm" variant="default" asChild>
+                <Link href="/dashboard/billing">Upgrade Plan</Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Profile completion warning */}
       {(!contractor.description || !contractor.phone) && (

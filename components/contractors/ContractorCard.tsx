@@ -64,14 +64,14 @@ export function ContractorCard({ contractor }: ContractorCardProps) {
 
         {/* Badges */}
         <div className="absolute top-2 right-2 flex gap-1">
-          {contractor.is_verified && (
-            <Badge className="bg-green-500">
-              <CheckCircle className="h-3 w-3 mr-1" />
-              Verified
-            </Badge>
-          )}
           {contractor.is_featured && (
-            <Badge className="bg-yellow-500">Featured</Badge>
+            <Badge className="bg-[#0B0B0B]">Priority</Badge>
+          )}
+          {contractor.is_verified && !contractor.is_featured && (
+            <Badge className="bg-[#1F3C58]">
+              <CheckCircle className="h-3 w-3 mr-1" />
+              Responding Pro
+            </Badge>
           )}
         </div>
       </div>

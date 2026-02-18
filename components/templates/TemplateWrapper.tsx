@@ -53,7 +53,7 @@ export function TemplateWrapper({ children, tier, template, tradeCategory }: Tem
 
   return (
     <div
-      className={`template-wrapper template-${styleClass} ${tier === 'premium' ? 'is-premium' : 'is-free'}`}
+      className={`template-wrapper template-${styleClass} ${tier !== 'starter' ? 'is-premium' : 'is-free'}`}
       style={cssVariables}
     >
       {children}

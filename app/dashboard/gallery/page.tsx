@@ -14,6 +14,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
+import { getGalleryLimit, isPaidTier } from '@/lib/tier'
+import Link from 'next/link'
 
 interface GalleryImage {
   id: string
@@ -28,6 +30,7 @@ export default function GalleryPage() {
   const [loading, setLoading] = useState(true)
   const [uploading, setUploading] = useState(false)
   const [contractorId, setContractorId] = useState('')
+  const [contractorTier, setContractorTier] = useState<import('@/types').ContractorTier>('starter')
   const [showUploadDialog, setShowUploadDialog] = useState(false)
   const [caption, setCaption] = useState('')
   const [projectType, setProjectType] = useState('')
@@ -46,13 +49,14 @@ export default function GalleryPage() {
 
     const { data: contractor } = await supabase
       .from('contractors')
-      .select('id')
+      .select('id, tier')
       .eq('user_id', user.id)
       .single()
 
     if (!contractor) return
 
     setContractorId(contractor.id)
+    setContractorTier(contractor.tier || 'starter')
 
     const { data } = await supabase
       .from('gallery_images')
@@ -67,6 +71,11 @@ export default function GalleryPage() {
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (file) {
+      const galleryLimit = getGalleryLimit(contractorTier)
+      if (galleryLimit !== null && images.length >= galleryLimit) {
+        alert(`Gallery limit reached. You have ${images.length} of ${galleryLimit} photos. Upgrade your plan for more.`)
+        return
+      }
       setSelectedFile(file)
       setPreviewUrl(URL.createObjectURL(file))
       setShowUploadDialog(true)
@@ -159,14 +168,32 @@ export default function GalleryPage() {
     )
   }
 
+  const galleryLimit = getGalleryLimit(contractorTier)
+  const isAtLimit = galleryLimit !== null && images.length >= galleryLimit
+
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-2xl font-bold text-[#0B0B0B]">Photo Gallery</h1>
-          <p className="text-[#6B7280]">Showcase your work to potential customers</p>
+          <p className="text-[#6B7280]">
+            Showcase your work to potential customers
+            {galleryLimit !== null && (
+              <span className="ml-2 text-sm font-medium">
+                ({images.length} of {galleryLimit} photos)
+              </span>
+            )}
+            {galleryLimit === null && images.length > 0 && (
+              <span className="ml-2 text-sm font-medium">
+                ({images.length} photos)
+              </span>
+            )}
+          </p>
         </div>
-        <Button onClick={() => fileInputRef.current?.click()}>
+        <Button
+          onClick={() => fileInputRef.current?.click()}
+          disabled={isAtLimit}
+        >
           <Upload className="h-4 w-4 mr-2" />
           Upload Photo
         </Button>
@@ -178,6 +205,30 @@ export default function GalleryPage() {
           onChange={handleFileSelect}
         />
       </div>
+
+      {/* Gallery limit warning */}
+      {isAtLimit && (
+        <Card className="border-yellow-200 bg-yellow-50">
+          <CardContent className="py-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <ImageIcon className="h-5 w-5 text-yellow-600" />
+                <div>
+                  <p className="font-medium text-yellow-800">
+                    Gallery limit reached
+                  </p>
+                  <p className="text-sm text-yellow-700">
+                    Upgrade your plan for more photos.
+                  </p>
+                </div>
+              </div>
+              <Button size="sm" variant="default" asChild>
+                <Link href="/dashboard/billing">Upgrade Plan</Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {images.length > 0 ? (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

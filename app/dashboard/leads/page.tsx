@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import {
   Phone,
   Mail,
@@ -35,6 +36,7 @@ export default function LeadsPage() {
   const [leads, setLeads] = useState<Lead[]>([])
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState<LeadStatus | 'all'>('all')
+  const [tier, setTier] = useState<import('@/types').ContractorTier>('starter')
   const supabase = createClient()
 
   useEffect(() => {
@@ -47,11 +49,13 @@ export default function LeadsPage() {
 
     const { data: contractor } = await supabase
       .from('contractors')
-      .select('id')
+      .select('id, tier')
       .eq('user_id', user.id)
       .single()
 
     if (!contractor) return
+
+    setTier(contractor.tier || 'starter')
 
     const { data } = await supabase
       .from('leads')
@@ -102,6 +106,21 @@ export default function LeadsPage() {
         <h1 className="text-2xl font-bold text-[#0B0B0B]">Leads</h1>
         <p className="text-[#6B7280]">Manage your customer inquiries</p>
       </div>
+
+      {tier === 'starter' && (
+        <Card className="border-blue-200 bg-blue-50">
+          <CardContent className="py-4">
+            <p className="text-[#1F3C58] font-medium mb-2">
+              Your Starter plan does not include routed requests. Upgrade to Responding Pro to start receiving leads.
+            </p>
+            <Link href="/dashboard/billing">
+              <Button size="sm" className="bg-[#1F3C58] hover:bg-[#152839]">
+                Upgrade to Responding Pro
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
+      )}
 
       <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as LeadStatus | 'all')}>
         <TabsList>

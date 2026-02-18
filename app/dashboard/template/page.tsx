@@ -47,12 +47,12 @@ export default async function TemplateSettingsPage() {
         </p>
       </div>
 
-      {contractor.tier === 'free' ? (
+      {contractor.tier === 'starter' ? (
         <div className="bg-gradient-to-r from-[#1F3C58] to-purple-600 rounded-2xl p-8 text-white mb-8">
-          <h2 className="text-2xl font-bold mb-4">Upgrade to Premium</h2>
+          <h2 className="text-2xl font-bold mb-4">Upgrade to Responding Pro</h2>
           <p className="text-white/90 mb-6 max-w-2xl">
-            Get full customization of your mini-website with custom colors, multiple hero layouts,
-            font choices, and trade-specific templates that help you stand out from the competition.
+            Unlock template customization, routed requests, and your verified badge with Responding Pro.
+
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
             <div className="bg-white/10 rounded-lg p-4">
@@ -81,7 +81,7 @@ export default async function TemplateSettingsPage() {
             </div>
           </div>
           <button className="bg-white text-[#1F3C58] font-semibold px-6 py-3 rounded-lg hover:bg-[#F5F5F5] transition-colors">
-            Upgrade Now - $29/month
+            Start Receiving Requests — $149/month
           </button>
         </div>
       ) : null}
@@ -91,7 +91,7 @@ export default async function TemplateSettingsPage() {
         template={contractor.contractor_templates}
         primaryCategory={primaryCategory}
         tradeTemplates={tradeTemplates || []}
-        isPremium={contractor.tier === 'premium'}
+        isPremium={contractor.tier === 'responding_pro' || contractor.tier === 'priority_pro'}
       />
     </div>
   )

@@ -15,6 +15,20 @@ export async function POST(request: NextRequest) {
 
     const supabase = createAdminClient()
 
+    // Check contractor tier - starter tier cannot receive routed requests
+    const { data: tierCheck } = await supabase
+      .from('contractors')
+      .select('tier')
+      .eq('id', contractor_id)
+      .single()
+
+    if (!tierCheck || tierCheck.tier === 'starter' || tierCheck.tier === 'free') {
+      return NextResponse.json(
+        { error: 'This contractor is not currently accepting routed requests. Please contact them directly.' },
+        { status: 403 }
+      )
+    }
+
     // Insert lead
     const { data: lead, error: insertError } = await supabase
       .from('leads')

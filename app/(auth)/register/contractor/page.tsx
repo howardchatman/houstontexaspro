@@ -215,9 +215,9 @@ export default function ContractorRegisterPage() {
               <strong>Next steps:</strong>
               <ul className="list-disc list-inside mt-2 text-left">
                 <li>Verify your email</li>
-                <li>Sign in to your dashboard</li>
-                <li>Add photos to your gallery</li>
-                <li>Start receiving leads!</li>
+                <li>Sign in and choose your plan</li>
+                <li>Complete your profile</li>
+                <li>Start responding to requests</li>
               </ul>
             </div>
           </CardContent>

@@ -49,6 +49,21 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url)
   }
 
+  // Onboarding redirect for contractors accessing /dashboard
+  if (request.nextUrl.pathname.startsWith('/dashboard') && user && !request.nextUrl.pathname.startsWith('/dashboard/billing')) {
+    const { data: contractor } = await supabase
+      .from('contractors')
+      .select('onboarding_completed')
+      .eq('user_id', user.id)
+      .single()
+
+    if (contractor && contractor.onboarding_completed === false) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/onboarding/plan'
+      return NextResponse.redirect(url)
+    }
+  }
+
   // Admin-specific role check
   if (request.nextUrl.pathname.startsWith('/admin') && user) {
     const { data: profile } = await supabase

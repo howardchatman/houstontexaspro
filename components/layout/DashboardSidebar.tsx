@@ -13,6 +13,7 @@ import {
   LogOut,
   ExternalLink,
   Palette,
+  CreditCard,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
@@ -61,6 +62,11 @@ export function DashboardSidebar({ contractorSlug }: DashboardSidebarProps) {
       name: 'Website Template',
       href: '/dashboard/template',
       icon: Palette,
+    },
+    {
+      name: 'Billing',
+      href: '/dashboard/billing',
+      icon: CreditCard,
     },
   ]
 
