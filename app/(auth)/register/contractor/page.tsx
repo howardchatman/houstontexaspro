@@ -232,9 +232,105 @@ export default function ContractorRegisterPage() {
   }
 
   return (
-    <div className="min-h-screen py-12 bg-[#F5F5F5]">
+    <div className="min-h-screen py-12 bg-[#F5F5F5] relative overflow-hidden">
+      {/* Houston Downtown Skyline */}
+      <div className="absolute bottom-0 left-0 right-0 pointer-events-none select-none">
+        <svg
+          viewBox="0 0 1440 220"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full"
+          preserveAspectRatio="xMidYMax slice"
+          aria-hidden="true"
+        >
+          <defs>
+            <linearGradient id="skylineGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#1F3C58" stopOpacity="0.18" />
+              <stop offset="100%" stopColor="#1F3C58" stopOpacity="0.32" />
+            </linearGradient>
+          </defs>
+          {/* Skyline silhouette path — left to right */}
+          <path
+            d="
+              M0,220
+              L0,185 L40,185 L40,195 L55,195 L55,180 L80,180 L80,175 L95,175
+              L95,165 L115,165 L115,175 L130,175 L130,165 L150,165 L150,190
+              L170,190 L170,158 L185,158 L185,148 L200,148 L200,155 L215,155
+              L215,145 L235,145 L235,190 L250,190 L250,142 L268,142 L268,130
+              L285,130 L285,125 L300,125 L300,138 L318,138 L318,128 L335,128
+              L335,120 L352,120 L352,135 L370,135 L370,115 L390,115 L390,108
+              L412,108 L412,118 L428,118 L428,100 L448,100 L448,110 L465,110
+              L465,95 L485,95 L485,88 L505,88 L505,82 L520,82
+              L520,78 L538,78 L538,85 L550,85 L550,75 L568,75
+              L568,70 L582,70 L582,60 L596,60
+              L596,55 L608,55
+              L608,42
+              L620,42
+              L620,30
+              L630,30
+              L636,18
+              L642,30
+              L652,30
+              L652,42
+              L665,42
+              L665,55 L678,55
+              L678,60 L692,60
+              L692,68 L706,68 L706,60 L720,60
+              L720,65 L735,65 L735,55 L752,55
+              L752,62 L768,62 L768,52 L785,52
+              L785,60 L800,60 L800,68 L815,68
+              L815,58 L832,58 L832,70 L848,70
+              L848,78 L862,78 L862,68 L878,68
+              L878,80 L895,80 L895,88 L912,88
+              L912,82 L928,82 L928,92 L945,92
+              L945,100 L960,100 L960,108 L978,108
+              L978,115 L995,115 L995,108 L1012,108
+              L1012,118 L1028,118 L1028,125 L1045,125
+              L1045,132 L1062,132 L1062,138 L1080,138
+              L1080,145 L1098,145 L1098,152 L1115,152
+              L1115,160 L1132,160 L1132,168 L1150,168
+              L1150,175 L1168,175 L1168,182 L1185,182
+              L1185,188 L1205,188 L1205,192 L1225,192
+              L1225,198 L1250,198 L1250,202 L1275,202
+              L1275,205 L1310,205 L1310,208 L1360,208
+              L1360,212 L1440,212
+              L1440,220
+              Z
+            "
+            fill="url(#skylineGrad)"
+          />
+          {/* JPMorgan Chase Tower triangular crown detail */}
+          <polygon points="620,30 636,8 652,30" fill="#1F3C58" fillOpacity="0.22" />
+          {/* Windows — scattered lit windows on tallest buildings */}
+          {[
+            [596,62],[604,62],[596,70],[604,70],
+            [568,74],[576,74],[568,82],[576,82],
+            [550,80],[558,80],[550,88],
+            [630,35],[638,35],[630,43],[638,43],[630,51],[638,51],
+            [654,35],[662,35],[654,43],[662,43],
+            [706,64],[714,64],[706,72],[714,72],
+            [720,66],[728,66],[720,74],[728,74],
+            [752,58],[760,58],[752,66],[760,66],
+            [768,56],[776,56],[768,64],[776,64],
+            [785,55],[793,55],[785,63],[793,63],
+            [800,63],[808,63],[800,71],
+            [832,62],[840,62],[832,70],[840,70],
+          ].map(([cx, cy], i) => (
+            <rect
+              key={i}
+              x={cx}
+              y={cy}
+              width="5"
+              height="4"
+              fill="#C8A951"
+              fillOpacity="0.55"
+              rx="0.5"
+            />
+          ))}
+        </svg>
+      </div>
+
       <div className="container mx-auto px-4">
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto relative z-10">
           {/* Progress Steps */}
           <div className="flex items-center justify-center mb-8">
             <div className="flex items-center">
@@ -612,3 +708,4 @@ export default function ContractorRegisterPage() {
     </div>
   )
 }
+
