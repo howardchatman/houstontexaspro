@@ -1,0 +1,361 @@
+[
+  {
+    "slug": "best-electrician-houston-panel-upgrade",
+    "question": "Who is the best electrician in Houston for a panel upgrade?",
+    "answer": "The best panel-upgrade electrician is licensed in Texas, pulls permits, and has recent reviews for 150A/200A upgrades in Houston homes. Compare at least 3 local electricians and confirm scope, breaker brand compatibility, and inspection handling.",
+    "bullets": [
+      "Verify Texas license and insurance",
+      "Ask if permit + city inspection are included",
+      "Confirm whole-home load calculation",
+      "Compare warranty terms on labor and parts"
+    ],
+    "faqs": [
+      { "q": "How much does a panel upgrade cost in Houston?", "a": "Most projects land in a broad range based on panel size, service changes, and code work. Get written quotes with permit details." },
+      { "q": "Do I need a permit for a panel upgrade?", "a": "Yes, in most Houston-area jurisdictions electrical service work requires permits and inspections." }
+    ],
+    "category": "electrical",
+    "city": "Houston"
+  },
+  {
+    "slug": "emergency-plumber-houston-burst-pipe",
+    "question": "How do I find an emergency plumber in Houston for a burst pipe?",
+    "answer": "Look for a Houston plumber offering 24/7 emergency response, clear arrival windows, and post-repair water damage guidance. Fast shutoff support and same-day diagnostics matter most during burst-pipe events.",
+    "bullets": [
+      "Shut off water at the main valve first",
+      "Request ETA and emergency trip fee upfront",
+      "Ask if they can handle drywall access and restoration referrals",
+      "Get photos and notes for insurance"
+    ],
+    "faqs": [
+      { "q": "Should I call insurance before the plumber arrives?", "a": "You can start a claim immediately, then document damage and repairs with photos and invoices." }
+    ],
+    "category": "plumbing",
+    "city": "Houston"
+  },
+  {
+    "slug": "ac-not-cooling-houston-what-to-do",
+    "question": "My AC is not cooling in Houston. What should I do first?",
+    "answer": "Start with thermostat settings, air filter condition, and breaker checks. If cooling still fails, contact a licensed Houston HVAC contractor for refrigerant, coil, or compressor diagnostics before heat stress worsens.",
+    "bullets": [
+      "Set thermostat to cool and lower target temp",
+      "Replace clogged filter",
+      "Check indoor/outdoor unit power",
+      "Schedule same-day HVAC service"
+    ],
+    "faqs": [
+      { "q": "Can low refrigerant cause warm air?", "a": "Yes. A leak can reduce cooling performance and requires professional repair and recharge." }
+    ],
+    "category": "hvac",
+    "city": "Houston"
+  },
+  {
+    "slug": "roof-leak-repair-houston-after-storm",
+    "question": "How quickly should I repair a roof leak in Houston after a storm?",
+    "answer": "Repair a roof leak immediately. Even small leaks in Houston humidity can create rapid interior damage and mold risks. Book a roofer for emergency tarping and full inspection as soon as weather allows.",
+    "bullets": [
+      "Document stains, drips, and attic moisture",
+      "Request temporary tarp protection",
+      "Ask about insurance photo reports",
+      "Confirm decking and flashing checks"
+    ],
+    "faqs": [],
+    "category": "roofing",
+    "city": "Houston"
+  },
+  {
+    "slug": "general-contractor-houston-home-addition",
+    "question": "How do I choose a Houston general contractor for a home addition?",
+    "answer": "Choose a Houston general contractor with addition-specific experience, strong references, and a clear milestone payment schedule. Ensure permit management, trade coordination, and timeline transparency are in writing.",
+    "bullets": [
+      "Review similar completed additions",
+      "Check subcontractor management process",
+      "Use detailed scope and allowances",
+      "Tie payments to inspection milestones"
+    ],
+    "faqs": [],
+    "category": "general-contractors",
+    "city": "Houston"
+  },
+  {
+    "slug": "interior-painting-cost-houston",
+    "question": "What affects interior painting cost in Houston homes?",
+    "answer": "Interior painting cost in Houston depends on surface prep, square footage, ceiling height, paint quality, and trim complexity. A written estimate should list coats, prep steps, and cleanup.",
+    "bullets": [
+      "Ask for brand and sheen in writing",
+      "Confirm patching and sanding scope",
+      "Check if moving furniture is included",
+      "Request final walk-through checklist"
+    ],
+    "faqs": [],
+    "category": "painting",
+    "city": "Houston"
+  },
+  {
+    "slug": "best-flooring-for-houston-humidity",
+    "question": "What is the best flooring for Houston humidity?",
+    "answer": "In humid Houston conditions, many homeowners prefer tile or quality LVP for moisture resistance and durability. Product selection should match room use, slab condition, and flood exposure.",
+    "bullets": [
+      "Test slab moisture before install",
+      "Use proper underlayment",
+      "Compare wear layer ratings",
+      "Discuss expansion gaps"
+    ],
+    "faqs": [],
+    "category": "flooring",
+    "city": "Houston"
+  },
+  {
+    "slug": "landscaping-drainage-contractor-houston",
+    "question": "Can a Houston landscaping contractor fix yard drainage issues?",
+    "answer": "Yes. Many Houston landscaping contractors install French drains, regrading, and catch basins to reduce pooling water. A site-specific drainage plan is essential before planting or hardscape work.",
+    "bullets": [
+      "Map low spots after rain",
+      "Review slope and discharge points",
+      "Ask about permit requirements",
+      "Bundle drainage with landscape redesign"
+    ],
+    "faqs": [],
+    "category": "landscaping",
+    "city": "Houston"
+  },
+  {
+    "slug": "concrete-driveway-replacement-houston",
+    "question": "When should I replace a concrete driveway in Houston?",
+    "answer": "Replace a Houston driveway when cracking, settling, and drainage failures become widespread. Spot repairs help temporarily, but structural subgrade issues often require full replacement.",
+    "bullets": [
+      "Check trip hazards and ponding",
+      "Ask about base compaction specs",
+      "Confirm reinforcement type",
+      "Understand cure and seal timelines"
+    ],
+    "faqs": [],
+    "category": "concrete-masonry",
+    "city": "Houston"
+  },
+  {
+    "slug": "fence-installation-permit-houston",
+    "question": "Do I need a permit for fence installation in Houston?",
+    "answer": "Fence permit rules vary by municipality, HOA, and lot type around Houston. Your fencing contractor should verify height, setback, and utility marking requirements before installation.",
+    "bullets": [
+      "Call 811 before digging",
+      "Confirm property line boundaries",
+      "Review HOA material restrictions",
+      "Get gate hardware and warranty details"
+    ],
+    "faqs": [],
+    "category": "fencing",
+    "city": "Houston"
+  },
+  {
+    "slug": "replace-windows-energy-efficiency-houston",
+    "question": "Are replacement windows worth it for Houston energy efficiency?",
+    "answer": "Quality windows can improve comfort and reduce heat gain in Houston. Savings vary by existing window condition, orientation, glazing specs, and installation quality.",
+    "bullets": [
+      "Compare U-factor and SHGC ratings",
+      "Inspect flashing and sealing details",
+      "Ask about labor and glass warranties",
+      "Request room-by-room recommendations"
+    ],
+    "faqs": [],
+    "category": "windows-doors",
+    "city": "Houston"
+  },
+  {
+    "slug": "kitchen-remodel-timeline-houston",
+    "question": "How long does a kitchen remodel take in Houston?",
+    "answer": "Houston kitchen remodel timelines vary by scope, permitting, and material lead times. Cosmetic upgrades can be faster; layout changes with plumbing/electrical moves usually take longer.",
+    "bullets": [
+      "Finalize design before demolition",
+      "Order cabinets and appliances early",
+      "Plan temporary kitchen setup",
+      "Track milestone inspections"
+    ],
+    "faqs": [],
+    "category": "kitchen-remodeling",
+    "city": "Houston"
+  },
+  {
+    "slug": "bathroom-remodel-contractor-houston",
+    "question": "What should I ask a Houston bathroom remodeling contractor?",
+    "answer": "Ask about waterproofing method, ventilation upgrades, tile setting standards, and final punch-list process. Bathroom success depends on moisture control and accurate layout planning.",
+    "bullets": [
+      "Confirm shower pan system",
+      "Review plumbing fixture compatibility",
+      "Ask for tile lippage standards",
+      "Require daily site cleanup"
+    ],
+    "faqs": [],
+    "category": "bathroom-remodeling",
+    "city": "Houston"
+  },
+  {
+    "slug": "foundation-repair-warning-signs-houston",
+    "question": "What are common foundation warning signs in Houston homes?",
+    "answer": "Common Houston signs include interior wall cracks, sticking doors, uneven floors, and exterior brick separation. A professional evaluation helps determine whether movement is seasonal or structural.",
+    "bullets": [
+      "Photograph cracks over time",
+      "Check drainage around slab",
+      "Ask for elevation readings",
+      "Compare repair options and warranties"
+    ],
+    "faqs": [],
+    "category": "foundation-repair",
+    "city": "Houston"
+  },
+  {
+    "slug": "tree-removal-cost-houston",
+    "question": "How is tree removal cost calculated in Houston?",
+    "answer": "Tree removal pricing in Houston depends on tree size, access constraints, proximity to structures, and haul-off needs. Emergency removals after storms can cost more.",
+    "bullets": [
+      "Confirm full debris removal",
+      "Ask about stump grinding",
+      "Verify insurance coverage",
+      "Request traffic and safety plan"
+    ],
+    "faqs": [],
+    "category": "tree-services",
+    "city": "Houston"
+  },
+  {
+    "slug": "pest-control-for-termites-houston",
+    "question": "What is the best termite treatment approach in Houston?",
+    "answer": "The best termite approach combines inspection, targeted treatment, and ongoing monitoring. Houston homes often need annual checks due to climate and soil conditions.",
+    "bullets": [
+      "Schedule full perimeter inspection",
+      "Review bait vs liquid treatment options",
+      "Understand retreatment terms",
+      "Keep inspection records"
+    ],
+    "faqs": [],
+    "category": "pest-control",
+    "city": "Houston"
+  },
+  {
+    "slug": "drywall-repair-after-water-damage-houston",
+    "question": "How soon should drywall be repaired after water damage in Houston?",
+    "answer": "Drywall should be repaired after moisture is fully mitigated and affected cavities are dry. In Houston humidity, delayed drying can increase mold risks.",
+    "bullets": [
+      "Use moisture meter verification",
+      "Replace insulation if saturated",
+      "Prime with stain-blocking sealer",
+      "Match texture before painting"
+    ],
+    "faqs": [],
+    "category": "drywall",
+    "city": "Houston"
+  },
+  {
+    "slug": "garage-door-repair-same-day-houston",
+    "question": "Can I get same-day garage door repair in Houston?",
+    "answer": "Many Houston garage door companies provide same-day service for broken springs, opener failures, and off-track doors. Confirm parts availability and safety checks.",
+    "bullets": [
+      "Do not operate a door with broken spring",
+      "Ask for balance and sensor testing",
+      "Compare spring cycle ratings",
+      "Get labor and part warranties"
+    ],
+    "faqs": [],
+    "category": "garage-doors",
+    "city": "Houston"
+  },
+  {
+    "slug": "siding-repair-vs-replace-houston",
+    "question": "Should I repair or replace siding on a Houston house?",
+    "answer": "Repair may work for isolated damage, but widespread warping, rot, or moisture intrusion can justify full replacement. Houston weather exposure and material age guide the decision.",
+    "bullets": [
+      "Inspect behind damaged panels",
+      "Check flashing at windows and doors",
+      "Ask about moisture barrier condition",
+      "Compare lifecycle costs"
+    ],
+    "faqs": [],
+    "category": "siding",
+    "city": "Houston"
+  },
+  {
+    "slug": "pressure-washing-safe-for-brick-houston",
+    "question": "Is pressure washing safe for brick homes in Houston?",
+    "answer": "Pressure washing can be safe when pressure and nozzle type are matched to masonry condition. Older mortar and soft surfaces may need low-pressure soft washing.",
+    "bullets": [
+      "Test small area first",
+      "Avoid forcing water into joints",
+      "Use appropriate detergents",
+      "Protect landscaping during cleaning"
+    ],
+    "faqs": [],
+    "category": "pressure-washing",
+    "city": "Houston"
+  },
+  {
+    "slug": "masonry-chimney-repair-houston",
+    "question": "When do I need masonry chimney repair in Houston?",
+    "answer": "You may need masonry chimney repair when mortar joints deteriorate, flashing fails, or spalling appears. Early tuckpointing can prevent larger structural work.",
+    "bullets": [
+      "Inspect crown and cap condition",
+      "Check attic for moisture trails",
+      "Ask about compatible mortar mix",
+      "Plan periodic inspections"
+    ],
+    "faqs": [],
+    "category": "concrete-masonry",
+    "city": "Houston"
+  },
+  {
+    "slug": "home-generator-installation-houston-electrician",
+    "question": "Who installs a home standby generator in Houston?",
+    "answer": "Generator installations are typically handled by licensed electricians with gas/plumbing coordination as needed. Choose a Houston contractor who performs load sizing and transfer switch setup.",
+    "bullets": [
+      "Calculate critical circuit load",
+      "Confirm fuel source and permits",
+      "Review maintenance requirements",
+      "Test automatic transfer operation"
+    ],
+    "faqs": [],
+    "category": "electrical",
+    "city": "Houston"
+  },
+  {
+    "slug": "water-heater-replacement-houston",
+    "question": "How do I choose between tank and tankless water heaters in Houston?",
+    "answer": "Tank vs tankless depends on household demand, fuel type, installation constraints, and budget. Houston homeowners should compare total install cost and long-term energy use.",
+    "bullets": [
+      "Measure peak simultaneous usage",
+      "Check venting and gas line needs",
+      "Ask about flush/maintenance plans",
+      "Compare warranty lengths"
+    ],
+    "faqs": [],
+    "category": "plumbing",
+    "city": "Houston"
+  },
+  {
+    "slug": "ductwork-replacement-signs-houston",
+    "question": "What are signs I need ductwork replacement in Houston?",
+    "answer": "Uneven room temperatures, high dust, noisy airflow, and rising energy bills can indicate duct leakage or poor design. A Houston HVAC pro can perform pressure and airflow testing.",
+    "bullets": [
+      "Request duct leakage test",
+      "Inspect insulation in attic ducts",
+      "Seal or redesign before upsizing equipment",
+      "Balance airflow by room"
+    ],
+    "faqs": [],
+    "category": "hvac",
+    "city": "Houston"
+  },
+  {
+    "slug": "storm-damage-contractor-houston-checklist",
+    "question": "What checklist should I use before hiring a storm damage contractor in Houston?",
+    "answer": "Before hiring, verify credentials, document all damage, avoid large upfront payments, and insist on written scope. Storm events in Houston attract both qualified crews and opportunistic contractors.",
+    "bullets": [
+      "Verify local references and insurance",
+      "Get itemized estimate with materials",
+      "Avoid signing over full insurance claim",
+      "Keep all communication in writing"
+    ],
+    "faqs": [
+      { "q": "Should I sign a contingency agreement?", "a": "Read all terms carefully and confirm cancellation rights before signing any storm-related agreement." }
+    ],
+    "category": "general-contractors",
+    "city": "Houston"
+  }
+]

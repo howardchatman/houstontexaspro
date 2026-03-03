@@ -91,6 +91,11 @@ export function Footer() {
                   FAQ
                 </Link>
               </li>
+              <li>
+                <Link href="/qa" className="hover:text-white transition-colors">
+                  Q&A
+                </Link>
+              </li>
             </ul>
 
             <h4 className="text-white font-semibold mt-6 mb-3">Popular Services</h4>
