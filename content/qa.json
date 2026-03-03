@@ -357,5 +357,189 @@
     ],
     "category": "general-contractors",
     "city": "Houston"
+  },
+  {
+    "slug": "ac-repair-cost-houston",
+    "question": "How much does AC repair cost in Houston?",
+    "answer": "AC repair cost in Houston depends on the failed part, refrigerant type, system age, and after-hours service. Ask for a written diagnosis and total price before approving repairs.",
+    "bullets": [
+      "Request trip fee and diagnostic fee upfront",
+      "Ask for itemized parts and labor",
+      "Confirm warranty on replaced components",
+      "Compare repair cost to replacement value"
+    ],
+    "faqs": [
+      { "q": "Is emergency AC service more expensive?", "a": "Usually yes. Nights, weekends, and peak-heat demand often carry higher dispatch rates." }
+    ],
+    "category": "hvac",
+    "city": "Houston"
+  },
+  {
+    "slug": "roof-replacement-cost-houston",
+    "question": "How much does roof replacement cost in Houston?",
+    "answer": "Houston roof replacement pricing varies by roof size, pitch, material, ventilation upgrades, and decking repairs. Request detailed line items for tear-off, underlayment, flashing, and disposal.",
+    "bullets": [
+      "Compare shingle type and wind ratings",
+      "Ask if decking replacement is included",
+      "Verify permit and inspection responsibility",
+      "Get workmanship and material warranties in writing"
+    ],
+    "faqs": [],
+    "category": "roofing",
+    "city": "Houston"
+  },
+  {
+    "slug": "kitchen-remodel-cost-houston",
+    "question": "What is the average kitchen remodel cost in Houston?",
+    "answer": "Kitchen remodel cost in Houston is driven by layout changes, cabinet quality, countertops, appliances, and permit requirements. Fixed allowances and clear change-order rules prevent budget surprises.",
+    "bullets": [
+      "Separate design costs from construction costs",
+      "Confirm electrical and plumbing scope",
+      "Lock appliance specs before ordering",
+      "Tie payments to milestones, not dates"
+    ],
+    "faqs": [],
+    "category": "kitchen-remodeling",
+    "city": "Houston"
+  },
+  {
+    "slug": "bathroom-remodel-cost-houston",
+    "question": "How much does a bathroom remodel cost in Houston?",
+    "answer": "Bathroom remodel cost in Houston depends on shower/tub scope, waterproofing, tile complexity, fixture grade, and plumbing moves. Written scope and moisture-control standards are critical.",
+    "bullets": [
+      "Ask which waterproofing system will be used",
+      "Confirm disposal and cleanup details",
+      "Compare tile labor assumptions",
+      "Review fixture lead times early"
+    ],
+    "faqs": [],
+    "category": "bathroom-remodeling",
+    "city": "Houston"
+  },
+  {
+    "slug": "foundation-repair-cost-houston",
+    "question": "How much does foundation repair cost in Houston?",
+    "answer": "Foundation repair pricing in Houston varies by movement severity, home size, soil conditions, and pier method. Independent elevation readings and drainage recommendations improve quote quality.",
+    "bullets": [
+      "Get before-and-after elevation maps",
+      "Ask how many piers are proposed and why",
+      "Confirm transferable warranty terms",
+      "Include drainage correction in project planning"
+    ],
+    "faqs": [],
+    "category": "foundation-repair",
+    "city": "Houston"
+  },
+  {
+    "slug": "electrical-panel-upgrade-cost-houston",
+    "question": "How much does an electrical panel upgrade cost in Houston?",
+    "answer": "Panel upgrade cost depends on amperage target, service entrance work, grounding updates, and permit complexity. The estimate should clearly separate utility coordination from electrician labor.",
+    "bullets": [
+      "Confirm permit and inspection are included",
+      "Ask if meter base replacement is required",
+      "Verify breaker brand and compatibility",
+      "Request whole-home load calculation"
+    ],
+    "faqs": [],
+    "category": "electrical",
+    "city": "Houston"
+  },
+  {
+    "slug": "drain-cleaning-cost-houston",
+    "question": "How much does drain cleaning cost in Houston?",
+    "answer": "Drain cleaning cost in Houston depends on blockage location, access difficulty, and whether camera inspection is needed. Sewer-line issues can require separate repair pricing.",
+    "bullets": [
+      "Ask whether camera scope is included",
+      "Confirm warranty on cleared line",
+      "Check if hydro jetting is recommended",
+      "Get total price before work starts"
+    ],
+    "faqs": [],
+    "category": "plumbing",
+    "city": "Houston"
+  },
+  {
+    "slug": "fence-installation-cost-houston",
+    "question": "How much does fence installation cost per foot in Houston?",
+    "answer": "Fence pricing per foot in Houston varies by material, height, gate count, slope, and old fence removal. Detailed bids should list post depth, picket style, and hardware quality.",
+    "bullets": [
+      "Verify utility locate before digging",
+      "Compare cedar vs treated pine specs",
+      "Confirm gate framing and latch type",
+      "Request post and workmanship warranty"
+    ],
+    "faqs": [],
+    "category": "fencing",
+    "city": "Houston"
+  },
+  {
+    "slug": "termite-treatment-cost-houston",
+    "question": "How much does termite treatment cost in Houston?",
+    "answer": "Termite treatment pricing varies by infestation severity, method, and home footprint. Compare one-time treatment plans versus annual monitoring agreements for long-term protection.",
+    "bullets": [
+      "Request full inspection report with diagrams",
+      "Compare liquid barrier and bait systems",
+      "Understand retreatment and damage guarantees",
+      "Schedule annual follow-up inspections"
+    ],
+    "faqs": [],
+    "category": "pest-control",
+    "city": "Houston"
+  },
+  {
+    "slug": "tree-removal-emergency-after-storm-houston",
+    "question": "Who handles emergency tree removal in Houston after storms?",
+    "answer": "Emergency tree removal is handled by insured tree-service crews that can secure hazardous limbs, protect structures, and coordinate full debris haul-off. Prioritize safety and documented damage photos.",
+    "bullets": [
+      "Ask for proof of liability and workers comp",
+      "Confirm crane needs and access plan",
+      "Get written emergency stabilization scope",
+      "Save photos and invoices for insurance"
+    ],
+    "faqs": [],
+    "category": "tree-services",
+    "city": "Houston"
+  },
+  {
+    "slug": "generator-installation-cost-houston",
+    "question": "How much does standby generator installation cost in Houston?",
+    "answer": "Generator installation cost depends on unit size, fuel source, transfer switch setup, pad work, and permit requirements. Load calculations should determine generator size before quoting.",
+    "bullets": [
+      "List critical circuits to power",
+      "Confirm natural gas or propane requirements",
+      "Include startup testing and owner walkthrough",
+      "Review annual maintenance plan costs"
+    ],
+    "faqs": [],
+    "category": "electrical",
+    "city": "Houston"
+  },
+  {
+    "slug": "replace-or-repair-hvac-houston",
+    "question": "Should I repair or replace my HVAC system in Houston?",
+    "answer": "Repair-vs-replace depends on system age, efficiency loss, repair frequency, and refrigerant type. Compare annual operating cost, comfort performance, and warranty coverage before deciding.",
+    "bullets": [
+      "Review past 24 months of repair history",
+      "Check SEER rating and energy bills",
+      "Ask about duct leakage before replacement",
+      "Compare financing and warranty options"
+    ],
+    "faqs": [],
+    "category": "hvac",
+    "city": "Houston"
+  },
+  {
+    "slug": "water-damage-contractor-houston-first-steps",
+    "question": "What should I do first after water damage in a Houston home?",
+    "answer": "First, stop the water source and document damage thoroughly. Then contact qualified restoration and repair contractors to dry affected areas quickly and prevent mold growth in Houston humidity.",
+    "bullets": [
+      "Shut off water and power in affected zones",
+      "Take timestamped photos and videos",
+      "Start insurance claim with documentation",
+      "Use moisture verification before rebuild"
+    ],
+    "faqs": [],
+    "category": "general-contractors",
+    "city": "Houston"
   }
 ]
