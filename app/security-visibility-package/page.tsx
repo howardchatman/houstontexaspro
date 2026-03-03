@@ -33,21 +33,6 @@ export default function SecurityVisibilityPackagePage() {
         </div>
       </section>
 
-      <section className="py-10 bg-[#F5F5F5]">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="overflow-hidden rounded-xl border border-[#D1D5DB] bg-white">
-            <Image
-              src="/htpdeal.png"
-              alt="Houston visibility package deal graphic for low voltage and security contractors"
-              width={2048}
-              height={1358}
-              className="h-auto w-full"
-              priority
-            />
-          </div>
-        </div>
-      </section>
-
       <section className="py-16">
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="text-3xl font-bold text-[#0B0B0B]">The Problem</h2>
@@ -123,6 +108,18 @@ export default function SecurityVisibilityPackagePage() {
       </section>
 
       <section className="py-10">
+        <div className="container mx-auto px-4 max-w-6xl mb-8">
+          <div className="overflow-hidden rounded-xl border border-[#D1D5DB] bg-white">
+            <Image
+              src="/htpdeal.png"
+              alt="Houston visibility package deal graphic for low voltage and security contractors"
+              width={2048}
+              height={1358}
+              className="h-auto w-full"
+              priority
+            />
+          </div>
+        </div>
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="rounded-xl border border-[#E5E7EB] bg-white p-6">
             <h3 className="text-xl font-semibold text-[#0B0B0B]">What do you need done?</h3>
