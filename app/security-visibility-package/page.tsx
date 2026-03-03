@@ -70,6 +70,7 @@ export default function SecurityVisibilityPackagePage() {
             <li>Houston category placement</li>
             <li>Backlink to your contractor website</li>
             <li>&quot;Houston Verified Contractor&quot; badge</li>
+            <li>Free website, to help generate leads</li>
             <li>Quarterly visibility review</li>
             <li>Month-to-month, no contract</li>
           </ul>
