@@ -1,0 +1,1 @@
+# SEO QA Pages — Prompts
