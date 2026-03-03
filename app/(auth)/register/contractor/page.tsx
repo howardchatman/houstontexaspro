@@ -20,6 +20,7 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { Turnstile } from '@marsidev/react-turnstile'
 import { createClient } from '@/lib/supabase/client'
 import { CONTRACTOR_CATEGORIES, HOUSTON_AREAS } from '@/types'
 
@@ -52,6 +53,7 @@ export default function ContractorRegisterPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
+  const [captchaToken, setCaptchaToken] = useState('')
 
   const supabase = createClient()
 
@@ -103,9 +105,8 @@ export default function ContractorRegisterPage() {
         email,
         password,
         options: {
-          data: {
-            full_name: fullName,
-          },
+          data: { full_name: fullName },
+          captchaToken,
         },
       })
 
@@ -681,6 +682,13 @@ export default function ContractorRegisterPage() {
                       </div>
                     </div>
                   )}
+
+                  <Turnstile
+                    siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                    onSuccess={setCaptchaToken}
+                    onExpire={() => setCaptchaToken('')}
+                    onError={() => setCaptchaToken('')}
+                  />
                 </CardContent>
 
                 <CardFooter className="flex gap-4">
@@ -695,7 +703,7 @@ export default function ContractorRegisterPage() {
                   <Button
                     type="submit"
                     className="flex-1"
-                    disabled={loading || selectedCategories.length === 0}
+                    disabled={loading || selectedCategories.length === 0 || !captchaToken}
                   >
                     {loading ? 'Creating Account...' : 'Complete Registration'}
                   </Button>
