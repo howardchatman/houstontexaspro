@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { CategoryGrid } from '@/components/contractors/CategoryGrid'
@@ -82,6 +83,43 @@ export default function HomePage() {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
+          </div>
+
+          <div className="mt-16">
+            <div className="mb-5 flex items-center justify-between gap-4">
+              <h3 className="text-2xl md:text-3xl font-bold text-[#0B0B0B]">
+                Houston Low Voltage &amp; Security Visibility Package
+              </h3>
+              <Button className="hidden sm:inline-flex" asChild>
+                <Link href="/security-visibility-package">
+                  View $199 Deal
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+
+            <Link
+              href="/security-visibility-package"
+              className="block overflow-hidden rounded-xl border border-[#D1D5DB] bg-white"
+              aria-label="Open Houston low voltage and security visibility package"
+            >
+              <Image
+                src="/htpdeal.png"
+                alt="Houston low voltage and security contractor visibility package $199 per month"
+                width={2048}
+                height={1358}
+                className="h-auto w-full"
+              />
+            </Link>
+
+            <div className="mt-5 sm:hidden">
+              <Button className="w-full" asChild>
+                <Link href="/security-visibility-package">
+                  View $199 Deal
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
