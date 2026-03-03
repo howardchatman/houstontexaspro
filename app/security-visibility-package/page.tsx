@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 
 export const metadata: Metadata = {
@@ -28,6 +29,21 @@ export default function SecurityVisibilityPackagePage() {
             <Button size="lg" className="bg-white text-[#0B0B0B] hover:bg-white/90" asChild>
               <Link href="/contact?package=security-visibility">Request Visibility Check</Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-10 bg-[#F5F5F5]">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="overflow-hidden rounded-xl border border-[#D1D5DB] bg-white">
+            <Image
+              src="/htpdeal.png"
+              alt="Houston visibility package deal graphic for low voltage and security contractors"
+              width={2048}
+              height={1358}
+              className="h-auto w-full"
+              priority
+            />
           </div>
         </div>
       </section>
