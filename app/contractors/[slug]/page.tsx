@@ -23,7 +23,26 @@ import { CallButton } from '@/components/leads/CallButton'
 import { StarRating } from '@/components/reviews/StarRating'
 import { TemplateWrapper } from '@/components/templates/TemplateWrapper'
 import { FullWidthHero, SplitHero, MinimalHero } from '@/components/templates/HeroVariants'
-import { ContractorTier, HeroLayout } from '@/types'
+import { CONTRACTOR_CATEGORIES, ContractorTier, HeroLayout } from '@/types'
+
+
+const PLACEHOLDER_CATEGORY_SLUGS = new Set([
+  'bathroom-remodeling',
+  'foundation-repair',
+  'tree-services',
+  'pest-control',
+  'drywall',
+  'garage-doors',
+  'siding',
+  'pressure-washing',
+])
+
+function formatCategoryTitle(slug: string) {
+  return slug
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -31,6 +50,15 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
+
+  if (CONTRACTOR_CATEGORIES.some((category) => category.slug === slug) || PLACEHOLDER_CATEGORY_SLUGS.has(slug)) {
+    const title = formatCategoryTitle(slug)
+    return {
+      title: `${title} Contractors in Houston, TX`,
+      description: `Browse ${title.toLowerCase()} contractors in Houston and compare service options.`,
+    }
+  }
+
   const supabase = await createClient()
   const { data: contractor } = await supabase
     .from('contractors')
@@ -72,6 +100,23 @@ export default async function ContractorPage({ params }: PageProps) {
     .single()
 
   if (error || !contractor) {
+    if (CONTRACTOR_CATEGORIES.some((category) => category.slug === slug) || PLACEHOLDER_CATEGORY_SLUGS.has(slug)) {
+      const categoryName = formatCategoryTitle(slug)
+
+      return (
+        <div className="container mx-auto px-4 py-12"> 
+          <h1 className="text-3xl font-bold text-[#111827]">{categoryName} Contractors in Houston</h1>
+          <p className="mt-3 max-w-2xl text-[#374151]"> 
+            This category page is coming soon. In the meantime, browse all contractors or explore currently published service categories.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3"> 
+            <Link href="/contractors" className="rounded-md bg-[#1D4ED8] px-4 py-2 text-sm font-medium text-white hover:bg-[#1E40AF]">Browse all contractors</Link>
+            <Link href="/categories" className="rounded-md border border-[#D1D5DB] px-4 py-2 text-sm font-medium text-[#1F2937] hover:bg-[#F9FAFB]">View service categories</Link>
+          </div>
+        </div>
+      )
+    }
+
     notFound()
   }
 

@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:chatmanconcierge.com)",
+      "Bash(npm run build:*)",
+      "Bash(npx next build:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nModernize homepage with spacious layout and updated categories\n\n- Redesign homepage: full-viewport hero, simplified to 3 clean sections\n- Update CategoryGrid with larger aspect-ratio cards and better images\n- Add new categories: Cleaning, Real Estate, Insurance, Moving, Appliance Repair, Locksmith, Pressure Washing, Tree Services\n- Replace Gutters category with higher-demand services\n- Fix Supabase middleware to handle missing env vars gracefully\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push)",
+      "Bash(git commit:*)",
+      "Bash(npm install:*)",
+      "Bash(git fetch:*)",
+      "Bash(git push:*)",
+      "Bash(npx tsc:*)",
+      "Bash(find \"c:/Users/howar/houston_texas_pro/houstontexaspro/app/\\(auth\\)\" -type f -name \"*.tsx\" -o -name \"*.ts\")"
+    ]
+  }
+}
