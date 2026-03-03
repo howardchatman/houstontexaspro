@@ -1,30 +1,41 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { updateSession } from '@/lib/supabase/middleware'
 
-// The root domain for your app — set NEXT_PUBLIC_ROOT_DOMAIN in your env
-// e.g. "houstontexaspro.com"
+// ─── Config ───────────────────────────────────────────────────────────────────
+
 const ROOT_DOMAIN = process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'houstontexaspro.com'
 
+/** API paths that must never be blocked (e.g. Stripe webhooks, CAPTCHA callbacks) */
+const API_ALLOW_LIST = [
+  '/api/stripe/webhook',
+]
+
+/** UA substrings that indicate automated/bot traffic */
+const BOT_UA_PATTERNS = [
+  /bot/i, /crawler/i, /spider/i, /scrapy/i,
+  /python-requests/i, /curl\//i, /wget\//i,
+  /go-http-client/i, /java\//i, /ruby/i,
+  /perl\//i, /php\//i, /libwww/i,
+]
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
 /**
- * Returns the contractor slug if the request is coming from a subdomain,
- * or null if it's the main domain / Vercel preview / localhost.
+ * Returns the contractor slug if the request comes from a subdomain,
+ * or null for the main domain / Vercel preview / localhost root.
  */
 function getContractorSlug(request: NextRequest): string | null {
-  const host = (request.headers.get('host') || '').split(':')[0] // strip port
+  const host = (request.headers.get('host') || '').split(':')[0]
 
-  // Vercel preview deployments — not subdomains
   if (host.endsWith('.vercel.app')) return null
-
-  // Main domain and www
   if (host === ROOT_DOMAIN || host === `www.${ROOT_DOMAIN}`) return null
 
-  // Subdomain of the root domain: e.g. johnsplumbing.houstontexaspro.com
   if (host.endsWith(`.${ROOT_DOMAIN}`)) {
     const subdomain = host.slice(0, host.length - ROOT_DOMAIN.length - 1)
     if (subdomain && subdomain !== 'www') return subdomain
   }
 
-  // Local development: johnsplumbing.localhost
+  // Local dev: johnsplumbing.localhost
   if (host.endsWith('.localhost')) {
     const subdomain = host.slice(0, host.length - '.localhost'.length)
     if (subdomain) return subdomain
@@ -33,29 +44,44 @@ function getContractorSlug(request: NextRequest): string | null {
   return null
 }
 
-export async function middleware(request: NextRequest) {
-  const slug = getContractorSlug(request)
+/**
+ * Returns true if the request looks like bot traffic targeting an API route.
+ * Webhook / allow-listed paths are always passed through.
+ */
+function isSuspiciousApiRequest(request: NextRequest): boolean {
+  const { pathname } = request.nextUrl
+  if (!pathname.startsWith('/api/')) return false
+  if (API_ALLOW_LIST.some((p) => pathname.startsWith(p))) return false
 
+  const ua = request.headers.get('user-agent') || ''
+  if (!ua.trim()) return true                          // empty UA → block
+  if (BOT_UA_PATTERNS.some((re) => re.test(ua))) return true
+
+  return false
+}
+
+// ─── Middleware ────────────────────────────────────────────────────────────────
+
+export async function middleware(request: NextRequest) {
+  // 1. Contractor subdomain → internal rewrite
+  const slug = getContractorSlug(request)
   if (slug) {
-    // Rewrite internally to /contractors/[slug] — URL stays clean for the visitor
     const url = request.nextUrl.clone()
     url.pathname = `/contractors/${slug}`
     return NextResponse.rewrite(url)
   }
 
-  // Normal request — run Supabase session refresh + auth guards
+  // 2. Block obvious bot traffic on API routes
+  if (isSuspiciousApiRequest(request)) {
+    return new NextResponse('Forbidden', { status: 403 })
+  }
+
+  // 3. Supabase session refresh + auth guards
   return await updateSession(request)
 }
 
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except:
-     * - _next/static (static files)
-     * - _next/image (image optimization)
-     * - favicon.ico
-     * - public assets (images, fonts, etc.)
-     */
     '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|woff2?)$).*)',
   ],
 }

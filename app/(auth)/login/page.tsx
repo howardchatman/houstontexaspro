@@ -9,11 +9,12 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { createClient } from '@/lib/supabase/client'
+import { getUserRole, getPostLoginRoute } from '@/lib/auth/getUserRole'
 
 function LoginForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const redirect = searchParams.get('redirect') || '/dashboard'
+  const redirect = searchParams.get('redirect')
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -29,15 +30,17 @@ function LoginForm() {
     setError('')
 
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       })
 
       if (error) {
         setError(error.message)
-      } else {
-        router.push(redirect)
+      } else if (data.user) {
+        const role = await getUserRole(data.user)
+        const destination = getPostLoginRoute(role, redirect)
+        router.push(destination)
         router.refresh()
       }
     } catch {

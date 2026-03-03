@@ -1,6 +1,6 @@
 // Database types for Houston Texas Pro
 
-export type UserRole = 'customer' | 'contractor' | 'admin'
+export type UserRole = 'customer' | 'seeker' | 'contractor' | 'admin'
 export type LeadSource = 'form' | 'call' | 'aiva'
 export type LeadStatus = 'new' | 'contacted' | 'converted' | 'closed'
 export type ServiceType = 'residential' | 'commercial' | 'both'

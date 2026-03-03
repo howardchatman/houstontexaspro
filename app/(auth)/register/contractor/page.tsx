@@ -105,7 +105,7 @@ export default function ContractorRegisterPage() {
         email,
         password,
         options: {
-          data: { full_name: fullName },
+          data: { full_name: fullName, role: 'contractor' },
           captchaToken,
         },
       })
