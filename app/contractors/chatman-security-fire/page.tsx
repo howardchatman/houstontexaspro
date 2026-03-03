@@ -47,8 +47,8 @@ export default function ChatmanSecurityFirePage() {
           </p>
           <p>
             <strong>Phone:</strong>{' '}
-            <a href="tel:9328597009" className="text-[#1D4ED8] hover:underline">
-              932-859-7009
+            <a href="tel:8328597009" className="text-[#1D4ED8] hover:underline">
+              832-859-7009
             </a>
           </p>
           <p>
