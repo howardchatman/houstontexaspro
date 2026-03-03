@@ -79,6 +79,32 @@ export default async function QADetailPage({ params }: PageProps) {
         ))}
       </ul>
 
+      {entry.links && entry.links.length > 0 && (
+        <div className="mt-6 rounded-lg border border-[#E5E7EB] bg-white p-5">
+          <h2 className="text-lg font-semibold text-[#111827]">Recommended links</h2>
+          <ul className="mt-3 space-y-2">
+            {entry.links.map((link) => (
+              <li key={link.url}>
+                {link.url.startsWith('/') ? (
+                  <Link href={link.url} className="text-[#1D4ED8] hover:underline">
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    href={link.url}
+                    className="text-[#1D4ED8] hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {link.label}
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <div className="mt-8 rounded-lg border border-[#BFDBFE] bg-[#EFF6FF] p-5">
         <h2 className="text-lg font-semibold text-[#1E3A8A]">Browse contractors</h2>
         <p className="mt-2 text-sm text-[#1F2937]">

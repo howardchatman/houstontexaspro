@@ -5,12 +5,18 @@ export interface QAFAQ {
   a: string
 }
 
+export interface QALink {
+  label: string
+  url: string
+}
+
 export interface QAEntry {
   slug: string
   question: string
   answer: string
   bullets: string[]
   faqs: QAFAQ[]
+  links?: QALink[]
   category: string
   city: string
 }
