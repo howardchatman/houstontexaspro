@@ -1,31 +1,38 @@
 import { ContractorTier, TIER_LIMITS, PRICING_TIERS } from '@/types'
 
-export function isPaidTier(tier: ContractorTier): boolean {
-  return tier === 'responding_pro' || tier === 'priority_pro'
+/** Normalize a potentially null/undefined tier value to a valid ContractorTier */
+function normalizeTier(tier: ContractorTier | null | undefined): ContractorTier {
+  if (!tier || !(tier in TIER_LIMITS)) return 'starter'
+  return tier
 }
 
-export function isPriorityPro(tier: ContractorTier): boolean {
-  return tier === 'priority_pro'
+export function isPaidTier(tier: ContractorTier | null | undefined): boolean {
+  const t = normalizeTier(tier)
+  return t === 'responding_pro' || t === 'priority_pro'
 }
 
-export function canReceiveLeads(tier: ContractorTier): boolean {
-  return TIER_LIMITS[tier].canReceiveLeads
+export function isPriorityPro(tier: ContractorTier | null | undefined): boolean {
+  return normalizeTier(tier) === 'priority_pro'
 }
 
-export function canRespondToReviews(tier: ContractorTier): boolean {
-  return TIER_LIMITS[tier].canRespondReviews
+export function canReceiveLeads(tier: ContractorTier | null | undefined): boolean {
+  return TIER_LIMITS[normalizeTier(tier)].canReceiveLeads
 }
 
-export function canCustomizeTemplate(tier: ContractorTier): boolean {
-  return TIER_LIMITS[tier].templateCustomization
+export function canRespondToReviews(tier: ContractorTier | null | undefined): boolean {
+  return TIER_LIMITS[normalizeTier(tier)].canRespondReviews
 }
 
-export function getGalleryLimit(tier: ContractorTier): number {
-  return TIER_LIMITS[tier].gallery
+export function canCustomizeTemplate(tier: ContractorTier | null | undefined): boolean {
+  return TIER_LIMITS[normalizeTier(tier)].templateCustomization
 }
 
-export function getTierDisplayName(tier: ContractorTier): string {
-  return PRICING_TIERS[tier].displayName
+export function getGalleryLimit(tier: ContractorTier | null | undefined): number {
+  return TIER_LIMITS[normalizeTier(tier)].gallery
+}
+
+export function getTierDisplayName(tier: ContractorTier | null | undefined): string {
+  return PRICING_TIERS[normalizeTier(tier)].displayName
 }
 
 export function getTierDescription(tier: ContractorTier): string {
