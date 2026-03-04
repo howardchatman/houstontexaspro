@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/server'
+import { createClient, createStaticClient } from '@/lib/supabase/server'
 
 export interface Career {
   id: string
@@ -50,6 +50,16 @@ export async function getCareers(): Promise<Career[]> {
   const { data } = await supabase
     .from('careers')
     .select('*')
+    .order('title', { ascending: true })
+  return (data || []) as Career[]
+}
+
+/** Cookie-free version safe to call from generateStaticParams at build time. */
+export async function getCareersStatic(): Promise<Career[]> {
+  const supabase = createStaticClient()
+  const { data } = await supabase
+    .from('careers')
+    .select('id, slug, title')
     .order('title', { ascending: true })
   return (data || []) as Career[]
 }

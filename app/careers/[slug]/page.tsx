@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { getCareerBySlug, getProgramsForCareer, getSchools, getCareers } from '@/lib/careers'
+import { getCareerBySlug, getProgramsForCareer, getSchools, getCareersStatic } from '@/lib/careers'
 import { LeadForm } from '@/components/careers/LeadForm'
 import { FAQAccordion } from '@/components/careers/FAQAccordion'
 import { SchoolCard } from '@/components/careers/SchoolCard'
@@ -12,7 +12,7 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  const careers = await getCareers()
+  const careers = await getCareersStatic()
   return careers.map((c) => ({ slug: c.slug }))
 }
 
