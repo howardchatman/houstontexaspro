@@ -145,6 +145,9 @@ export function Header() {
             <Link href="/qa" className="text-[#374151] hover:text-[#0B0B0B]">
               Q&A
             </Link>
+            <Link href="/careers" className="text-[#374151] hover:text-[#0B0B0B]">
+              Careers
+            </Link>
 
             {user ? (
               <DropdownMenu>
@@ -253,6 +256,13 @@ export function Header() {
                     onClick={() => setIsOpen(false)}
                   >
                     Q&A
+                  </Link>
+                  <Link
+                    href="/careers"
+                    className="block text-[#374151] py-2"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Careers
                   </Link>
                   <Link
                     href="/for-contractors"

@@ -6,7 +6,7 @@ export default async function AdminLeadsPage() {
 
   const { data: leads } = await supabase
     .from('leads')
-    .select('*, contractors(business_name)')
+    .select('*, contractors(business_name), careers(title, slug), schools(name)')
     .order('created_at', { ascending: false })
 
   return (
