@@ -3,6 +3,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { createClient } from '@supabase/supabase-js'
 import nodemailer from 'nodemailer'
+import { resend, FROM_EMAIL } from '@/lib/resend'
 
 interface ClaimPayload {
   fullName: string
@@ -118,31 +119,9 @@ async function saveClaimToSupabaseIfConfigured(claim: StoredClaim): Promise<bool
   return true
 }
 
-async function sendClaimEmailIfConfigured(claim: StoredClaim) {
-  const smtpHost = process.env.M365_SMTP_HOST
-  const smtpPort = Number(process.env.M365_SMTP_PORT || '587')
-  const smtpUser = process.env.M365_SMTP_USER
-  const smtpPass = process.env.M365_SMTP_PASS
-  const smtpFrom = process.env.M365_SMTP_FROM
-  const to = process.env.CLAIM_LISTING_TO || 'support@houstontexaspro.com'
-
-  if (!smtpHost || !smtpUser || !smtpPass || !smtpFrom) {
-    console.log('Claim listing payload (email not configured):', claim)
-    return
-  }
-
-  const transporter = nodemailer.createTransport({
-    host: smtpHost,
-    port: smtpPort,
-    secure: smtpPort === 465,
-    auth: {
-      user: smtpUser,
-      pass: smtpPass,
-    },
-  })
-
+function buildClaimEmailBody(claim: StoredClaim): { subject: string; text: string; html: string } {
   const subject = `Claim Listing Request: ${claim.contractorName}`
-  const text = [
+  const lines = [
     `Contractor: ${claim.contractorName}`,
     `Slug: ${claim.contractorSlug}`,
     `Listing URL: ${claim.listingUrl}`,
@@ -157,14 +136,53 @@ async function sendClaimEmailIfConfigured(claim: StoredClaim) {
     '',
     `Source IP: ${claim.sourceIp}`,
     `Submitted At: ${claim.submittedAt}`,
-  ].join('\n')
+  ]
+  const text = lines.join('\n')
+  const html = `
+    <h2>Claim Listing Request: ${claim.contractorName}</h2>
+    <table style="border-collapse:collapse;width:100%;font-family:sans-serif;font-size:14px">
+      <tr><td style="padding:6px 12px;color:#6B7280;width:140px">Contractor</td><td style="padding:6px 12px;font-weight:600">${claim.contractorName}</td></tr>
+      <tr><td style="padding:6px 12px;color:#6B7280">Listing URL</td><td style="padding:6px 12px"><a href="${claim.listingUrl}">${claim.listingUrl}</a></td></tr>
+      <tr><td style="padding:6px 12px;color:#6B7280">Full Name</td><td style="padding:6px 12px">${claim.fullName}</td></tr>
+      <tr><td style="padding:6px 12px;color:#6B7280">Role</td><td style="padding:6px 12px">${claim.roleTitle || '—'}</td></tr>
+      <tr><td style="padding:6px 12px;color:#6B7280">Email</td><td style="padding:6px 12px"><a href="mailto:${claim.email}">${claim.email}</a></td></tr>
+      <tr><td style="padding:6px 12px;color:#6B7280">Phone</td><td style="padding:6px 12px">${claim.phone || '—'}</td></tr>
+      <tr><td style="padding:6px 12px;color:#6B7280;vertical-align:top">Proof / Notes</td><td style="padding:6px 12px;white-space:pre-wrap">${claim.proofOrNotes}</td></tr>
+      <tr><td style="padding:6px 12px;color:#6B7280">Submitted At</td><td style="padding:6px 12px">${claim.submittedAt}</td></tr>
+    </table>
+  `
+  return { subject, text, html }
+}
 
-  await transporter.sendMail({
-    from: smtpFrom,
-    to,
-    subject,
-    text,
-  })
+async function sendClaimEmailIfConfigured(claim: StoredClaim) {
+  const to = process.env.CLAIM_LISTING_TO || 'support@houstontexaspro.com'
+  const { subject, text, html } = buildClaimEmailBody(claim)
+
+  // Primary: M365 SMTP (if configured)
+  const smtpHost = process.env.M365_SMTP_HOST
+  const smtpUser = process.env.M365_SMTP_USER
+  const smtpPass = process.env.M365_SMTP_PASS
+  const smtpFrom = process.env.M365_SMTP_FROM
+
+  if (smtpHost && smtpUser && smtpPass && smtpFrom) {
+    const smtpPort = Number(process.env.M365_SMTP_PORT || '587')
+    const transporter = nodemailer.createTransport({
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpPort === 465,
+      auth: { user: smtpUser, pass: smtpPass },
+    })
+    await transporter.sendMail({ from: smtpFrom, to, subject, text })
+    return
+  }
+
+  // Fallback: Resend
+  if (resend) {
+    await resend.emails.send({ from: FROM_EMAIL, to, subject, html })
+    return
+  }
+
+  console.log('Claim listing payload (no email provider configured):', claim)
 }
 
 export async function POST(request: NextRequest) {
