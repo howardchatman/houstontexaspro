@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getContractorBySlug, contractors } from '@/lib/contractors'
+import { Badge } from '@/components/ui/badge'
+import { ClaimThisListingDialog } from '@/components/contractors/ClaimThisListingDialog'
 
 interface ContractorPageProps {
   params: Promise<{ slug: string }>
@@ -55,6 +57,9 @@ export default async function ContractorPage({ params }: ContractorPageProps) {
     ...(contractor.primaryEmail ? { email: contractor.primaryEmail } : {}),
   }
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://houstontexaspro.com'
+  const listingUrl = `${siteUrl.replace(/\/$/, '')}/contractors/${contractor.slug}`
+
   return (
     <div className="container mx-auto px-4 py-10">
       <script
@@ -63,7 +68,7 @@ export default async function ContractorPage({ params }: ContractorPageProps) {
       />
 
       <h1 className="text-3xl font-bold text-[#111827]">{contractor.name}</h1>
-      <p className="mt-2 text-[#4B5563]">Low Voltage &amp; Security Contractor — Houston, TX</p>
+      <p className="mt-2 text-[#4B5563]">Low Voltage &amp; Security Contractor - Houston, TX</p>
 
       <section className="mt-8 rounded-lg border border-[#E5E7EB] bg-white p-6">
         <h2 className="text-xl font-semibold text-[#111827]">Contact</h2>
@@ -122,9 +127,24 @@ export default async function ContractorPage({ params }: ContractorPageProps) {
         <p className="mt-4 text-[#374151]">{buildAboutText(contractor.name)}</p>
       </section>
 
-      <p className="mt-8 rounded-md border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-        Listing Status: Unverified
-      </p>
+      <section className="mt-8 rounded-lg border border-amber-200 bg-amber-50 p-6">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-medium text-amber-900">Listing Status:</span>
+              <Badge variant="outline" className="border-amber-500 text-amber-900">
+                Unverified
+              </Badge>
+            </div>
+            <p className="mt-2 text-sm text-amber-900">Is this your company?</p>
+          </div>
+          <ClaimThisListingDialog
+            contractorName={contractor.name}
+            contractorSlug={contractor.slug}
+            listingUrl={listingUrl}
+          />
+        </div>
+      </section>
     </div>
   )
 }
