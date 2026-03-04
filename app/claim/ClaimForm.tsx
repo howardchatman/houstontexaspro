@@ -8,173 +8,130 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 
 interface ClaimFormProps {
-  contractorName: string
-  contractorSlug: string
-  listingUrl: string
+  companySlug: string
+  companyName: string
 }
 
 interface FormState {
-  fullName: string
-  roleTitle: string
+  name: string
+  company: string
   email: string
   phone: string
-  proofOrNotes: string
-  honeypot: string
+  website: string
+  message: string
 }
 
-const EMPTY: FormState = {
-  fullName: '',
-  roleTitle: '',
-  email: '',
-  phone: '',
-  proofOrNotes: '',
-  honeypot: '',
-}
-
-export function ClaimForm({ contractorName, contractorSlug, listingUrl }: ClaimFormProps) {
-  const [form, setForm] = useState<FormState>(EMPTY)
-  const [submitting, setSubmitting] = useState(false)
-  const [error, setError] = useState('')
-  const [success, setSuccess] = useState(false)
+export function ClaimForm({ companySlug, companyName }: ClaimFormProps) {
+  const [form, setForm] = useState<FormState>({
+    name: '',
+    company: companyName,
+    email: '',
+    phone: '',
+    website: '',
+    message: '',
+  })
+  const [submitted, setSubmitted] = useState(false)
 
   function set<K extends keyof FormState>(key: K, value: string) {
     setForm((prev) => ({ ...prev, [key]: value }))
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    setError('')
 
-    if (!form.fullName.trim() || !form.email.trim() || !form.proofOrNotes.trim()) {
-      setError('Please fill in all required fields.')
-      return
-    }
+    console.log('Claim submission:', {
+      ...form,
+      companySlug,
+      submittedAt: new Date().toISOString(),
+    })
 
-    setSubmitting(true)
-    try {
-      const res = await fetch('/api/claim-listing', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          fullName: form.fullName.trim(),
-          roleTitle: form.roleTitle.trim() || null,
-          email: form.email.trim(),
-          phone: form.phone.trim() || null,
-          proofOrNotes: form.proofOrNotes.trim(),
-          contractorName,
-          contractorSlug,
-          listingUrl,
-          honeypot: form.honeypot,
-        }),
-      })
-
-      const data = await res.json().catch(() => null)
-      if (!res.ok) {
-        setError(data?.error || 'Unable to submit. Please try again.')
-        return
-      }
-      setSuccess(true)
-    } catch {
-      setError('Unable to submit. Please try again.')
-    } finally {
-      setSubmitting(false)
-    }
+    setSubmitted(true)
   }
 
-  if (success) {
+  if (submitted) {
     return (
-      <div className="text-center py-12 space-y-4">
-        <CheckCircle className="h-16 w-16 text-green-500 mx-auto" />
-        <h2 className="text-2xl font-bold text-[#0B0B0B]">Claim Received</h2>
-        <p className="text-[#6B7280]">
-          We&apos;ll review your request and reply within 1 business day.
+      <div className="text-center py-10 space-y-4">
+        <CheckCircle className="h-14 w-14 text-green-500 mx-auto" />
+        <h2 className="text-xl font-bold text-[#0B0B0B]">Claim Submitted</h2>
+        <p className="text-[#6B7280] text-sm">
+          Thanks! We&apos;ll review your request and get back to you within 1 business day.
         </p>
       </div>
     )
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-1.5">
-        <Label htmlFor="fullName">Full Name *</Label>
+        <Label htmlFor="name">Name</Label>
         <Input
-          id="fullName"
-          value={form.fullName}
-          onChange={(e) => set('fullName', e.target.value)}
+          id="name"
+          value={form.name}
+          onChange={(e) => set('name', e.target.value)}
           placeholder="Jane Smith"
           required
         />
       </div>
 
       <div className="space-y-1.5">
-        <Label htmlFor="roleTitle">Role / Title (optional)</Label>
+        <Label htmlFor="company">Company</Label>
         <Input
-          id="roleTitle"
-          value={form.roleTitle}
-          onChange={(e) => set('roleTitle', e.target.value)}
-          placeholder="Owner, Manager, etc."
-        />
-      </div>
-
-      <div className="grid gap-4 sm:grid-cols-2">
-        <div className="space-y-1.5">
-          <Label htmlFor="email">Email *</Label>
-          <Input
-            id="email"
-            type="email"
-            value={form.email}
-            onChange={(e) => set('email', e.target.value)}
-            placeholder="you@company.com"
-            required
-          />
-        </div>
-        <div className="space-y-1.5">
-          <Label htmlFor="phone">Phone (optional)</Label>
-          <Input
-            id="phone"
-            type="tel"
-            value={form.phone}
-            onChange={(e) => set('phone', e.target.value)}
-            placeholder="(713) 555-0100"
-          />
-        </div>
-      </div>
-
-      <div className="space-y-1.5">
-        <Label htmlFor="proofOrNotes">Proof of Ownership *</Label>
-        <Textarea
-          id="proofOrNotes"
-          rows={5}
-          value={form.proofOrNotes}
-          onChange={(e) => set('proofOrNotes', e.target.value)}
-          placeholder="Share your company email domain, website ownership, business phone, or any info that confirms you own this listing."
+          id="company"
+          value={form.company}
+          onChange={(e) => set('company', e.target.value)}
+          placeholder="Acme Plumbing LLC"
           required
         />
       </div>
 
-      {/* Honeypot — hidden from real users */}
-      <div className="hidden" aria-hidden="true">
+      <div className="space-y-1.5">
+        <Label htmlFor="email">Email</Label>
         <Input
-          tabIndex={-1}
-          autoComplete="off"
-          value={form.honeypot}
-          onChange={(e) => set('honeypot', e.target.value)}
+          id="email"
+          type="email"
+          value={form.email}
+          onChange={(e) => set('email', e.target.value)}
+          placeholder="you@company.com"
+          required
         />
       </div>
 
-      {error && (
-        <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded px-3 py-2">
-          {error}
-        </p>
-      )}
+      <div className="space-y-1.5">
+        <Label htmlFor="phone">Phone</Label>
+        <Input
+          id="phone"
+          type="tel"
+          value={form.phone}
+          onChange={(e) => set('phone', e.target.value)}
+          placeholder="(713) 555-0100"
+        />
+      </div>
 
-      <Button type="submit" className="w-full" disabled={submitting}>
-        {submitting ? 'Submitting...' : 'Submit Claim'}
+      <div className="space-y-1.5">
+        <Label htmlFor="website">Website</Label>
+        <Input
+          id="website"
+          type="url"
+          value={form.website}
+          onChange={(e) => set('website', e.target.value)}
+          placeholder="https://yourcompany.com"
+        />
+      </div>
+
+      <div className="space-y-1.5">
+        <Label htmlFor="message">Message</Label>
+        <Textarea
+          id="message"
+          rows={4}
+          value={form.message}
+          onChange={(e) => set('message', e.target.value)}
+          placeholder="Tell us how we can verify you own this listing."
+        />
+      </div>
+
+      <Button type="submit" className="w-full">
+        Submit Claim
       </Button>
-
-      <p className="text-xs text-center text-[#9CA3AF]">
-        We review every claim and respond within 1 business day.
-      </p>
     </form>
   )
 }
