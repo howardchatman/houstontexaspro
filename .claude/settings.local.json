@@ -12,7 +12,9 @@
       "Bash(git fetch:*)",
       "Bash(git push:*)",
       "Bash(npx tsc:*)",
-      "Bash(find \"c:/Users/howar/houston_texas_pro/houstontexaspro/app/\\(auth\\)\" -type f -name \"*.tsx\" -o -name \"*.ts\")"
+      "Bash(find \"c:/Users/howar/houston_texas_pro/houstontexaspro/app/\\(auth\\)\" -type f -name \"*.tsx\" -o -name \"*.ts\")",
+      "Bash(node -e \"const data = require\\(''./data/contractors.json''\\); console.log\\(data.length\\)\")",
+      "Bash(npm i --save-dev @types/nodemailer)"
     ]
   }
 }

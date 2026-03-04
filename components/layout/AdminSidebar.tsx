@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { LayoutDashboard, Building, MessageSquare, Users, LogOut } from 'lucide-react'
+import { LayoutDashboard, Building, MessageSquare, Users, LogOut, Target } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -21,6 +21,7 @@ export function AdminSidebar() {
     { name: 'Overview', href: '/admin', icon: LayoutDashboard },
     { name: 'Contractors', href: '/admin/contractors', icon: Building },
     { name: 'Leads', href: '/admin/leads', icon: MessageSquare },
+    { name: 'Prospects', href: '/admin/prospects', icon: Target },
     { name: 'Users', href: '/admin/users', icon: Users },
   ]
 
