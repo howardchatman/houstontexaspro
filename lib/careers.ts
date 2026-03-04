@@ -111,6 +111,13 @@ export async function getSchools(careerSlug?: string): Promise<SchoolWithProgram
   return schools
 }
 
+/** Cookie-free version safe to call from generateStaticParams at build time. */
+export async function getSchoolsStatic(): Promise<Pick<School, 'id'>[]> {
+  const supabase = createStaticClient()
+  const { data } = await supabase.from('schools').select('id')
+  return (data || []) as Pick<School, 'id'>[]
+}
+
 export async function getSchoolById(id: string): Promise<SchoolWithPrograms | null> {
   const supabase = await createClient()
   const { data } = await supabase

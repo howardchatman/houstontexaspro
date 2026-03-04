@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { getSchoolById, getSchools } from '@/lib/careers'
+import { getSchoolById, getSchoolsStatic } from '@/lib/careers'
 import { LeadForm } from '@/components/careers/LeadForm'
 import { Badge } from '@/components/ui/badge'
 import { MapPin, Phone, Globe, Mail, Clock, DollarSign, Calendar, Star } from 'lucide-react'
@@ -11,7 +11,7 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  const schools = await getSchools()
+  const schools = await getSchoolsStatic()
   return schools.map((s) => ({ id: s.id }))
 }
 
