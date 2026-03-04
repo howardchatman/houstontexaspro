@@ -82,11 +82,13 @@ export default async function ContractorPage({ params }: ContractorPageProps) {
           <div>
             <p className="font-semibold text-[#0B0B0B] text-sm mb-0.5">Is this your company?</p>
             <p className="text-sm text-[#374151]">
-              Claim your HoustonTexasPro listing to update your information and receive project inquiries.
+              Claim your listing for free — update your info, choose a plan, and start receiving project inquiries.
             </p>
           </div>
           <Button asChild className="shrink-0">
-            <Link href={`/claim?company=${contractor.slug}`}>Claim Listing</Link>
+            <Link href={`/register/contractor?claim=${contractor.slug}&company=${encodeURIComponent(contractor.name)}`}>
+              Claim Your Free Listing
+            </Link>
           </Button>
         </div>
       </section>

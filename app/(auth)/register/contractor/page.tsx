@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import {
   Eye,
   EyeOff,
@@ -28,6 +28,10 @@ type Step = 'account' | 'business' | 'categories'
 
 export default function ContractorRegisterPage() {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const claimCompany = searchParams.get('company') ?? ''
+  const isClaiming = !!searchParams.get('claim')
+
   const [step, setStep] = useState<Step>('account')
 
   // Account info
@@ -37,7 +41,7 @@ export default function ContractorRegisterPage() {
   const [showPassword, setShowPassword] = useState(false)
 
   // Business info
-  const [businessName, setBusinessName] = useState('')
+  const [businessName, setBusinessName] = useState(claimCompany)
   const [businessPhone, setBusinessPhone] = useState('')
   const [businessEmail, setBusinessEmail] = useState('')
   const [description, setDescription] = useState('')
@@ -377,15 +381,21 @@ export default function ContractorRegisterPage() {
             </div>
           </div>
 
+          {isClaiming && claimCompany && (
+            <div className="mb-6 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+              <span className="font-semibold">Claiming:</span> {claimCompany} — your listing is free to claim. Choose a plan after registration.
+            </div>
+          )}
+
           <Card>
             <CardHeader>
               <CardTitle className="text-2xl text-center">
-                {step === 'account' && 'Create Your Account'}
+                {step === 'account' && (isClaiming ? 'Claim Your Listing' : 'Create Your Account')}
                 {step === 'business' && 'Business Information'}
                 {step === 'categories' && 'Select Your Services'}
               </CardTitle>
               <CardDescription className="text-center">
-                {step === 'account' && 'Start by creating your login credentials'}
+                {step === 'account' && (isClaiming ? 'Create your free account to get started' : 'Start by creating your login credentials')}
                 {step === 'business' && 'Tell us about your business'}
                 {step === 'categories' && 'Choose the categories that match your services'}
               </CardDescription>
