@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation'
 import { getContractorBySlug, contractors } from '@/lib/contractors'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { CheckCircle } from 'lucide-react'
 
 interface ContractorPageProps {
   params: Promise<{ slug: string }>
@@ -69,8 +68,8 @@ export default async function ContractorPage({ params }: ContractorPageProps) {
       <h1 className="text-3xl font-bold text-[#111827]">{contractor.name}</h1>
       <p className="mt-2 text-[#4B5563]">Low Voltage &amp; Security Contractor - Houston, TX</p>
 
-      {/* Claim This Listing */}
-      <section className="mt-6 rounded-lg border border-amber-200 bg-amber-50 p-6">
+      {/* Claim Listing Banner */}
+      <section className="mt-5 rounded-lg border border-amber-200 bg-amber-50 px-5 py-4">
         <div className="flex items-center gap-2 mb-3">
           <span className="text-xs font-semibold text-amber-800 uppercase tracking-wide">
             Listing Status:
@@ -79,36 +78,16 @@ export default async function ContractorPage({ params }: ContractorPageProps) {
             Unverified
           </Badge>
         </div>
-
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <p className="font-semibold text-[#0B0B0B] text-base mb-1">Is this your company?</p>
-            <p className="text-sm text-[#374151] mb-4">
-              This listing was created automatically by HoustonTexasPro.
+            <p className="font-semibold text-[#0B0B0B] text-sm mb-0.5">Is this your company?</p>
+            <p className="text-sm text-[#374151]">
+              Claim your HoustonTexasPro listing to update your information and receive project inquiries.
             </p>
-            <p className="text-xs font-medium text-[#6B7280] uppercase tracking-wide mb-2">
-              Claim your listing to:
-            </p>
-            <ul className="space-y-1">
-              {[
-                'Edit company information',
-                'Add services and photos',
-                'Improve local visibility',
-                'Receive quote requests',
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-2 text-sm text-[#374151]">
-                  <CheckCircle className="h-4 w-4 text-green-600 shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
           </div>
-
-          <div className="shrink-0">
-            <Button asChild>
-              <Link href={`/claim?company=${contractor.slug}`}>Claim This Listing</Link>
-            </Button>
-          </div>
+          <Button asChild className="shrink-0">
+            <Link href={`/claim?company=${contractor.slug}`}>Claim Listing</Link>
+          </Button>
         </div>
       </section>
 

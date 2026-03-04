@@ -34,7 +34,7 @@ export async function submitCareerLead(
 
   const parsed = schema.safeParse(raw)
   if (!parsed.success) {
-    const first = parsed.error.errors[0]
+    const first = parsed.error.issues[0]
     return { success: false, error: first.message }
   }
 
