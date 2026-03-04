@@ -31,21 +31,50 @@ export function ClaimForm({ companySlug, companyName }: ClaimFormProps) {
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState('')
 
   function set<K extends keyof FormState>(key: K, value: string) {
     setForm((prev) => ({ ...prev, [key]: value }))
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    setError('')
+    setSubmitting(true)
 
-    console.log('Claim submission:', {
-      ...form,
-      companySlug,
-      submittedAt: new Date().toISOString(),
-    })
+    const proofOrNotes = [
+      form.website ? `Website: ${form.website}` : '',
+      form.message,
+    ].filter(Boolean).join('\n\n')
 
-    setSubmitted(true)
+    try {
+      const res = await fetch('/api/claim-listing', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fullName: form.name,
+          email: form.email,
+          phone: form.phone || null,
+          proofOrNotes: proofOrNotes || 'No message provided.',
+          contractorName: form.company,
+          contractorSlug: companySlug,
+          listingUrl: `https://houstontexaspro.com/contractors/${companySlug}`,
+          honeypot: '',
+        }),
+      })
+
+      const data = await res.json().catch(() => null)
+      if (!res.ok) {
+        setError(data?.error || 'Unable to submit. Please try again.')
+        return
+      }
+      setSubmitted(true)
+    } catch {
+      setError('Unable to submit. Please try again.')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   if (submitted) {
@@ -129,8 +158,14 @@ export function ClaimForm({ companySlug, companyName }: ClaimFormProps) {
         />
       </div>
 
-      <Button type="submit" className="w-full">
-        Submit Claim
+      {error && (
+        <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded px-3 py-2">
+          {error}
+        </p>
+      )}
+
+      <Button type="submit" className="w-full" disabled={submitting}>
+        {submitting ? 'Submitting...' : 'Submit Claim'}
       </Button>
     </form>
   )
