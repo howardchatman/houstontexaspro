@@ -7,10 +7,13 @@ import { STRIPE_CONFIG } from '@/lib/stripe/config'
 export async function POST(request: NextRequest) {
   const stripe = getStripe()
   try {
-    const { tier } = await request.json()
+    const { tier, interval = 'monthly' } = await request.json()
 
     if (tier !== 'pro' && tier !== 'elite') {
       return NextResponse.json({ error: 'Invalid tier' }, { status: 400 })
+    }
+    if (interval !== 'monthly' && interval !== 'annual') {
+      return NextResponse.json({ error: 'Invalid interval' }, { status: 400 })
     }
 
     const supabase = await createClient()
@@ -53,7 +56,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Create checkout session
-    const priceId = STRIPE_CONFIG.prices[tier as keyof typeof STRIPE_CONFIG.prices]
+    const priceId = STRIPE_CONFIG.prices[tier as 'pro' | 'elite'][interval as 'monthly' | 'annual']
     const session = await stripe.checkout.sessions.create({
       customer: customerId,
       mode: 'subscription',

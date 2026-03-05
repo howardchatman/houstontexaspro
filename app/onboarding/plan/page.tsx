@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button'
 export default function OnboardingPlanPage() {
   const router = useRouter()
   const [loading, setLoading] = useState<string | null>(null)
+  const [interval, setInterval] = useState<'monthly' | 'annual'>('monthly')
 
   const handleSelectStarter = async () => {
     setLoading('starter')
@@ -26,7 +27,7 @@ export default function OnboardingPlanPage() {
       const res = await fetch('/api/stripe/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tier }),
+        body: JSON.stringify({ tier, interval }),
       })
       const data = await res.json()
       if (data.url) {
@@ -43,7 +44,8 @@ export default function OnboardingPlanPage() {
     {
       id: 'starter' as const,
       name: 'Starter',
-      price: '$0',
+      monthlyPrice: 0,
+      annualPrice: 0,
       period: '/mo',
       description: 'Directory Presence',
       subtitle: 'Visibility only. No routed requests.',
@@ -64,37 +66,42 @@ export default function OnboardingPlanPage() {
     {
       id: 'pro' as const,
       name: 'Pro',
-      price: '$149',
+      monthlyPrice: 79,
+      annualPrice: 79,
       period: '/mo',
-      description: 'Request Handling',
-      subtitle: 'Minimum tier to receive routed requests.',
+      description: 'Mini website + leads',
+      subtitle: 'Your own mini-site + receive routed requests.',
       cta: 'Start Receiving Requests',
       highlight: true,
       badge: 'Most Contractors Choose This',
       features: [
         { text: 'Everything in Starter', included: true },
+        { text: 'Mini website at yourco.houstontexaspro.com', included: true },
         { text: 'Routed requests & leads', included: true },
         { text: 'Booking support', included: true },
         { text: 'Standard call coverage', included: true },
         { text: 'Up to 25 gallery photos', included: true },
-        { text: 'Template customization', included: true },
         { text: 'Verified badge', included: true },
         { text: 'Respond to reviews', included: true },
-        { text: 'Priority search placement', included: true },
+        { text: 'Priority search placement', included: false },
       ],
     },
     {
       id: 'elite' as const,
       name: 'Elite',
-      price: '$299',
+      monthlyPrice: 199,
+      annualPrice: 199,
       period: '/mo',
-      description: 'Priority Routing',
-      subtitle: 'Emergency & commercial priority.',
+      description: 'Full site + CRM',
+      subtitle: 'Replace $700+/mo in tools. One platform.',
       cta: 'Get Priority Routing',
       highlight: false,
-      badge: 'Maximum Visibility',
+      badge: 'Best Value',
       features: [
         { text: 'Everything in Pro', included: true },
+        { text: 'Full multi-page website', included: true },
+        { text: 'CRM — jobs, customers, notes', included: true },
+        { text: 'Invoicing & estimates', included: true },
         { text: 'Priority routing for all requests', included: true },
         { text: 'Emergency-first placement', included: true },
         { text: 'After-hours & overflow coverage', included: true },
@@ -127,13 +134,38 @@ export default function OnboardingPlanPage() {
 
       <div className="container mx-auto px-4 py-12 max-w-6xl">
         {/* Headline */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-[#0B0B0B] mb-4">
-            Choose How You Want to Respond
+            Choose Your Plan
           </h1>
           <p className="text-[#374151] text-lg max-w-2xl mx-auto">
-            For emergencies, scheduled service, and everything in between.
+            Start free. Upgrade when you&apos;re ready to grow.
           </p>
+        </div>
+
+        {/* Billing interval toggle */}
+        <div className="flex items-center justify-center gap-3 mb-10">
+          <button
+            onClick={() => setInterval('monthly')}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              interval === 'monthly'
+                ? 'bg-[#0B0B0B] text-white'
+                : 'bg-white text-[#374151] border hover:border-[#0B0B0B]'
+            }`}
+          >
+            Monthly
+          </button>
+          <button
+            onClick={() => setInterval('annual')}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              interval === 'annual'
+                ? 'bg-[#0B0B0B] text-white'
+                : 'bg-white text-[#374151] border hover:border-[#0B0B0B]'
+            }`}
+          >
+            Annual
+            <span className="ml-1.5 text-xs text-green-600 font-semibold">2 months free</span>
+          </button>
         </div>
 
         {/* Pricing Cards */}
@@ -157,9 +189,14 @@ export default function OnboardingPlanPage() {
                 <h2 className="text-lg font-bold text-[#0B0B0B] mb-1">{tier.name}</h2>
                 <p className="text-sm text-[#6B7280] mb-4">{tier.description}</p>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-bold text-[#0B0B0B]">{tier.price}</span>
+                  <span className="text-4xl font-bold text-[#0B0B0B]">
+                    {tier.monthlyPrice === 0 ? '$0' : `$${interval === 'monthly' ? tier.monthlyPrice : tier.annualPrice}`}
+                  </span>
                   <span className="text-[#6B7280]">{tier.period}</span>
                 </div>
+                {interval === 'annual' && tier.monthlyPrice > 0 && (
+                  <p className="text-xs text-green-600 font-medium mt-1">Billed annually</p>
+                )}
                 <p className="text-sm text-[#374151] mt-2">{tier.subtitle}</p>
               </div>
 
@@ -185,7 +222,7 @@ export default function OnboardingPlanPage() {
                     : handleSelectPaid(tier.id)
                 }
                 variant={tier.highlight ? 'default' : 'outline'}
-                className={`w-full ${tier.highlight ? '' : ''}`}
+                className="w-full"
                 disabled={loading !== null}
               >
                 {loading === tier.id ? 'Please wait...' : (

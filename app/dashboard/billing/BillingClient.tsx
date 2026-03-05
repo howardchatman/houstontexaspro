@@ -36,6 +36,7 @@ export function BillingClient({
   const isSuccess = searchParams.get('success') === 'true'
   const [portalLoading, setPortalLoading] = useState(false)
   const [upgradeLoading, setUpgradeLoading] = useState<string | null>(null)
+  const [billingInterval, setBillingInterval] = useState<'monthly' | 'annual'>('monthly')
 
   const handleManageSubscription = async () => {
     setPortalLoading(true)
@@ -56,7 +57,7 @@ export function BillingClient({
       const res = await fetch('/api/stripe/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tier: targetTier }),
+        body: JSON.stringify({ tier: targetTier, interval: billingInterval }),
       })
       const data = await res.json()
       if (data.url) {
@@ -170,16 +171,40 @@ export function BillingClient({
       {tier !== 'elite' && (
         <Card>
           <CardHeader>
-            <CardTitle>Upgrade Your Plan</CardTitle>
+            <CardTitle className="flex items-center justify-between">
+              <span>Upgrade Your Plan</span>
+              <div className="flex items-center gap-1 text-xs font-normal">
+                <button
+                  onClick={() => setBillingInterval('monthly')}
+                  className={`px-3 py-1 rounded-full transition-colors ${
+                    billingInterval === 'monthly'
+                      ? 'bg-[#0B0B0B] text-white'
+                      : 'bg-[#F5F5F5] text-[#374151] hover:bg-gray-200'
+                  }`}
+                >
+                  Monthly
+                </button>
+                <button
+                  onClick={() => setBillingInterval('annual')}
+                  className={`px-3 py-1 rounded-full transition-colors ${
+                    billingInterval === 'annual'
+                      ? 'bg-[#0B0B0B] text-white'
+                      : 'bg-[#F5F5F5] text-[#374151] hover:bg-gray-200'
+                  }`}
+                >
+                  Annual <span className="text-green-600">2 mo free</span>
+                </button>
+              </div>
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               {tier === 'starter' && (
                 <div className="flex items-center justify-between p-4 border rounded-lg">
                   <div>
-                    <h4 className="font-semibold text-[#0B0B0B]">Pro</h4>
+                    <h4 className="font-semibold text-[#0B0B0B]">Pro — $79/mo</h4>
                     <p className="text-sm text-[#374151]">
-                      Receive routed requests with booking support. $149/mo.
+                      Mini website + receive routed requests and leads.
                     </p>
                   </div>
                   <Button
@@ -198,9 +223,9 @@ export function BillingClient({
 
               <div className="flex items-center justify-between p-4 border rounded-lg">
                 <div>
-                  <h4 className="font-semibold text-[#0B0B0B]">Elite</h4>
+                  <h4 className="font-semibold text-[#0B0B0B]">Elite — $199/mo</h4>
                   <p className="text-sm text-[#374151]">
-                    Priority routing, emergency-first placement, after-hours coverage. $299/mo.
+                    Full site + CRM. Replaces $700+/mo in tools.
                   </p>
                 </div>
                 <Button

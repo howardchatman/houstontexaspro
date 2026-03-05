@@ -12,8 +12,8 @@ export type SubscriptionStatus = 'none' | 'active' | 'past_due' | 'canceled' | '
 // Pricing constants
 export const PRICING_TIERS = {
   starter: { name: 'Starter', displayName: 'Starter', price: 0, priceId: null },
-  pro: { name: 'Pro', displayName: 'Pro', price: 79, priceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_PRO || null },
-  elite: { name: 'Elite', displayName: 'Elite', price: 199, priceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_ELITE || null },
+  pro: { name: 'Pro', displayName: 'Pro', price: 79, priceId: null },
+  elite: { name: 'Elite', displayName: 'Elite', price: 199, priceId: null },
 } as const
 
 export const TIER_LIMITS = {
