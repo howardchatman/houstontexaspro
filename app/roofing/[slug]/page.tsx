@@ -93,14 +93,25 @@ export default async function RoofingContractorPage({ params }: Props) {
             Unverified
           </Badge>
         </div>
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div>
-            <p className="font-semibold text-[#0B0B0B] text-sm mb-0.5">Is this your company?</p>
-            <p className="text-sm text-[#374151]">
-              Claim your listing for free — update your info, choose a plan, and start receiving project inquiries.
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+          <div className="flex-1">
+            <p className="font-semibold text-[#0B0B0B] text-sm mb-1">Own this business? Claim your free listing.</p>
+            <p className="text-sm text-[#374151] mb-3">
+              Join Houston contractors on HoustonTexasPro — update your info, respond to leads, and grow your business.
             </p>
+            <div className="flex flex-wrap gap-2 text-xs">
+              <span className="inline-flex items-center rounded-full border border-green-300 bg-green-50 px-2.5 py-1 text-green-800 font-medium">
+                Free · List your business
+              </span>
+              <span className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-2.5 py-1 text-blue-800 font-medium">
+                $149/mo · Respond to leads
+              </span>
+              <span className="inline-flex items-center rounded-full border border-purple-200 bg-purple-50 px-2.5 py-1 text-purple-800 font-medium">
+                $299/mo · Priority placement
+              </span>
+            </div>
           </div>
-          <Button asChild className="shrink-0">
+          <Button asChild className="shrink-0 sm:mt-1">
             <Link href={`/register/contractor?claim=${c.slug}&company=${encodeURIComponent(c.name)}`}>
               Claim Your Free Listing
             </Link>
