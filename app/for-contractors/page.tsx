@@ -117,10 +117,10 @@ export default function ForContractorsPage() {
             {/* Responding Pro */}
             <div className="border-2 border-[#0B0B0B] rounded-2xl p-6 flex flex-col relative">
               <div className="absolute -top-3 left-6 bg-[#0B0B0B] text-white text-xs px-3 py-1 rounded-full">Most Contractors Choose This</div>
-              <h3 className="font-bold text-[#0B0B0B] text-lg mb-1">Responding Pro</h3>
-              <p className="text-[#6B7280] text-sm mb-4">Request Handling</p>
-              <p className="text-3xl font-bold text-[#0B0B0B] mb-2">$149<span className="text-base font-normal text-[#6B7280]">/mo</span></p>
-              <p className="text-sm text-[#374151] mb-6">Minimum tier to receive routed requests.</p>
+              <h3 className="font-bold text-[#0B0B0B] text-lg mb-1">Pro</h3>
+              <p className="text-[#6B7280] text-sm mb-4">Mini website + leads</p>
+              <p className="text-3xl font-bold text-[#0B0B0B] mb-2">$79<span className="text-base font-normal text-[#6B7280]">/mo</span></p>
+              <p className="text-sm text-[#374151] mb-6">Your own mini-site + receive routed requests.</p>
               <ul className="space-y-3 text-sm flex-1 mb-6">
                 <li className="flex items-center gap-2"><Check className="h-4 w-4 text-green-600 shrink-0" /> <span className="text-[#374151]">Everything in Starter</span></li>
                 <li className="flex items-center gap-2"><Check className="h-4 w-4 text-green-600 shrink-0" /> <span className="text-[#374151]">Routed requests & leads</span></li>
@@ -141,10 +141,10 @@ export default function ForContractorsPage() {
             {/* Priority Pro */}
             <div className="border rounded-2xl p-6 flex flex-col relative">
               <div className="absolute -top-3 left-6 bg-[#1F3C58] text-white text-xs px-3 py-1 rounded-full">Maximum Visibility</div>
-              <h3 className="font-bold text-[#0B0B0B] text-lg mb-1">Priority Pro</h3>
-              <p className="text-[#6B7280] text-sm mb-4">Priority Routing</p>
-              <p className="text-3xl font-bold text-[#0B0B0B] mb-2">$299<span className="text-base font-normal text-[#6B7280]">/mo</span></p>
-              <p className="text-sm text-[#374151] mb-6">Emergency & commercial priority.</p>
+              <h3 className="font-bold text-[#0B0B0B] text-lg mb-1">Priority</h3>
+              <p className="text-[#6B7280] text-sm mb-4">Full site + CRM</p>
+              <p className="text-3xl font-bold text-[#0B0B0B] mb-2">$199<span className="text-base font-normal text-[#6B7280]">/mo</span></p>
+              <p className="text-sm text-[#374151] mb-6">Replace $700+/mo in tools. One platform.</p>
               <ul className="space-y-3 text-sm flex-1 mb-6">
                 <li className="flex items-center gap-2"><Check className="h-4 w-4 text-green-600 shrink-0" /> <span className="text-[#374151]">Everything in Responding Pro</span></li>
                 <li className="flex items-center gap-2"><Check className="h-4 w-4 text-green-600 shrink-0" /> <span className="text-[#374151]">Priority routing for all requests</span></li>
