@@ -59,6 +59,9 @@ export default function ContractorRegisterForm() {
   const [success, setSuccess] = useState(false)
   const [captchaToken, setCaptchaToken] = useState('')
 
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
+  const captchaEnabled = !!turnstileSiteKey && !turnstileSiteKey.startsWith('your_')
+
   const supabase = createClient()
 
   const toggleCategory = (slug: string) => {
@@ -110,7 +113,7 @@ export default function ContractorRegisterForm() {
         password,
         options: {
           data: { full_name: fullName, role: 'contractor' },
-          captchaToken,
+          ...(captchaEnabled && captchaToken ? { captchaToken } : {}),
         },
       })
 
@@ -693,12 +696,14 @@ export default function ContractorRegisterForm() {
                     </div>
                   )}
 
-                  <Turnstile
-                    siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
-                    onSuccess={setCaptchaToken}
-                    onExpire={() => setCaptchaToken('')}
-                    onError={() => setCaptchaToken('')}
-                  />
+                  {captchaEnabled && (
+                    <Turnstile
+                      siteKey={turnstileSiteKey!}
+                      onSuccess={setCaptchaToken}
+                      onExpire={() => setCaptchaToken('')}
+                      onError={() => setCaptchaToken('')}
+                    />
+                  )}
                 </CardContent>
 
                 <CardFooter className="flex gap-4">
@@ -713,7 +718,7 @@ export default function ContractorRegisterForm() {
                   <Button
                     type="submit"
                     className="flex-1"
-                    disabled={loading || selectedCategories.length === 0 || !captchaToken}
+                    disabled={loading || selectedCategories.length === 0 || (captchaEnabled && !captchaToken)}
                   >
                     {loading ? 'Creating Account...' : 'Complete Registration'}
                   </Button>
