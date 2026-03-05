@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { contractors } from '@/lib/contractors'
 import { Phone, Globe, MapPin } from 'lucide-react'
-import { Badge } from '@/components/ui/badge'
 
 export const metadata: Metadata = {
   title: 'Houston Home Security Contractors | HoustonTexasPro',
@@ -93,10 +92,7 @@ export default function HomeSecurityCategoryPage() {
                 )}
               </div>
 
-              <div className="mt-3 pt-3 border-t border-[#F3F4F6] flex items-center justify-between">
-                <Badge variant="outline" className="text-xs border-amber-300 text-amber-700">
-                  Unverified
-                </Badge>
+              <div className="mt-3 pt-3 border-t border-[#F3F4F6] flex items-center justify-end">
                 <span className="text-xs text-[#1D4ED8] font-medium">View Profile →</span>
               </div>
             </Link>
