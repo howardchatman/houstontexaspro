@@ -16,7 +16,8 @@
       "Bash(node -e \"const data = require\\(''./data/contractors.json''\\); console.log\\(data.length\\)\")",
       "Bash(npm i --save-dev @types/nodemailer)",
       "Bash(npx tsx --version)",
-      "Bash(npx tsx scripts/generateRoofingContractors.ts)"
+      "Bash(npx tsx scripts/generateRoofingContractors.ts)",
+      "Bash(python -c \":*)"
     ]
   }
 }

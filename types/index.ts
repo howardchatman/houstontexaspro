@@ -6,20 +6,20 @@ export type LeadStatus = 'new' | 'contacted' | 'converted' | 'closed'
 export type ServiceType = 'residential' | 'commercial' | 'both'
 
 // Subscription types
-export type ContractorTier = 'starter' | 'responding_pro' | 'priority_pro'
+export type ContractorTier = 'starter' | 'pro' | 'elite'
 export type SubscriptionStatus = 'none' | 'active' | 'past_due' | 'canceled' | 'trialing'
 
 // Pricing constants
 export const PRICING_TIERS = {
   starter: { name: 'Starter', displayName: 'Starter', price: 0, priceId: null },
-  responding_pro: { name: 'Responding Pro', displayName: 'Responding Pro', price: 79, priceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_RESPONDING_PRO || null },
-  priority_pro: { name: 'Priority Pro', displayName: 'Priority Pro', price: 199, priceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_PRIORITY_PRO || null },
+  pro: { name: 'Pro', displayName: 'Pro', price: 79, priceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_PRO || null },
+  elite: { name: 'Elite', displayName: 'Elite', price: 199, priceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_ELITE || null },
 } as const
 
 export const TIER_LIMITS = {
   starter: { gallery: 5, leadsPerMonth: 0, canRespondReviews: false, templateCustomization: false, canReceiveLeads: false },
-  responding_pro: { gallery: 25, leadsPerMonth: Infinity, canRespondReviews: true, templateCustomization: true, canReceiveLeads: true },
-  priority_pro: { gallery: Infinity, leadsPerMonth: Infinity, canRespondReviews: true, templateCustomization: true, canReceiveLeads: true },
+  pro: { gallery: 25, leadsPerMonth: Infinity, canRespondReviews: true, templateCustomization: true, canReceiveLeads: true },
+  elite: { gallery: Infinity, leadsPerMonth: Infinity, canRespondReviews: true, templateCustomization: true, canReceiveLeads: true },
 } as const
 
 // Premium template types

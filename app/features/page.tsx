@@ -42,12 +42,12 @@ const features = [
   {
     icon: Phone,
     title: 'Call Coverage',
-    description: 'Intelligent call coverage handles incoming calls when you\'re unavailable. After-hours and overflow coverage available on Priority Pro.',
+    description: 'Intelligent call coverage handles incoming calls when you\'re unavailable. After-hours and overflow coverage available on Elite.',
   },
   {
     icon: Zap,
     title: 'Priority Routing',
-    description: 'Priority Pro contractors appear first in emergency searches and receive requests before standard listings. Be the first contractor homeowners see.',
+    description: 'Elite contractors appear first in emergency searches and receive requests before standard listings. Be the first contractor homeowners see.',
   },
   {
     icon: Star,
@@ -62,7 +62,7 @@ const features = [
   {
     icon: BadgeCheck,
     title: 'Verified Badge',
-    description: 'Responding Pro and Priority Pro contractors receive a verified badge, signaling to homeowners that you\'re a trusted, active professional.',
+    description: 'Pro and Elite contractors receive a verified badge, signaling to homeowners that you\'re a trusted, active professional.',
   },
   {
     icon: BarChart3,
@@ -72,17 +72,17 @@ const features = [
   {
     icon: Clock,
     title: 'After-Hours Coverage',
-    description: 'Priority Pro contractors get after-hours and overflow coverage. Emergencies don\'t wait — and neither should your availability.',
+    description: 'Elite contractors get after-hours and overflow coverage. Emergencies don\'t wait — and neither should your availability.',
   },
   {
     icon: Users,
     title: 'Emergency-First Placement',
-    description: 'Priority Pro contractors appear at the top of emergency search results. When homeowners need help now, they find you first.',
+    description: 'Elite contractors appear at the top of emergency search results. When homeowners need help now, they find you first.',
   },
   {
     icon: Globe,
     title: 'Photo Gallery',
-    description: 'Showcase your work with a professional photo gallery. Starter gets 5 photos, Responding Pro gets 25, and Priority Pro gets unlimited.',
+    description: 'Showcase your work with a professional photo gallery. Starter gets 5 photos, Pro gets 25, and Elite gets unlimited.',
   },
 ]
 
@@ -137,11 +137,11 @@ export default function FeaturesPage() {
                     <span className="block text-sm font-normal text-[#6B7280]">$0/mo</span>
                   </th>
                   <th className="text-center p-4 text-[#0B0B0B] font-semibold bg-[#F5F5F5]">
-                    Responding Pro
+                    Pro
                     <span className="block text-sm font-normal text-[#6B7280]">$149/mo</span>
                   </th>
                   <th className="text-center p-4 text-[#0B0B0B] font-semibold">
-                    Priority Pro
+                    Elite
                     <span className="block text-sm font-normal text-[#6B7280]">$299/mo</span>
                   </th>
                 </tr>

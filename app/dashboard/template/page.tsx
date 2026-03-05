@@ -49,9 +49,9 @@ export default async function TemplateSettingsPage() {
 
       {contractor.tier === 'starter' ? (
         <div className="bg-gradient-to-r from-[#1F3C58] to-purple-600 rounded-2xl p-8 text-white mb-8">
-          <h2 className="text-2xl font-bold mb-4">Upgrade to Responding Pro</h2>
+          <h2 className="text-2xl font-bold mb-4">Upgrade to Pro</h2>
           <p className="text-white/90 mb-6 max-w-2xl">
-            Unlock template customization, routed requests, and your verified badge with Responding Pro.
+            Unlock template customization, routed requests, and your verified badge with Pro.
 
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
@@ -91,7 +91,7 @@ export default async function TemplateSettingsPage() {
         template={contractor.contractor_templates}
         primaryCategory={primaryCategory}
         tradeTemplates={tradeTemplates || []}
-        isPremium={contractor.tier === 'responding_pro' || contractor.tier === 'priority_pro'}
+        isPremium={contractor.tier === 'pro' || contractor.tier === 'elite'}
       />
     </div>
   )

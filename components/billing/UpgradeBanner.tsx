@@ -8,17 +8,17 @@ import type { ContractorTier } from '@/types'
 interface UpgradeBannerProps {
   currentTier: ContractorTier
   feature: string
-  targetTier?: 'responding_pro' | 'priority_pro'
+  targetTier?: 'pro' | 'elite'
 }
 
-export function UpgradeBanner({ currentTier, feature, targetTier = 'responding_pro' }: UpgradeBannerProps) {
+export function UpgradeBanner({ currentTier, feature, targetTier = 'pro' }: UpgradeBannerProps) {
   const [loading, setLoading] = useState(false)
 
-  if (currentTier === 'priority_pro') return null
-  if (currentTier === 'responding_pro' && targetTier === 'responding_pro') return null
+  if (currentTier === 'elite') return null
+  if (currentTier === 'pro' && targetTier === 'pro') return null
 
-  const tierName = targetTier === 'priority_pro' ? 'Priority Pro' : 'Responding Pro'
-  const price = targetTier === 'priority_pro' ? '$299' : '$149'
+  const tierName = targetTier === 'elite' ? 'Elite' : 'Pro'
+  const price = targetTier === 'elite' ? '$299' : '$149'
 
   const handleUpgrade = async () => {
     setLoading(true)

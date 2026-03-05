@@ -8,11 +8,11 @@ function normalizeTier(tier: ContractorTier | null | undefined): ContractorTier 
 
 export function isPaidTier(tier: ContractorTier | null | undefined): boolean {
   const t = normalizeTier(tier)
-  return t === 'responding_pro' || t === 'priority_pro'
+  return t === 'pro' || t === 'elite'
 }
 
 export function isPriorityPro(tier: ContractorTier | null | undefined): boolean {
-  return normalizeTier(tier) === 'priority_pro'
+  return normalizeTier(tier) === 'elite'
 }
 
 export function canReceiveLeads(tier: ContractorTier | null | undefined): boolean {
@@ -39,9 +39,9 @@ export function getTierDescription(tier: ContractorTier): string {
   switch (tier) {
     case 'starter':
       return 'Directory presence only. No routed requests.'
-    case 'responding_pro':
+    case 'pro':
       return 'Receive routed requests with booking support.'
-    case 'priority_pro':
+    case 'elite':
       return 'Priority routing, emergency-first placement, and after-hours coverage.'
   }
 }
@@ -52,10 +52,10 @@ export function getTierPrice(tier: ContractorTier): number {
 
 export function getTierBadge(tier: ContractorTier): string | null {
   switch (tier) {
-    case 'priority_pro':
+    case 'elite':
       return 'Priority'
-    case 'responding_pro':
-      return 'Responding Pro'
+    case 'pro':
+      return 'Pro'
     default:
       return null
   }

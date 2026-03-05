@@ -70,7 +70,7 @@ export function ContractorCard({ contractor }: ContractorCardProps) {
           {contractor.is_verified && !contractor.is_featured && (
             <Badge className="bg-[#1F3C58]">
               <CheckCircle className="h-3 w-3 mr-1" />
-              Responding Pro
+              Pro
             </Badge>
           )}
         </div>

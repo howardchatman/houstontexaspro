@@ -111,11 +111,11 @@ export default function LeadsPage() {
         <Card className="border-blue-200 bg-blue-50">
           <CardContent className="py-4">
             <p className="text-[#1F3C58] font-medium mb-2">
-              Your Starter plan does not include routed requests. Upgrade to Responding Pro to start receiving leads.
+              Your Starter plan does not include routed requests. Upgrade to Pro to start receiving leads.
             </p>
             <Link href="/dashboard/billing">
               <Button size="sm" className="bg-[#1F3C58] hover:bg-[#152839]">
-                Upgrade to Responding Pro
+                Upgrade to Pro
               </Button>
             </Link>
           </CardContent>

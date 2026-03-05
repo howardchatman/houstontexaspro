@@ -244,7 +244,7 @@ export default function ReviewsPage() {
                     ) : (
                       <div className="text-center py-4">
                         <p className="text-[#374151] mb-3">
-                          Upgrade to Responding Pro to reply to customer reviews.
+                          Upgrade to Pro to reply to customer reviews.
                         </p>
                         <Link href="/dashboard/billing">
                           <Button size="sm">

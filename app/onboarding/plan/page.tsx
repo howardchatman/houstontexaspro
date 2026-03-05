@@ -20,7 +20,7 @@ export default function OnboardingPlanPage() {
     }
   }
 
-  const handleSelectPaid = async (tier: 'responding_pro' | 'priority_pro') => {
+  const handleSelectPaid = async (tier: 'pro' | 'elite') => {
     setLoading(tier)
     try {
       const res = await fetch('/api/stripe/checkout', {
@@ -62,8 +62,8 @@ export default function OnboardingPlanPage() {
       ],
     },
     {
-      id: 'responding_pro' as const,
-      name: 'Responding Pro',
+      id: 'pro' as const,
+      name: 'Pro',
       price: '$149',
       period: '/mo',
       description: 'Request Handling',
@@ -84,8 +84,8 @@ export default function OnboardingPlanPage() {
       ],
     },
     {
-      id: 'priority_pro' as const,
-      name: 'Priority Pro',
+      id: 'elite' as const,
+      name: 'Elite',
       price: '$299',
       period: '/mo',
       description: 'Priority Routing',
@@ -94,7 +94,7 @@ export default function OnboardingPlanPage() {
       highlight: false,
       badge: 'Maximum Visibility',
       features: [
-        { text: 'Everything in Responding Pro', included: true },
+        { text: 'Everything in Pro', included: true },
         { text: 'Priority routing for all requests', included: true },
         { text: 'Emergency-first placement', included: true },
         { text: 'After-hours & overflow coverage', included: true },

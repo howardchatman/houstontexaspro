@@ -48,8 +48,8 @@ export async function POST(request: NextRequest) {
               subscription_status: 'active',
               subscription_period_end: new Date((subscription.current_period_end as number) * 1000).toISOString(),
               onboarding_completed: true,
-              is_verified: tier === 'responding_pro' || tier === 'priority_pro',
-              is_featured: tier === 'priority_pro',
+              is_verified: tier === 'pro' || tier === 'elite',
+              is_featured: tier === 'elite',
             })
             .eq('id', contractorId)
         }
@@ -75,8 +75,8 @@ export async function POST(request: NextRequest) {
 
           if (tier) {
             updateData.tier = tier
-            updateData.is_verified = tier === 'responding_pro' || tier === 'priority_pro'
-            updateData.is_featured = tier === 'priority_pro'
+            updateData.is_verified = tier === 'pro' || tier === 'elite'
+            updateData.is_featured = tier === 'elite'
           }
 
           await admin

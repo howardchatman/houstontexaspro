@@ -50,7 +50,7 @@ export function BillingClient({
     }
   }
 
-  const handleUpgrade = async (targetTier: 'responding_pro' | 'priority_pro') => {
+  const handleUpgrade = async (targetTier: 'pro' | 'elite') => {
     setUpgradeLoading(targetTier)
     try {
       const res = await fetch('/api/stripe/checkout', {
@@ -167,7 +167,7 @@ export function BillingClient({
       </Card>
 
       {/* Upgrade Options */}
-      {tier !== 'priority_pro' && (
+      {tier !== 'elite' && (
         <Card>
           <CardHeader>
             <CardTitle>Upgrade Your Plan</CardTitle>
@@ -177,16 +177,16 @@ export function BillingClient({
               {tier === 'starter' && (
                 <div className="flex items-center justify-between p-4 border rounded-lg">
                   <div>
-                    <h4 className="font-semibold text-[#0B0B0B]">Responding Pro</h4>
+                    <h4 className="font-semibold text-[#0B0B0B]">Pro</h4>
                     <p className="text-sm text-[#374151]">
                       Receive routed requests with booking support. $149/mo.
                     </p>
                   </div>
                   <Button
-                    onClick={() => handleUpgrade('responding_pro')}
+                    onClick={() => handleUpgrade('pro')}
                     disabled={upgradeLoading !== null}
                   >
-                    {upgradeLoading === 'responding_pro' ? 'Loading...' : (
+                    {upgradeLoading === 'pro' ? 'Loading...' : (
                       <>
                         Start Receiving Requests
                         <ArrowRight className="ml-2 h-4 w-4" />
@@ -198,17 +198,17 @@ export function BillingClient({
 
               <div className="flex items-center justify-between p-4 border rounded-lg">
                 <div>
-                  <h4 className="font-semibold text-[#0B0B0B]">Priority Pro</h4>
+                  <h4 className="font-semibold text-[#0B0B0B]">Elite</h4>
                   <p className="text-sm text-[#374151]">
                     Priority routing, emergency-first placement, after-hours coverage. $299/mo.
                   </p>
                 </div>
                 <Button
-                  onClick={() => handleUpgrade('priority_pro')}
+                  onClick={() => handleUpgrade('elite')}
                   disabled={upgradeLoading !== null}
                   variant={tier === 'starter' ? 'outline' : 'default'}
                 >
-                  {upgradeLoading === 'priority_pro' ? 'Loading...' : (
+                  {upgradeLoading === 'elite' ? 'Loading...' : (
                     <>
                       Get Priority Routing
                       <ArrowRight className="ml-2 h-4 w-4" />

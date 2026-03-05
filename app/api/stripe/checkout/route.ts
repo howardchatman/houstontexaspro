@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
   try {
     const { tier } = await request.json()
 
-    if (tier !== 'responding_pro' && tier !== 'priority_pro') {
+    if (tier !== 'pro' && tier !== 'elite') {
       return NextResponse.json({ error: 'Invalid tier' }, { status: 400 })
     }
 
