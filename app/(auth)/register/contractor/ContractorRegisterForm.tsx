@@ -58,9 +58,10 @@ export default function ContractorRegisterForm() {
   const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
   const [captchaToken, setCaptchaToken] = useState('')
+  const [captchaError, setCaptchaError] = useState(false)
 
   const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
-  const captchaEnabled = !!turnstileSiteKey && !turnstileSiteKey.startsWith('your_')
+  const captchaEnabled = !!turnstileSiteKey && !turnstileSiteKey.startsWith('your_') && !captchaError
 
   const supabase = createClient()
 
@@ -696,12 +697,12 @@ export default function ContractorRegisterForm() {
                     </div>
                   )}
 
-                  {captchaEnabled && (
+                  {!!turnstileSiteKey && !turnstileSiteKey.startsWith('your_') && !captchaError && (
                     <Turnstile
-                      siteKey={turnstileSiteKey!}
+                      siteKey={turnstileSiteKey}
                       onSuccess={setCaptchaToken}
                       onExpire={() => setCaptchaToken('')}
-                      onError={() => setCaptchaToken('')}
+                      onError={() => { setCaptchaToken(''); setCaptchaError(true) }}
                     />
                   )}
                 </CardContent>
