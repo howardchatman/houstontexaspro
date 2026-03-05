@@ -89,10 +89,10 @@ export default async function ContractorPage({ params }: ContractorPageProps) {
                 Free · List your business
               </span>
               <span className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-2.5 py-1 text-blue-800 font-medium">
-                $149/mo · Respond to leads
+                $79/mo · Mini website + leads
               </span>
               <span className="inline-flex items-center rounded-full border border-purple-200 bg-purple-50 px-2.5 py-1 text-purple-800 font-medium">
-                $299/mo · Priority placement
+                $199/mo · Full site + CRM
               </span>
             </div>
           </div>
